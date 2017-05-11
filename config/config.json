@@ -1,0 +1,23 @@
+{
+    "development": {
+        "username": "root",
+        "password": "root",
+        "database": "tran_db",
+        "port": "3306",
+        "dialect": "mysql"
+    },
+    "test": {
+        "username": "root",
+        "password": "root",
+        "database": "tran_db",
+        "port": "3306",
+        "dialect": "mysql"
+    },
+    "production": {
+        "username": "root",
+        "password": "root",
+        "database": "tran_db",
+        "port": "3306",
+        "dialect": "mysql"
+    }
+}
