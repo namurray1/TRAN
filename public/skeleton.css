@@ -1,0 +1,100 @@
+/*To Do-change the height of the sections. Get the images to fit within the sections using rows and columns. 
+Leave area for Map, and descript on pet. Add css styling based on Barbs desciption. Make navbar transparent. 
+Make sure to add smooth scrolling to the project. Think about adding a page header instead of a Jumbotron.*/
+
+/*.jumbotron {
+	font-family: 'Amatic SC', cursive;
+	text-align: center;
+}*/
+
+/*Navbar*/
+
+div#myNavbar.collapse.navbar-collapse {
+    background-color: rgba(0,0,0,0.9);
+    height: 60px;
+    border-bottom: 0px;
+    /*transition: background-color .5s ease 0s;*/
+    /*color: white;*/
+
+}
+
+article {
+    float: right;
+}
+
+
+/*CSS for handling how the sections scroll. Change the numbers after speaking to team*/
+
+#section1 {
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: red;
+}
+
+#section2 {
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: white;
+}
+
+#section3 {
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: blue;
+}
+
+#section4 {
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: green;
+}
+
+
+/*image files for the sections*/
+
+/*img.image-responsive {
+    padding: 10
+}*/
+
+body {
+    background-color: #000000 !important;
+}
+
+
+/*look into this as it may be impacting the background images in the application*/
+
+body {
+    position: relative;
+}
+
+
+
+
+
+
+
+h1 {
+    color: black !important;
+}
+
+p {
+    text-align: left;
+    color: black;
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    /*padding-left: 10Spx;*/
+}
+
+a {
+    padding-top: 20px;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+}
+
+
