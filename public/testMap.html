@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="col-md-6 street-map" >
+
+        </div>
+        <div class="col-md-6 street-map" >
+
+        </div>
+
+        <div class="col-md-6 google-auto-complete" >
+            <form>
+                <input type="text" name="google-auto-complete" value="">
+            </form>
+        </div>
+    </body>
+
+    <script>
+        function createStreetMap(googleID) {
+    var panorama;
+    var map;
+
+    //once the document is loaded, see if google has a streetview image within 50 meters of the given location, and load that panorama
+    var sv = new google.maps.StreetViewService();
+
+
+
+    sv.getPanoramaByLocation(propertyArry[googleID].googlePlaceLocation, 50, function(data, status) {
+        if (status == 'OK') {
+            //google has a streetview image for this location, so attach it to the streetview div
+            var panoramaOptions = {
+                pano: data.location.pano,
+                addressControl: false,
+                navigationControl: true,
+                navigationControlOptions: {
+                    style: google.maps.NavigationControlStyle.SMALL
+                }
+            };
+
+            var mapOptions = {
+
+                center: propertyArry[googleID].googlePlaceLocation,
+                zoom: 8,
+                scrollwheel: true,
+                zoom: 14
+            };
+
+            var panorama = new google.maps.StreetViewPanorama(document.getElementById("street-view"), panoramaOptions);
+            var map = new google.maps.Map(document.getElementById('map-view'), mapOptions);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: propertyArry[googleID].googlePlaceLocation,
+                title: propertyArry[googleID].fullAddress
+
+            });
+        } else {
+            //no google streetview image for this location, so hide the streetview div
+            $('#' + "street-view").parent().hide();
+            $('#' + "map-view").parent().hide();
+        }
+    });
+
+}
+    </script>
+</html>
