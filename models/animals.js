@@ -1,13 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
-    var Admin = sequelize.define("Admin", {
-        petName: {
+    var Animal = sequelize.define("Animal", {
+        pet_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        petType: {
+        pet_type: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -29,7 +29,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         weight: {
-            type: DataTypes.STRING,
+            type: DataTypes.DECIMAL(3, 2),
             allowNull: false,
             validate: {
                 len: [1]
@@ -56,6 +56,19 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         }
-    })
-    return Admin;
+    }
+        // // TODO
+        // // do we need to associate users and admins here?
+        // ,
+        // // To create an association between Users and Admins
+        // {
+        //     classMethods: {
+        //         associate: function(models) {
+        //             //
+        //             Animal.hasMany(models.Admins);
+        //         }
+        //     }
+        // }
+    )
+    return Animal;
 };

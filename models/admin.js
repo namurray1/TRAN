@@ -43,6 +43,19 @@ module.exports = function (sequelize, DataTypes) {
                 ['admin', 'user']
             ]
         }
-    })
+    }
+        // // TODO
+        // // do we need to associate users and admins here?
+        // ,
+        // // To create an association between Users and Admins
+        // {
+        //     classMethods: {
+        //         associate: function(models) {
+        //             //
+        //             Admin.hasMany(models.Admins);
+        //         }
+        //     }
+        // }
+    )
     return Admin;
 };
