@@ -9,5 +9,5 @@ CREATE TABLE animals(
     weight decimal(3, 2),
     temperament varchar(255),
     special_needs varchar(255),
-    location varchar(255)
+    google_place_id varchar(255)
 );
