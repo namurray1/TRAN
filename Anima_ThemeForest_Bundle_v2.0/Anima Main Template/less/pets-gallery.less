@@ -1,0 +1,95 @@
+/*
+|----------------------------------------------------------------------------
+| PETS GALLERY
+|----------------------------------------------------------------------------
+*/
+.pets-gallery {
+	background: #fff;
+
+	.mix {
+		display: none;
+	}
+}
+
+.gallery-filter {
+	margin-bottom: 45px;
+	text-align: center;
+
+	.btn {
+		margin: 0 10px;
+	}
+}
+
+.gallery-item {
+	display: block;
+
+	h5, p {
+		color: #fff;
+	}
+
+	.title-text {
+		padding-top: 0;
+		font-size: 18px;
+	}
+
+	p {
+		font-size: 14px;
+	}
+
+	hr {
+		margin-top: 10px;
+		margin-bottom: 15px;
+	}
+
+	article {
+		height: 100%;
+		width: 100%;
+	}
+
+	img {
+		transition: all 0.9s ease-in-out;
+	}
+
+	&:hover {
+		img {
+			transform: scale(1.1) rotate(4deg);
+		}
+	}
+}
+
+.hover-gallery {
+	.icon-inside {
+		margin-right: 10px;
+	}
+}
+
+
+@media screen and (max-width: 991px) and (min-width: 768px) {
+	.pets-gallery {
+		.full-width {
+			.col_1_4 {
+				width: 100% / 3;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 767px) and (min-width: 481px) {
+	.pets-gallery {
+		.full-width {
+			.col_1_4 {
+				width: 100% / 2;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.pets-gallery {
+		.full-width {
+			.col_1_4 {
+				width: 100%;
+			}
+		}
+	}
+}

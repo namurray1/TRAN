@@ -1,0 +1,36 @@
+/*
+|----------------------------------------------------------------------------
+| ADOPT PETS
+|----------------------------------------------------------------------------
+*/
+.adopt-pets {
+	background: url(../images/adopt-pet-bg.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
+	.row-item {
+		margin-bottom: 30px;
+	}
+
+	.btn-fill {
+		background: @base_bg_color;
+		font-weight: 600;
+		margin-top: 10px;
+
+		&:hover {
+			background: #fff;
+			border-color: #fff;
+		}
+	}
+}
+
+
+@media screen and (max-width: 767px) {
+	.adopt-pets,
+	.adopt-pets .text-right {
+		text-align: center;
+	}
+}

@@ -1,0 +1,103 @@
+/*
+|----------------------------------------------------------------------------
+| TEAM MEMBERS 
+|----------------------------------------------------------------------------
+*/
+.team-members {
+
+	.each-member {
+		position: relative;
+
+		.title-text {
+			margin-top: 30px;
+		}
+
+		hr {
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+
+		.meta {
+			font-size: 14px;
+		}
+
+		> figure {
+			opacity: 1;
+			transition: all 0.4s;
+		}
+	}
+}
+
+
+@media screen and (min-width: 992px) {
+	.team-members {
+		.each-member {
+			&:hover {
+				> figure {
+					opacity: 0;
+				}
+
+				.hover-profile {
+					transform: scale(1);
+					opacity: 1;
+
+				}
+			}
+		}
+	}
+
+	.hover-profile {
+		position: absolute;
+		transform: scale(0);
+		opacity: 0;
+		transition: all 0.4s;
+		top: -30px;
+		left: -30px;
+		z-index: 2;
+		width: 120%;
+		padding: 25px;
+		box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.15);
+		background: #fff;
+		border-radius: 2px;
+
+		.thumb {
+			margin-bottom: 20px;
+
+			img {
+				width: 30%;
+				float: left;
+			}
+
+			figcaption {
+				width: 70%;
+				float: left;
+				padding-left: 20px;
+
+				.title-text {
+					margin-top: 10px;
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		p {
+			font-size: 14px;
+		}
+	}
+}
+
+
+.social-connect {
+	list-style: none;
+
+	li {
+		display: inline-block;
+		font-size: 18px;
+		margin-right: 10px;
+
+		a {
+			color: @font_color_alt;
+		}
+
+	}
+}

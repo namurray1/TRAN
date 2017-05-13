@@ -1,0 +1,87 @@
+/*
+|----------------------------------------------------------------------------
+| ADDRESS - MAP
+|----------------------------------------------------------------------------
+*/
+.address-map {
+	background: #f2f2f2;
+
+	.address,
+	.map {
+		text-align: center;
+		cursor: pointer;
+
+		a {
+			padding: 60px 0;
+			display: block;
+			text-decoration: none;
+		}
+	}
+
+	[class^="icon-"],
+	[class*="icon-"] {
+		font-size: 40px;
+	}
+
+	.address {
+		background: @font_color_alt;
+		color: #fff;
+
+		.title-text, a {
+			color: #fff;
+		}
+		
+	}
+
+	.map {
+		background: @base_bg_color;
+
+		.title-text, a {
+			color: @font_color_alt;
+		}
+	}
+}
+
+.address-block {
+	background: @font_color_alt;
+	text-align: center;
+	color: #fff;
+	width: 100%;
+
+	p {
+		color: #fff;
+		margin-bottom: 0;
+		font-size: 14px;
+
+		strong {
+			font-family: Oswald, sans-serif;
+			font-weight: 500;
+		}
+	}
+
+	a {
+		color: #fff;
+
+		&:hover {
+			color: @base_bg_color;
+		}
+	}
+
+	.container {
+		padding: 80px 0 50px;
+	}
+
+	address {
+		font-style: normal;
+		margin-bottom: 0;
+	}
+}
+
+.tab-content, .tab-pane {
+	height: 100%;
+}
+
+.map-block {
+	height: 301px;
+	width: 100%;
+}

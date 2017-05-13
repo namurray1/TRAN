@@ -1,0 +1,78 @@
+/*
+|----------------------------------------------------------------------------
+| CONTACT US
+|----------------------------------------------------------------------------
+*/
+.contact {
+	background: #fafafa;
+
+	.form-control {
+		border-left: 0;
+	}
+}
+
+/*
+|----------------------------------------------------------------------------
+| FORM
+|----------------------------------------------------------------------------
+*/
+.input-group {
+	display: inline-table;
+	vertical-align: middle;
+	border-collapse: separate;
+	width: 100%;
+
+	.input-group-addon {
+		width: auto;
+		display: table-cell;
+		text-align: center;
+		padding: 12px;
+		font-size: 14px;
+		width: 40px;
+		color: @font_color_alt;
+		background: rgba(0, 0, 0, 0.12);
+		white-space: nowrap;
+		vertical-align: top;
+		transition: all 0.2s;
+		border: 0;
+		border-radius: 0;
+	}
+
+	textarea.form-control {
+		height: auto;
+	}
+
+	.form-control {
+		width: 100%;
+		max-width: 100%;
+		border-radius: 0;
+		box-shadow: 0 0 0;
+		display: table-cell;
+		float: left;
+		margin-bottom: 0;
+		z-index: 2;
+		height: 40px;
+		border-color: rgba(0, 0, 0, 0.1);
+		font-weight: 500;
+		transition: all 0.2s;
+		background: transparent;
+	}
+
+	&.active {
+		.input-group-addon {
+			background: @base_bg_color;
+			color: #fff;
+		}
+
+		.form-control {
+			background: rgba(0, 0, 0, 0.02);
+		}
+	}
+}
+
+.success-msg,
+.error-msg {
+	font-size: 12px;
+	color: @font_color_alt;
+	display: none;
+}

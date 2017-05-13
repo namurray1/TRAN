@@ -1,0 +1,93 @@
+/*
+|----------------------------------------------------------------------------
+| RECENTS EVENTS
+|----------------------------------------------------------------------------
+*/
+.recent-events {
+	.pet-thumb {
+		position: relative;
+		overflow: hidden;
+
+		img {
+			width: 75%
+		}
+	}
+
+	.title-text {
+		padding-bottom: 15px;
+	}
+
+	.post-info {
+		span + span {
+			padding-left: 30px;
+		}
+	}
+
+	.date,
+	.place {
+		&:before {
+			font-family: "anima-icon";
+			margin-right: 7px;
+			font-size: 12px;
+			position: relative;
+			top: 2px;
+		}
+	}
+
+	.date {
+		&:before {
+			content: "\e165";
+		}
+	}
+
+	.place {
+		&:before {
+			content: "\e159";
+		}
+	}
+}
+
+.event-timing {
+	position: absolute;
+	width: 25%;
+	height: 100%;
+	top: 0;
+	right: 0;
+
+	h6 {
+		font-size: 3.64em;
+
+	}
+
+	ul {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+
+		li {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: @base_bg_color;
+			font-size: 11px;
+			margin-bottom: 2px;
+			text-align: center;
+			height: 25%;
+			text-transform: uppercase;
+			font-weight: 500;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+	.event-timing {
+		h6 {
+			font-size: 2em;
+		}
+	}
+}
