@@ -1,0 +1,47 @@
+/*
+|----------------------------------------------------------------------------
+| TESTIMONIALS
+|----------------------------------------------------------------------------
+*/
+.testimonials {
+	background: #fafafa;
+}
+
+.blockquote {
+	blockquote {
+		margin: 30px 0;
+		background: #f2f2f2;
+		padding: 30px 45px 15px;
+		position: relative;
+
+		p {
+			font-weight: 500;
+		}
+
+		&:before {
+			font-family: "anima-icon";
+			left: 20px;
+			top: 30px;
+			position: absolute;
+			content: "\e156";
+		}
+	}
+
+	hr {
+		margin: 3px 0 6px;
+	}
+
+	.meta {
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.testimonial-author {
+		text-align: center;
+
+		hr {
+		margin: 3px auto 6px;
+	}
+	}
+}

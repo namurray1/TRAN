@@ -1,0 +1,30 @@
+/*
+|----------------------------------------------------------------------------
+| PARTNERS
+|----------------------------------------------------------------------------
+*/
+.partners {
+	.vertical-align {
+		display: table;
+		min-height: 225px;
+		width: 100%;
+	}
+
+	.each-item {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+		border: 1px solid lighten(@base_font_color, 65%);
+		padding: 30px;
+		text-decoration: none;
+
+		.title-text, p {
+			margin: 15px 0 0;
+		}
+
+		&:hover {
+			background: @base_bg_color;
+			border-color: @base_bg_color;
+		}
+	}
+}

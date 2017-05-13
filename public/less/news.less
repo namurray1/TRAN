@@ -1,0 +1,62 @@
+/*
+|----------------------------------------------------------------------------
+| RECENT NEWS
+|----------------------------------------------------------------------------
+*/
+.news {
+	background: #fff;
+}
+
+.news-time {
+	float: left;
+	width: 25%;
+	background: @base_bg_color;
+	text-align: center;
+	padding: 15px 8px 20px;
+
+	.news-date {
+		display: block;
+		font-size: 48px;
+		font-weight: 700;
+		line-height: 1;
+	}
+
+	.news-month {
+		font-size: 14px;
+		display: block;
+		overflow: hidden;
+	}
+}
+
+.news-detail {
+	float: left;
+	width: 75%;
+	padding-left: 15px;
+
+	.title-text {
+		padding: 15px 0;
+
+		a {
+			font-family: Oswald, sans-serif;
+			color: @font_color_alt;
+		}
+	}
+
+	.news-author,
+	.news-comment {
+		font-size: 12px;
+		color: lighten(@base_font_color, 20%);
+	}
+
+	.news-comment {
+		padding-left: 30px;
+	}
+}
+
+.news-body {
+	padding-top: 30px;
+
+	.btn {
+		margin-top: 15px;
+	}
+}
