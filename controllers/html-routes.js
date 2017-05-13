@@ -14,140 +14,120 @@ module.exports = function(app) {
 
     app.get("/", function(req, res) {
 
-        res.sendFile(__dirname + "/public/index.html");
-        // db.User.findAll({
-        //         where: {
-        //             role: "user"
-        //         },
-        //         include: [{
-        //             model: db.Player,
-        //             include: [{
-        //                 model: db.Tournament,
-        //             }],
-        //             where: {
-        //                 player_checkedIn_flag: 1
-        //             }
-        //         }]
-        //     })
-        //     .then(function(results) { //all users that exist that played in any tournament
-        //         // console.log("Here are the results you wanted: " + JSON.stringify(results, null, 2));
-        //         // Array to convert to response object
-        //         var responseArray = [];
-        //         // console.log(results);
-        //         results.forEach(function(resultItem) { //for each user
-        //             // console.log("Here are the results you wanted: " + JSON.stringify(resultItem, null, 2));
-
-        //             console.log("-------");
-
-        //             var playerData = resultItem.dataValues.Players;
-        //             var points = 0;
-        //             var tournamentsDataArray = [];
-        //             var username = resultItem.dataValues.username;
-
-        //             playerData.forEach(function(playerItem) { //for each time this user has ever been a player in a touranment (also attaches tournament data)
-
-        //                 points = points + playerItem.dataValues.points;
-        //                 var tournamentName = playerItem.dataValues.Tournament.dataValues.name;
-        //                 var tournamentDate = playerItem.dataValues.Tournament.dataValues.date;
-        //                 var tournamentTime = playerItem.dataValues.Tournament.dataValues.time;
-        //                 // tournamentDatesArray.push(tournamentDate);
-        //                 var tournamentDataObject = {
-        //                     "name": tournamentName,
-        //                     "date": tournamentDate,
-        //                     "time": tournamentTime
-        //                 };
-
-        //                 console.log(tournamentDataObject);
-        //                 // Pushing each tournament object to array to get latest based on date
-        //                 tournamentsDataArray.push(tournamentDataObject);
-        //                 // console.log(playerItem.dataValues.Tournament.dataValues.date);
-        //             });
-
-
-        //             // If more than one tournament was played
-        //             var latestTournamentData = tournamentsDataArray.sort(function(a, b) {
-        //                 return (a.date < b.date);
-        //             })[0];
-
-        //             console.log(latestTournamentData);
-
-        //             var JSONdataToSend = {
-        //                 "username": username,
-        //                 "points": points,
-        //                 // "tournamentName": latestTournamentData.name,
-        //                 "tournamentDate": latestTournamentData.date,
-        //                 "tournamentTime": latestTournamentData.time
-        //                     // "tournamentTime": latestTournamentData.time
-        //             };
-
-
-
-        //             console.log(JSONdataToSend);
-        //             responseArray.push(JSONdataToSend);
-        //             // Sorting to display users based on descending order of points (done here to get proper index in handlebars as rank)
-        //             responseArray.sort(function(a, b) {
-        //                 return (a.points < b.points);
-        //             });
-
-        //         });
-
-        //         console.log(responseArray);
-
-        //         db.Tournament.findAll({
-        //             where: {
-        //                 active_flag: 1
-        //             }
-        //         }).then(function(tournamentData) {
-        //             // tournamentData.forEach(function(tournament) {
-        //             //   if(moment().diff(tournament.dataValues.date) > 0) {
-        //             //     console.log(tournament.dataValues.date);
-        //             //   }
-        //             // });
-        //             res.render("index", {
-        //                 tournament: tournamentData,
-        //                 responseData: responseArray,
-        //                 helpers: handlebarHelpers,
-        //                 newUser: req.session.newRegister
-        //             });
-        //         });
-        //     })
-        //     .catch(function(error) {
-        //         console.log(error);
-        //     });
-
-    });
-
-
-    // // Render tournament data on admin page
-    // app.get("/admin", function(req, res) {
-    //     session = req.session;
-    //     if (session.uniqueID[1] === 'admin') {
-    //         db.Tournament.findAll({
+    //     res.sendFile(__dirname + "/public/index.html");
+    //     db.User.findAll({
     //             where: {
-    //                 active_flag: 1
-    //             }
-    //         }).then(function(tournamentResults) {
-    //             res.render("admin", {
-    //                 tournament: tournamentResults,
-    //                 userName: req.session.uniqueID[3],
-    //                 helpers: handlebarHelpers
+    //                 role: "user"
+    //             },
+    //             include: [{
+    //                 model: db.Player,
+    //                 include: [{
+    //                     model: db.Tournament,
+    //                 }],
+    //                 where: {
+    //                     player_checkedIn_flag: 1
+    //                 }
+    //             }]
+    //         })
+    //         .then(function(results) { //all users that exist that played in any tournament
+    //             // console.log("Here are the results you wanted: " + JSON.stringify(results, null, 2));
+    //             // Array to convert to response object
+    //             var responseArray = [];
+    //             // console.log(results);
+    //             results.forEach(function(resultItem) { //for each user
+    //                 // console.log("Here are the results you wanted: " + JSON.stringify(resultItem, null, 2));
+
+    //                 console.log("-------");
+
+    //                 var playerData = resultItem.dataValues.Players;
+    //                 var points = 0;
+    //                 var tournamentsDataArray = [];
+    //                 var username = resultItem.dataValues.username;
+
+    //                 playerData.forEach(function(playerItem) { //for each time this user has ever been a player in a touranment (also attaches tournament data)
+
+    //                     points = points + playerItem.dataValues.points;
+    //                     var tournamentName = playerItem.dataValues.Tournament.dataValues.name;
+    //                     var tournamentDate = playerItem.dataValues.Tournament.dataValues.date;
+    //                     var tournamentTime = playerItem.dataValues.Tournament.dataValues.time;
+    //                     // tournamentDatesArray.push(tournamentDate);
+    //                     var tournamentDataObject = {
+    //                         "name": tournamentName,
+    //                         "date": tournamentDate,
+    //                         "time": tournamentTime
+    //                     };
+
+    //                     console.log(tournamentDataObject);
+    //                     // Pushing each tournament object to array to get latest based on date
+    //                     tournamentsDataArray.push(tournamentDataObject);
+    //                     // console.log(playerItem.dataValues.Tournament.dataValues.date);
+    //                 });
+
+
+    //                 console.log(JSONdataToSend);
+    //                 responseArray.push(JSONdataToSend);
+    //                 // Sorting to display users based on descending order of points (done here to get proper index in handlebars as rank)
+    //                 responseArray.sort(function(a, b) {
+    //                     return (a.points < b.points);
+    //                 });
+
     //             });
 
-    //         });
-    //     } else {
-    //         console.log('unauthorized access');
-    //         res.redirect('/');
-    //     }
-    // });
+    //             console.log(responseArray);
 
-    // // Render tournament specific to user and other tournaments
-    // app.get("/user/:id", function(req, res) {
-    //     console.log("------");
-    //     console.log(req.session.uniqueID);
-    //     console.log("------");
-    //     var userId = req.params.id;
-    //     console.log(typeof req.session.uniqueID[2]);
-    //     console.log(typeof userId);
+    //             db.Tournament.findAll({
+    //                 where: {
+    //                     active_flag: 1
+    //                 }
+    //             }).then(function(tournamentData) {
+    //                 // tournamentData.forEach(function(tournament) {
+    //                 //   if(moment().diff(tournament.dataValues.date) > 0) {
+    //                 //     console.log(tournament.dataValues.date);
+    //                 //   }
+    //                 // });
+    //                 res.render("index", {
+    //                     tournament: tournamentData,
+    //                     responseData: responseArray,
+    //                     newUser: req.session.newRegister
+    //                 });
+    //             });
+    //         })
+    //         .catch(function(error) {
+    //             console.log(error);
+    //         });
+
+    });
+};   
+
+
+
+    // Render animal data on admin page
+    app.get("/admin", function(req, res) {
+        session = req.session;
+        if (session.uniqueID[1] === 'admin') {
+            db.Animal.findAll({
+                
+            }).then(function(animalResults) {
+                res.render("admin", {
+                    animal: animalResults,
+                    userName: req.session.uniqueID[3],
+                });
+
+            });
+        } else {
+            console.log('unauthorized access');
+            res.redirect('/');
+        }
+    });
+
+    // Render animal info specific to user who volunteered
+    app.get("/user/:id", function(req, res) {
+        console.log("------");
+        console.log(req.session.uniqueID);
+        console.log("------");
+        var userId = req.params.id;
+        console.log(typeof req.session.uniqueID[2]);
+        console.log(typeof userId);
 
 
     //     if (req.session.uniqueID[2] === parseInt(userId)) {
@@ -212,11 +192,11 @@ module.exports = function(app) {
 
     // });
 
-    // // Checkin page players display
-    // app.get("/checkin/:id", function(req, res) {
-    //     var tournamentPlayers = [];
+    // // Volunteer page display
+    // app.get("/volunteer/:id", function(req, res) {
+    //     var volunteerUsers = [];
     //     var tournament_Id = req.params.id;
-    //     // SELECT users.username FROM Users INNER JOIN Players ON users.id = players.UserId WHERE players.TournamentId = 1 AND players.player_registered_flag = 1;
+    //     // SELECT user.username FROM Users INNER JOIN Volunteer ON User.Id = Volunteer.Id WHERE players.TournamentId = 1 AND players.player_registered_flag = 1;
     //     db.User.findAll({
     //         include: [{
     //             model: db.Player,
@@ -254,24 +234,24 @@ module.exports = function(app) {
     // });
 
 
-    // app.get('/logout', function(req, res) {
-    //     console.log('get logout');
-    //     req.session.destroy(function(error) {
-    //         console.log(error);
-    //         res.redirect('/');
-    //     });
-    // });
+    app.get('/logout', function(req, res) {
+        console.log('get logout');
+        req.session.destroy(function(error) {
+            console.log(error);
+            res.redirect('/');
+        });
+    });
 
-    // app.use(function(err, req, res, next) {
-    //     console.log(err.stack);
-    //     res.status(401);
-    //     res.render('401');
-    // });
+    app.use(function(err, req, res, next) {
+        console.log(err.stack);
+        res.status(401);
+        res.render('401');
+    });
 
-    // app.use(function(err, req, res, next) {
-    //     console.log(err.stack);
-    //     res.status(500);
-    //     res.render('500');
-    // });
+    app.use(function(err, req, res, next) {
+        console.log(err.stack);
+        res.status(500);
+        res.render('500');
+    });
 
-};
+},
