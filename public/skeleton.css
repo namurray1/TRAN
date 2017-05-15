@@ -56,9 +56,11 @@ article {
 
 /*image files for the sections*/
 
-/*img.image-responsive {
-    padding: 10
+/*img {
+    width: 100%;
+    height: 100%;
 }*/
+
 
 body {
     background-color: #000000 !important;
