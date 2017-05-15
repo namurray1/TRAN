@@ -1,21 +1,43 @@
 module.exports = function (sequelize, DataTypes) {
-    var Admin = sequelize.define("Admin", {
-        admin_name: {
-            type: DataTypes.STRING,
+    var Volunteer = sequelize.define("Volunteer", {
+        user_id: {
+            type: DataTypes.INTEGER(11),
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        email: {
-            type: DataTypes.STRING,
+        animal_id: {
+            type: DataTypes.INTEGER(11),
             allowNull: false,
             validate: {
-                isEmail: true
+                len: [1]
             }
         },
-        address: {
-            type: DataTypes.STRING,
+        animals_delivered: {
+            type: DataTypes.INTEGER(11),
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        user_volunteered_flag: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
+            allowNull: false
+        },
+        UserId: {
+            type: DataTypes.INTEGER(11),
             allowNull: false,
             validate: {
                 len: [1]
@@ -41,14 +63,6 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             }
-        },
-        role: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: 'admin',
-            isIn: [
-                ['admin', 'user']
-            ]
         }
     }
         // // TODO
@@ -64,5 +78,5 @@ module.exports = function (sequelize, DataTypes) {
         //     }
         // }
     )
-    return Admin;
+    return Volunteer;
 };

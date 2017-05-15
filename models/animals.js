@@ -49,8 +49,15 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        google_place_id: {
-            type: DataTypes.STRING,
+        lat: {
+            type: DataTypes.DECIMAL(3 , 14),
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        lng: {
+            type: DataTypes.DECIMAL(3 , 14),
             allowNull: false,
             validate: {
                 len: [1]
