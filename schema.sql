@@ -10,7 +10,8 @@ CREATE TABLE animal(
     weight decimal(3, 2),
     temperament varchar(255),
     special_needs varchar(255),
-    google_place_id varchar(255)
+    lat decimal(3, 14),
+    lng decimal(3, 14)
 );
 
 CREATE TABLE user(
@@ -32,15 +33,17 @@ CREATE TABLE volunteer(
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     UserId int(11) NOT NULL,
-    google_place_id varchar(255),
+    lat decimal(3, 14),
+    lng decimal(3, 14),
     FOREIGN KEY (animal_id) REFERENCES Animal(animal_id)
-    );
-    
+);
+
 CREATE TABLE admin(
 	admin_name varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     address varchar(255) NOT NULL,
-    google_place_id varchar(255) NOT NULL,
     non_profit_id int NOT NULL,
+    lat decimal(3, 14),
+    lng decimal(3, 14),
     role varchar(255) NOT NULL
 );
