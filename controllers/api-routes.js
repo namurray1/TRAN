@@ -90,14 +90,6 @@ module.exports = function (app) {
             }
         });
 
-    //ADD AN ANIMAL
-    app.post("/add/animal", function(req, res) {
-        db.Animal.create(req.body).then(function(result) {
-            // redirect to admin.html page to add new animal
-            res.redirect("/admin");
-        });
-    });
-
 //SESSION LOGIN
     app.post("/login", function(req, res) {
         var session = req.session;
@@ -127,12 +119,18 @@ module.exports = function (app) {
                 console.log("Illegal entry detected.");
                  res.status(400).send();
                   }
-
-
         
         }).catch(function(err) {
             console.log("The error is" + err);
             res.status(400).send();
+        });
+    });
+
+//ADD AN ANIMAL
+    app.post("/add/animal", function(req, res) {
+        db.Animal.create(req.body).then(function(result) {
+            // redirect to admin.html page to add new animal
+            res.redirect("/admin");
         });
     });
 
