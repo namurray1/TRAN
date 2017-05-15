@@ -1,7 +1,3 @@
-// this is from previous project, we will use this as a starting point since
-// hash/encryption for passwords is already done, we just have to change where
-// it shows Tournament and such.
-
 var path = require("path");
 var db = require("../models");
 var sessions = require("express-session");
@@ -28,6 +24,14 @@ const genRandomString = (length) => {
 };
 
 // Routes =============================================================
+    //ADD AN ANIMAL
+    app.post("/add/animal", function(req, res) {
+        db.Animal.create(req.body).then(function(result) {
+            // redirect to admin.html page to add new animal
+            res.redirect("/admin");
+        });
+    });
+
 module.exports = function (app) {
     //REGISTER NEW USER
     app
@@ -94,88 +98,181 @@ module.exports = function (app) {
             }
         });
 
-    // //SESSION LOGIN app.post("/login", function(req, res) {     var session =
-    // req.session;     var email = req.body.email;     var password =
-    // req.body.password;     console.log("am here");     session.newRegister =
-    // false;     //checks hash against hash for entry validation db.User.findOne({
-    //      where: {             email: email         } }).then(function(data) {
-    // var salt = data.salt;         var hashedPassword = sha512(req.body.password,
-    // salt).passwordHash;         if (hashedPassword === data.hash) {
-    // session.loggedIn = true;     session.uniqueID = [data.email, data.role,
-    // data.id, data.username];       if (data.role === "admin") {
-    // res.send({ redirect: '/admin' });             } else if (data.role ===
-    // "user") { res.send({ redirect: '/user/' + data.id });           } else {
-    // console.log('No role found');             }         } else {
-    // console.log("Illegal entry detected."); res.status(400).send(); }
-    // }).catch(function(err) { console.log("The error is" + err);
-    // res.status(400).send();     }); }); //REGISTER FOR TOURNAMENT
-    // app.put('/register/tournament', function(req, res) {     var tournamentID =
-    // req.body.tournamentId;     var userID = req.session.uniqueID[2];
-    // console.log("Inside api-routing /register/tournament function");     if
-    // (userID == req.body.userId) {         console.log("User Id = reqbodyuserId;
-    // Data querying now.");         db.Player.findAll({  attributes:
-    // ['player_registered_flag', 'updatedAt', 'createdAt'],  where: { UserId:
-    // userID,                 TournamentId: tournamentID       },   limit: 1,
-    //       order: [ ['updatedAt', 'DESC']             ]
-    // }).then(function(registeredData) {             console.log(registeredData);
-    //         if (registeredData.length === 0) { db.Player.create({ UserId: userID,
-    //                     TournamentId: tournamentID,  player_registered_flag: 1
-    // }).then(function(data) { console.log(data);   });             } else {
-    //          var updatedAt = registeredData[0].dataValues.updatedAt;
-    //    db.Player.update({            player_registered_flag: 1                 },
-    // {       where: {                  UserId: userID,  TournamentId:
-    // tournamentID, updatedAt: updatedAt                 } }).then(function(data) {
-    // console.log(data);                 }); }             //
-    // res.redirect("/user/"+userID);             res.json("Player registration
-    // updated.");         });     } }); //UNREGISTER FOR TOURNAMENT
-    // app.put('/unregister/tournament', function(req, res) {
-    // console.log("unregister");     var tournamentID = req.body.tournamentId; var
-    // userID = req.session.uniqueID[2];     if (userID == req.body.userId) {
-    // db.Player.update({             player_registered_flag: 0         }, {  where:
-    // {                 UserId: userID, TournamentId: tournamentID    }
-    // }).then(function(data) {         res.json("Unregistered for tournament.");
-    //   });     } }); // PUT route to update checkedIn players in table
-    // app.put("/player/checkin", function(req, res) { db.Player.update({
-    // player_checkedIn_flag: 1    }, {         where: {            UserId:
-    // req.body.UserId, TournamentId: req.body.TournamentId   }
-    // }).then(function(data) {      res.json("flag updated on checkin");  }); });
-    // // PUT route to uncheck players if need be /player/undocheckin
-    // app.put("/player/undocheckin", function(req, res) {     db.Player.update({
-    // player_checkedIn_flag: 0    }, {         where: {             UserId:
-    // req.body.UserId, TournamentId: req.body.TournamentId         }
-    // }).then(function(data) {      res.json("flag updated on checkin");     });
-    // }); // PUT route to update player points app.post("/player/results",
-    // function(req, res) {     // console.log(req.body.resultsDataArray);     var
-    // resultsArray = req.body.resultsDataArray;     var updatesPromiseArray = [];
-    // console.log(req.body.resultsDataArray.TournamentId);     // Looping through
-    // data array, and pushing the promise of each sequelize update query into an
-    // array     resultsArray.forEach(function(item) {         // console.log(item);
-    //         updatesPromiseArray.push(             db.Player.update({    points:
-    // item.points             }, {                 where: {        UserId:
-    // item.UserId,                     TournamentId: item.TournamentId    }     })
-    //        ); //end of promise array     }); updatesPromiseArray.push(
-    // db.Tournament.update({             active_flag: 0       }, { where: {
-    // id: req.body.resultsDataArray[0].TournamentId      }         }) );     //
-    // Waiting for all db updates to complete before deciding success/failure and
-    // returning control to client browser
-    // Promise.all(updatesPromiseArray).then(function(data) {         // On success
-    //     console.log("success" + data);         res.json({ redirectURL: "/admin",
-    //            status: "success"         });         // On failure },
-    // function(err) {         console.log("Something failed.");
-    // res.status(500).send(err);     }); }); //PUT route to update tournament info
-    // app.put("/update/tournament", function(req, res) { db.Tournament.update({
-    // name: req.body.TournamentName,         date: req.body.TournamentDate, time:
-    // req.body.TournamentTime     }, {   where: {             id:
-    // req.body.TournamentId         } }).then(function(data) { console.log(data);
-    // res.send("updated");     }); //.catch(function(error) {  //
-    // console.log(error);     //     // res.json("Error " + error);     //
-    // res.render("500", {error: error});     // }); }); //PUT route to delete
-    // tournament info app.put("/delete/tournament", function(req, res) {
-    // db.Tournament.update({         active_flag: 0     }, {         where: { id:
-    // req.body.TournamentId         }     }).then(function(data) {
-    // console.log(data);         res.send("deleted tournament - updated
-    // active_flag");     }); //.catch(function(error) {     // console.log(error);
-    //  //     // res.json("Error " + error);     // res.render("500", {error:
-    // error});     // }); }); // Get request to get session data
-    // app.get("/loggedIn", function(req, res) { res.json(req.session); });
+//SESSION LOGIN
+    app.post("/login", function(req, res) {
+        var session = req.session;
+        var email = req.body.email;
+        var password = req.body.password;
+        console.log("am here");
+         session.newRegister = false;
+        //checks hash against hash for entry validation
+        db.User.findOne({
+            where: {
+                email: email
+            }
+        }).then(function(data) {
+             var salt = data.salt;
+            var hashedPassword = sha512(req.body.password, salt).passwordHash;
+            if (hashedPassword === data.hash) {
+            	session.loggedIn = true;
+                session.uniqueID = [data.email, data.role, data.id, data.username];
+                if (data.role === "admin") {
+                    res.send({redirect: '/admin'});
+                } else if (data.role === "user") {
+                    res.send({redirect: '/user/' + data.id});
+                } else {
+                    console.log('No role found');
+                }
+            } else {
+                console.log("Illegal entry detected.");
+                 res.status(400).send();
+                  }
+
+
+        
+        }).catch(function(err) {
+            console.log("The error is" + err);
+            res.status(400).send();
+        });
+    });
+
+
+//VOLUNTEER FOR A LISTED ANIMAL
+    app.put('/volunteer', function(req, res) {
+        var animalID = req.body.animalId;
+        var userID = req.session.uniqueID[2];
+        console.log("Inside api-routing /volunteer function");
+        if(userID == req.body.userId) {
+            console.log("User Id = reqbodyuserId; Data querying now.");
+            db.Animal.findAll({
+                attributes: ['user_volunteered_flag','updatedAt','createdAt'],
+                where: {
+                    UserId: userID,
+                    AnimalId: animalID
+                },
+                limit: 1,
+                order: [ [ 'updatedAt', 'DESC' ]]
+            }).then(function(volunteerData) {
+                console.log(volunteerData);
+                if(volunteerData.length === 0) {
+                    db.Animal.create({
+                        UserId: userID,
+                        AnimalId: animalID,
+                        user_volunteered_flag: 1
+                    }).then(function(data) {
+                        console.log(data);
+                    });
+                }else {
+                    var updatedAt = registeredData[0].dataValues.updatedAt;
+                    db.User.update({
+                        player_volunteered_flag: 1
+                    },{
+                        where:{
+                        UserId: userID,
+                        AnimalId: animalID,
+                        updatedAt: updatedAt
+                        }
+                    }).then(function(data) {
+                        console.log(data);
+                    });
+                }
+                // res.redirect("/user/"+userID);
+                res.json("User has volunteered.");
+            });
+        }
+
+    });
+
+ // PUT route to update animal location 
+    app.post("/animal/location", function(req, res) {
+        // console.log(req.body.resultsDataArray);
+        var resultsArray = req.body.resultsDataArray;
+        var updatesPromiseArray = [];
+        console.log(req.body.resultsDataArray.AnimalId);
+        // Looping through data array, and pushing the promise of each sequelize update query into an array
+        resultsArray.forEach(function(item) {
+            // console.log(item);
+            updatesPromiseArray.push(
+                            db.Animal.update(
+                            {
+                              location: item.location
+                            },
+                            {
+                              where: {
+                                // UserId: item.UserId,
+                                AnimalId: item.AnimalId
+                              }
+                            })
+            ); //end of promise array
+        });
+
+        updatesPromiseArray.push(
+                            db.Animal.update(
+                            {
+                                active_flag: 0
+                            },
+                            {
+                                where: {
+                                    id: req.body.resultsDataArray[0].AnimalId
+                                }
+                            })
+            );
+
+        // Waiting for all db updates to complete before deciding success/failure and returning control to client browser
+        Promise.all(updatesPromiseArray).then(function(data) {
+            // On success
+            console.log("success" + data);
+            res.json({
+                redirectURL: "/admin",
+                status: "success"
+            });
+            // On failure
+        }, function(err) {
+            console.log("Something failed.");
+            res.status(500).send(err);
+        });
+    });
+
+//PUT route to update animal info
+    app.put("/update/animal", function(req, res) {
+        db.Animal.update(
+            {
+                name: req.body.AnimalName,
+                date: req.body.AnimalDate,
+                time: req.body.AnimalLocation
+            },
+            {
+                where:{
+                    id: req.body.AnimalId
+                }
+            }).then(function(data){
+                console.log(data);
+                res.send("updated");
+            });
+    });
+
+
+
+//PUT route to delete info for a particular animal
+ app.put("/delete/animal", function(req, res) {
+        db.Animal.update(
+            {
+                active_flag: 0
+            },
+            {
+                where:{
+                    id: req.body.AnimalId
+                }
+            }).then(function(data){
+                console.log(data);
+                res.send("deleted animal - updated active_flag");
+            });
+    });
+
+
+// Get request to get session data
+    app.get("/loggedIn", function(req, res) {
+    	res.json(req.session);
+    });
 };
+
