@@ -14,92 +14,9 @@ module.exports = function(app) {
 
     app.get("/", function(req, res) {
 
-    //     res.sendFile(__dirname + "/public/index.html");
-    //     db.User.findAll({
-    //             where: {
-    //                 role: "user"
-    //             },
-    //             include: [{
-    //                 model: db.Player,
-    //                 include: [{
-    //                     model: db.Tournament,
-    //                 }],
-    //                 where: {
-    //                     player_checkedIn_flag: 1
-    //                 }
-    //             }]
-    //         })
-    //         .then(function(results) { //all users that exist that played in any tournament
-    //             // console.log("Here are the results you wanted: " + JSON.stringify(results, null, 2));
-    //             // Array to convert to response object
-    //             var responseArray = [];
-    //             // console.log(results);
-    //             results.forEach(function(resultItem) { //for each user
-    //                 // console.log("Here are the results you wanted: " + JSON.stringify(resultItem, null, 2));
-
-    //                 console.log("-------");
-
-    //                 var playerData = resultItem.dataValues.Players;
-    //                 var points = 0;
-    //                 var tournamentsDataArray = [];
-    //                 var username = resultItem.dataValues.username;
-
-    //                 playerData.forEach(function(playerItem) { //for each time this user has ever been a player in a touranment (also attaches tournament data)
-
-    //                     points = points + playerItem.dataValues.points;
-    //                     var tournamentName = playerItem.dataValues.Tournament.dataValues.name;
-    //                     var tournamentDate = playerItem.dataValues.Tournament.dataValues.date;
-    //                     var tournamentTime = playerItem.dataValues.Tournament.dataValues.time;
-    //                     // tournamentDatesArray.push(tournamentDate);
-    //                     var tournamentDataObject = {
-    //                         "name": tournamentName,
-    //                         "date": tournamentDate,
-    //                         "time": tournamentTime
-    //                     };
-
-    //                     console.log(tournamentDataObject);
-    //                     // Pushing each tournament object to array to get latest based on date
-    //                     tournamentsDataArray.push(tournamentDataObject);
-    //                     // console.log(playerItem.dataValues.Tournament.dataValues.date);
-    //                 });
-
-
-    //                 console.log(JSONdataToSend);
-    //                 responseArray.push(JSONdataToSend);
-    //                 // Sorting to display users based on descending order of points (done here to get proper index in handlebars as rank)
-    //                 responseArray.sort(function(a, b) {
-    //                     return (a.points < b.points);
-    //                 });
-
-    //             });
-
-    //             console.log(responseArray);
-
-    //             db.Tournament.findAll({
-    //                 where: {
-    //                     active_flag: 1
-    //                 }
-    //             }).then(function(tournamentData) {
-    //                 // tournamentData.forEach(function(tournament) {
-    //                 //   if(moment().diff(tournament.dataValues.date) > 0) {
-    //                 //     console.log(tournament.dataValues.date);
-    //                 //   }
-    //                 // });
-    //                 res.render("index", {
-    //                     tournament: tournamentData,
-    //                     responseData: responseArray,
-    //                     newUser: req.session.newRegister
-    //                 });
-    //             });
-    //         })
-    //         .catch(function(error) {
-    //             console.log(error);
-    //         });
+        res.sendFile(__dirname + "/public/index.html");
 
     });
-};   
-
-
 
     // Render animal data on admin page
     app.get("/admin", function(req, res) {
@@ -129,59 +46,7 @@ module.exports = function(app) {
         console.log(typeof req.session.uniqueID[2]);
         console.log(typeof userId);
 
-
-    //     if (req.session.uniqueID[2] === parseInt(userId)) {
-    //         // Get tournaments and players table data
-    //         db.Tournament.findAll({
-    //             include: [{
-    //                 model: db.Player
-    //             }],
-    //             where: {
-    //                 active_flag: 1
-    //             }
-    //         }).then(function(tournamentResults) {
-    //             // With tournamentsResults, map it to required json data format
-    //             var userTournamentData = tournamentResults.map(function(tournamentItem) {
-    //                 var ofUser = false;
-    //                 var playerData = tournamentItem.dataValues.Players;
-    //                 playerData.forEach(function(playerItem) {
-    //                     // For current user
-    //                     if (playerItem.dataValues.UserId == userId) {
-    //                         // Check if this tournament was registered for
-    //                         if (playerItem.dataValues.player_registered_flag == 1) {
-    //                             // If yes, set flag to true
-    //                             ofUser = true;
-    //                             // else flag will be false
-    //                         }
-
-    //                     }
-    //                 });
-    //                 // Return required data
-    //                 return {
-    //                     "userId": userId,
-    //                     "id": tournamentItem.id,
-    //                     "name": tournamentItem.name,
-    //                     "date": tournamentItem.date,
-    //                     "time": tournamentItem.time,
-    //                     "ofUser": ofUser
-    //                 };
-
-    //             });
-    //             // console.log(userTournamentData);
-
-    //             res.render('user', {
-    //                 userName: req.session.uniqueID[3],
-    //                 tournament: userTournamentData,
-    //                 helpers: handlebarHelpers
-    //             });
-    //         });
-    //     } else {
-    //         res.render("401");
-    //     }
-
-
-    // });
-
+    });  
 
     // app.get("/register", function(req, res) {
     //     //Todo//
@@ -190,50 +55,23 @@ module.exports = function(app) {
     //     req.session.errors = null;
     //     req.session.success = null;
 
-    // });
+    // // });
 
     // // Volunteer page display
     // app.get("/volunteer/:id", function(req, res) {
     //     var volunteerUsers = [];
-    //     var tournament_Id = req.params.id;
-    //     // SELECT user.username FROM Users INNER JOIN Volunteer ON User.Id = Volunteer.Id WHERE players.TournamentId = 1 AND players.player_registered_flag = 1;
-    //     db.User.findAll({
+    //     var volunteer_id = req.params.id;
+    //     SELECT user.username FROM Users INNER JOIN Volunteer ON user.user_id = volunteer.user_Id WHERE volunteer.volunteered_flag = 1;
+    //     db.user.findAll({
     //         include: [{
-    //             model: db.Player,
+    //             model: db.user,
     //             where: {
-    //                 TournamentId: tournament_Id,
-    //                 player_registered_flag: 1,
+    //                 user_id: user_id,
+    //                 volunteered_flag: 1,
     //             }
     //         }]
-    //     }).then(function(playerNames) {
-    //         // playerNames does not consist of just User.username and User.id hence array mapping
-    //         tournamentPlayers = playerNames.map(function(item) {
-    //             return {
-    //                 "username": item.dataValues.username,
-    //                 "userId": item.dataValues.id,
-    //                 "player_checkedIn_flag": item.dataValues.Players[0].dataValues.player_checkedIn_flag
-    //             };
-    //         });
-    //         // console.log(tournamentPlayers);
-    //         // Render checkin page with names of registered users
-    //         res.render('checkin', {
-    //             player: tournamentPlayers,
-    //             tournamentId: tournament_Id,
-    //             // express handlebars helper function inc to increment index by 1 for serial number display
-    //             helpers: {
-    //                 inc: function(index) { return parseInt(index) + 1; }
-    //             }
-    //         });
-    //     }).catch(function(err) {
-    //         // handle error;
-    //         console.log("Error: " + err);
-    //         ///////////////// To do //////////////////
-    //         // res.redirect("/500");
-    //         res.render("500", { error: err });
-    //     });
-    // });
 
-
+    //LOGOUT
     app.get('/logout', function(req, res) {
         console.log('get logout');
         req.session.destroy(function(error) {
@@ -254,4 +92,5 @@ module.exports = function(app) {
         res.render('500');
     });
 
-},
+}
+

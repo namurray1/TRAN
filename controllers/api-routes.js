@@ -24,18 +24,10 @@ const genRandomString = (length) => {
 };
 
 // Routes =============================================================
-    //ADD AN ANIMAL
-    app.post("/add/animal", function(req, res) {
-        db.Animal.create(req.body).then(function(result) {
-            // redirect to admin.html page to add new animal
-            res.redirect("/admin");
-        });
-    });
 
 module.exports = function (app) {
     //REGISTER NEW USER
-    app
-        .post("/users/register", function (req, res, next) {
+    app.post("/users/register", function (req, res, next) {
             //Validation - checks if form is filled out properly
             req.checkBody('email', 'Email is required').notEmpty();
             req.checkBody('email', 'Email is not valid').isEmail();
@@ -127,8 +119,6 @@ module.exports = function (app) {
                 console.log("Illegal entry detected.");
                  res.status(400).send();
                   }
-
-
         
         }).catch(function(err) {
             console.log("The error is" + err);
@@ -136,19 +126,27 @@ module.exports = function (app) {
         });
     });
 
+//ADD AN ANIMAL
+    app.post("/add/animal", function(req, res) {
+        db.Animal.create(req.body).then(function(result) {
+            // redirect to admin.html page to add new animal
+            res.redirect("/admin");
+        });
+    });
+
 
 //VOLUNTEER FOR A LISTED ANIMAL
     app.put('/volunteer', function(req, res) {
-        var animalID = req.body.animalId;
+        var animalID = req.body.animal_id;
         var userID = req.session.uniqueID[2];
         console.log("Inside api-routing /volunteer function");
-        if(userID == req.body.userId) {
+        if(userID == req.body.user_id) {
             console.log("User Id = reqbodyuserId; Data querying now.");
             db.Animal.findAll({
                 attributes: ['user_volunteered_flag','updatedAt','createdAt'],
                 where: {
-                    UserId: userID,
-                    AnimalId: animalID
+                    user_id: UserID,
+                        animal_id: AnimalID
                 },
                 limit: 1,
                 order: [ [ 'updatedAt', 'DESC' ]]
@@ -156,8 +154,8 @@ module.exports = function (app) {
                 console.log(volunteerData);
                 if(volunteerData.length === 0) {
                     db.Animal.create({
-                        UserId: userID,
-                        AnimalId: animalID,
+                       user_id: UserID,
+                        animal_id: AnimalID,
                         user_volunteered_flag: 1
                     }).then(function(data) {
                         console.log(data);
@@ -168,8 +166,8 @@ module.exports = function (app) {
                         player_volunteered_flag: 1
                     },{
                         where:{
-                        UserId: userID,
-                        AnimalId: animalID,
+                        user_id: UserID,
+                        animal_id: AnimalID,
                         updatedAt: updatedAt
                         }
                     }).then(function(data) {
@@ -188,7 +186,7 @@ module.exports = function (app) {
         // console.log(req.body.resultsDataArray);
         var resultsArray = req.body.resultsDataArray;
         var updatesPromiseArray = [];
-        console.log(req.body.resultsDataArray.AnimalId);
+        console.log(req.body.resultsDataArray.animal_id);
         // Looping through data array, and pushing the promise of each sequelize update query into an array
         resultsArray.forEach(function(item) {
             // console.log(item);
@@ -200,7 +198,7 @@ module.exports = function (app) {
                             {
                               where: {
                                 // UserId: item.UserId,
-                                AnimalId: item.AnimalId
+                                animal_id: item.AnimalID
                               }
                             })
             ); //end of promise array
@@ -237,9 +235,8 @@ module.exports = function (app) {
     app.put("/update/animal", function(req, res) {
         db.Animal.update(
             {
-                name: req.body.AnimalName,
-                date: req.body.AnimalDate,
-                time: req.body.AnimalLocation
+                name: req.body.pet_name,
+                location: req.body.AnimalLocation
             },
             {
                 where:{
@@ -256,16 +253,16 @@ module.exports = function (app) {
 //PUT route to delete info for a particular animal
  app.put("/delete/animal", function(req, res) {
         db.Animal.update(
-            {
-                active_flag: 0
-            },
+            // {
+            //     active_flag: 0
+            // },
             {
                 where:{
-                    id: req.body.AnimalId
+                    id: req.body.AnimalID
                 }
             }).then(function(data){
                 console.log(data);
-                res.send("deleted animal - updated active_flag");
+                res.send("deleted animal");
             });
     });
 

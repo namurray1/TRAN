@@ -1,8 +1,8 @@
 CREATE DATABASE tran_db;
 use tran_db;
 
-CREATE TABLE Animal(
-    id int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE animal(
+    animal_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     pet_name varchar(255),
     pet_type varchar(255),
     gender varchar(255),
@@ -10,31 +10,40 @@ CREATE TABLE Animal(
     weight decimal(3, 2),
     temperament varchar(255),
     special_needs varchar(255),
-    google_place_id varchar(255)
+    lat decimal(3, 14),
+    lng decimal(3, 14)
 );
 
-CREATE TABLE User(
-    id int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE user(
+    user_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email varchar(255) DEFAULT NULL,
     username varchar(255) NOT NULL,
     hash varchar(255) DEFAULT NULL,
     salt varchar(255) DEFAULT NULL,
-    role varchar(255) NOT NULL DEFAULT‘user’,
+    role varchar(255) NOT NULL,
     createdAt datetime NOT NULL,
-    updatedAt datetime NOT NULL,
+    updatedAt datetime NOT NULL
 );
 
-CREATE TABLE Volunteer(
-    id int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE volunteer(
+    user_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    animal_id int(11),
     animals_delivered int(11) NULL,
-    user_volunteered_flag tinyint(1) NOT NULL DEFAULT‘0’,
+    user_volunteered_flag tinyint(1) NOT NULL DEFAULT 0,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     UserId int(11) NOT NULL,
-    PRIMARY KEY(id),
-    KEY AnimalId(AnimalId),
-    KEY UserId(UserId),
-    google_place_id varchar(255),
-    CONSTRAINT volunteer_ibfk_1 FOREIGN KEY(AnimalId) REFERENCES Animal(id) ON DELETE NO ACTION ON UPDATE CASCADE ENGINE = InnoDB AUTO_INCREMENT = 13 DEFAULT CHARSET = utf8,
-    CONSTRAINT volunteer_ibfk_2 FOREIGN KEY(UserId) REFERENCES Users(id) ON DELETE NO ACTION ON UPDATE CASCADE
+    lat decimal(3, 14),
+    lng decimal(3, 14),
+    FOREIGN KEY (animal_id) REFERENCES Animal(animal_id)
+);
+
+CREATE TABLE admin(
+	admin_name varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    address varchar(255) NOT NULL,
+    non_profit_id int NOT NULL,
+    lat decimal(3, 14),
+    lng decimal(3, 14),
+    role varchar(255) NOT NULL
 );
