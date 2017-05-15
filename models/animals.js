@@ -50,14 +50,14 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         lat: {
-            type: DataTypes.DECIMAL(3 , 14),
+            type: DataTypes.DECIMAL(17 , 14),
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
         lng: {
-            type: DataTypes.DECIMAL(3 , 14),
+            type: DataTypes.DECIMAL(17 , 14),
             allowNull: false,
             validate: {
                 len: [1]

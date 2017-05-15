@@ -10,8 +10,8 @@ CREATE TABLE animal(
     weight decimal(3, 2),
     temperament varchar(255),
     special_needs varchar(255),
-    lat decimal(3, 14),
-    lng decimal(3, 14)
+    lat decimal(17, 14),
+    lng decimal(17, 14)
 );
 
 CREATE TABLE user(
@@ -32,8 +32,8 @@ CREATE TABLE volunteer(
     user_volunteered_flag tinyint(1) NOT NULL DEFAULT 0,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
-    lat decimal(3, 14),
-    lng decimal(3, 14),
+    lat decimal(17, 14),
+    lng decimal(17, 14),
     FOREIGN KEY (animal_id) REFERENCES Animal(animal_id)
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE admin(
     email varchar(255) NOT NULL,
     address varchar(255) NOT NULL,
     non_profit_id int NOT NULL,
-    lat decimal(3, 14),
-    lng decimal(3, 14),
+    lat decimal(17, 14),
+    lng decimal(17, 14),
     role varchar(255) NOT NULL
 );
