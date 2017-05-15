@@ -38,7 +38,7 @@ module.exports = function (sequelize, DataTypes) {
         role: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 'user',
+            defaultValue: 'admin',
             isIn: [
                 ['admin', 'user']
             ]
