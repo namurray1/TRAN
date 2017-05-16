@@ -1,6 +1,3 @@
-// starting point, will replace User, Player, and whatever else is needed.
-// some of this may not be needed, until we can go through it and take that
-// out, I left everything in.
 
 var path = require("path");
 var db = require("../models");
@@ -13,9 +10,7 @@ var session;
 module.exports = function(app) {
 
     app.get("/", function(req, res) {
-
         res.sendFile(__dirname + "/public/index.html");
-
     });
 
     // Render animal data on admin page
@@ -23,13 +18,11 @@ module.exports = function(app) {
         session = req.session;
         if (session.uniqueID[1] === 'admin') {
             db.Animal.findAll({
-                
             }).then(function(animalResults) {
                 res.render("admin", {
                     animal: animalResults,
                     userName: req.session.uniqueID[3],
                 });
-
             });
         } else {
             console.log('unauthorized access');
@@ -45,8 +38,7 @@ module.exports = function(app) {
         var userId = req.params.id;
         console.log(typeof req.session.uniqueID[2]);
         console.log(typeof userId);
-
-    });  
+    });
 
     // app.get("/register", function(req, res) {
     //     //Todo//
@@ -55,7 +47,7 @@ module.exports = function(app) {
     //     req.session.errors = null;
     //     req.session.success = null;
 
-    // // });
+    // });
 
     // // Volunteer page display
     // app.get("/volunteer/:id", function(req, res) {
