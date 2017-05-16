@@ -30,14 +30,8 @@ CREATE TABLE volunteer(
     user_volunteered_flag tinyint(1) NULL DEFAULT 0,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
-<<<<<<< HEAD
-    UserId int(11) NOT NULL,
     lat decimal(17, 14),
     lng decimal(17, 14),
-=======
-    lat decimal(3, 14),
-    lng decimal(3, 14),
->>>>>>> b2c5c4b81970b3221266dca24b2c96887e58c1f8
     FOREIGN KEY (animal_id) REFERENCES Animal(animal_id)
 );
 
