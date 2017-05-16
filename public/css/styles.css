@@ -8,6 +8,18 @@ Make sure to add smooth scrolling to the project. Think about adding a page head
 }*/
 
 /*Navbar*/
+/*#div {
+display: block;
+}*/
+
+#wrapper {
+    display: block;
+    width: 100%;
+    margin: auto;
+
+
+}
+
 
 body {
     margin:0;
