@@ -15,7 +15,7 @@ if( isset($name) && isset($email) && isset($message) && is_email_valid($email) )
 	}
 
 	// Email will be send
-	$to = "phpmastan@gmail.com"; // Change with your email address
+	$to = "mattames354@gmail.com"; // Change with your email address
 	$sub = "$name - $subject"; // You can define email subject
 	// HTML Elements for Email Body
 	$body = <<<EOD
@@ -24,7 +24,7 @@ if( isset($name) && isset($email) && isset($message) && is_email_valid($email) )
 	<strong>Message:</strong> $message <br>
 EOD;
 //Must end on first column
-	
+
 	$headers = "From: $name <$email>\r\n";
 	$headers .= 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";

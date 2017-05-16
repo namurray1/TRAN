@@ -7,6 +7,13 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
+        organization_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,18 +28,27 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
+        phone: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
         lat: {
             type: DataTypes.DECIMAL(17 , 14),
             allowNull: false,
             validate: {
-                len: [1]
+                min: -90,
+                max: 90
             }
         },
         lng: {
             type: DataTypes.DECIMAL(17, 14),
             allowNull: false,
             validate: {
-                len: [1]
+                min: -180,
+                max: 180
             }
         },
         non_profit_id: {

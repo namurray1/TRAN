@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="form-group ">
                                     <label class="control-label requiredField" for="pswd2">
-                                                Password
+                                                Confirm Password
                                                 <span class="asteriskField">
                                                     *
                                                 </span>
@@ -102,7 +102,10 @@
                                 </div>
                                 <div class="form-group ">
                                     <label class="control-label " for="mailAddr">
-                                                Mailing Address (If different than Street Address)
+                                                Phone Number
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
                                             </label>
                                     <input class="form-control" id="mailAddr" name="mailAddr" placeholder="111 Main St." type="text" />
                                 </div>
@@ -145,11 +148,11 @@
                 (document.getElementById('streetAddr')), {
                     types: ['geocode']
                 });
-            autocomplete2 = new google.maps.places.Autocomplete(
-                /** @type {!HTMLInputElement} */
-                (document.getElementById('mailAddr')), {
-                    types: ['geocode']
-                });
+            // autocomplete2 = new google.maps.places.Autocomplete(
+            //     /** @type {!HTMLInputElement} */
+            //     (document.getElementById('mailAddr')), {
+            //         types: ['geocode']
+            //     });
 
             // When the user selects an address from the dropdown, populate the address
             // fields in the form.
@@ -162,7 +165,7 @@
             document.getElementById('mailAddr').val(document.getElementById('streetAddr').val())
         }
     </script>
-    <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places&sensor=false"></script>
+    <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places&callback=initAutocomplete"></script>
 </body>
 
 </html>
