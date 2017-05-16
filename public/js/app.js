@@ -25,3 +25,15 @@ $(document).ready(function(){
     }  
   });
 });
+
+$(".userlogin").on("click", function() {
+	if(sessionStorage.length !== 0) {
+		if(sessionStorage.role === "user"){
+			window.location = "/user/" + sessionStorage.userID;
+		} else if(sessionStorage.role === "admin"){
+			window.location = "/admin";
+		}
+	}else {
+		$('#loginModal').modal('show'); 
+	}
+});

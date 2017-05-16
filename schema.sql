@@ -20,16 +20,14 @@ CREATE TABLE user(
     username varchar(255) NOT NULL,
     hash varchar(255) DEFAULT NULL,
     salt varchar(255) DEFAULT NULL,
-    role varchar(255) NOT NULL,
-    createdAt datetime NOT NULL,
-    updatedAt datetime NOT NULL
+    role varchar(255) NOT NULL
 );
 
 CREATE TABLE volunteer(
     user_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     animal_id int(11),
     animals_delivered int(11) NULL,
-    user_volunteered_flag tinyint(1) NOT NULL DEFAULT 0,
+    user_volunteered_flag tinyint(1) NULL DEFAULT 0,
     createdAt datetime NOT NULL,
     updatedAt datetime NOT NULL,
     lat decimal(17, 14),

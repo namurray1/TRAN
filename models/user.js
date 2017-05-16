@@ -16,6 +16,21 @@ module.exports = function(sequelize, DataTypes) {
             salt: {
                 type: DataTypes.STRING
             },
+            
+        animals_delivered: {
+            type: DataTypes.INTEGER(11),
+            allowNull: true,
+            validate: {
+                len: [1]
+            }
+        },
+        user_volunteered_flag: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            validate: {
+                len: [1]
+            }
+        },    
             role: {
                 type: DataTypes.STRING,
                 allowNull: false,
