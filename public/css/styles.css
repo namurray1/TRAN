@@ -16,8 +16,7 @@ display: block;
     display: block;
     width: 100%;
     margin: auto;
-
-
+    padding: 0;
 }
 
 
@@ -49,39 +48,40 @@ article {
 /*CSS for handling how the sections scroll. Change the numbers after speaking to team*/
 
 #section1 {
-    padding-top: 50px;
+    padding-top: 0px;
     height: 500px;
     color: #fff;
-    background-color: darkgrey;
+    background-color: orangered;
 }
 
 #section2 {
-    padding-top: 50px;
+    padding-top:0px;
     height: 500px;
     color: #fff;
-    background-color: darkgrey;
+    background-color: orangered;
 }
 
 #section3 {
-    padding-top: 50px;
+    padding-top:0px;
     height: 500px;
     color: #fff;
-    background-color: darkgrey;
+    background-color: orangered;
 }
 
 #section4 {
-    padding-top: 50px;
+    padding-top:0px;
     height: 500px;
     color: #fff;
-    background-color: darkgrey;
+    background-color: orangered;
 }
 
 
 /*image files for the sections*/
 
 img {
-    /*width: 100%;*/
-    height: 500px;
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 
