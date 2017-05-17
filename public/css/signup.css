@@ -45,6 +45,7 @@ fieldset {
 
 input[type=text],
 input[type=password],
+input[type=email],
 select {
     width: 100%;
     margin: 10px 0;
@@ -108,7 +109,5 @@ body{
      background-image: url("paper.gif");
      background-color: #cccccc;
 }
-.regform{
-background-color: ghostwhite;
-}
+
 
