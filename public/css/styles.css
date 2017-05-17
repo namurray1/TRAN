@@ -130,18 +130,46 @@ p {
     padding-bottom: 20px;
     /*padding-left: 10Spx;*/
 }
+/*this is what was causing the buttons to blow up the page in the panels*/
 
-a {
+/*a {
     padding-top: 20px;
     padding-right: 50px;
     padding-bottom: 20px;
     padding-left: 50px;
-}
+}*/
 
 
 .page-head {
     background-image: url("/images/carousel/puppy2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+/*Buttons in the panel*/
+
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #3498db;
+  padding: 7px 20px 10px 20px;
+  text-decoration: none;
+  border: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+  
+}
+
+div.panel-body a {
+
+    text-decoration: none;
+    
 }
 
