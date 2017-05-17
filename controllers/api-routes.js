@@ -26,7 +26,7 @@ const genRandomString = (length) => {
 // Routes =============================================================
 
 module.exports = function (app) {
-    //REGISTER NEW USER
+    //REGISTER NEW ADMIN
     app.post("/admin/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
         console.log("admin");
@@ -35,7 +35,6 @@ module.exports = function (app) {
         // req.checkBody('adminName', 'Username is required').notEmpty();
         // req.checkBody('pswd1', 'Password is required').notEmpty();
         // req.checkBody('pswd2', 'Passwords do not match').equals(req.body.pswd1);
-
 
         var errors = req.validationErrors();
 
@@ -47,16 +46,16 @@ module.exports = function (app) {
             });
         } else {
             //else look if there is a current user with same username or same email address
-            db.Admin.findAll({
+            db.Admins.findAll({
                     where: {
                         $or: [{
-                            admin_name: req.body.adminName
+                            full_name: req.body.adminName
                         }, {
                             email: req.body.email
-                        }, {
-                            google_place_id: req.body.googlePlaceID
-                        }, {
-                            non_profit_id: req.body.nonProfitID
+                        },
+                            // google_place_id: req.body.googlePlaceID
+                        {
+                            non_profit_id: req.body.npID
                         }]
                     }
                 })
@@ -70,13 +69,16 @@ module.exports = function (app) {
                     } else { //else hash password and create the user
                         req.session.success = true;
                         var salt = genRandomString(32);
-                        var hashedPassword = sha512(req.body.password, salt).passwordHash;
-                        db.Admin.create({
-                                admin_name: req.body.adminName,
+                        var hashedPassword = sha512(req.body.pswd1, salt).passwordHash;
+                        var role = "admin";
+                        db.Admins.create({
+                                full_name: req.body.adminName,
                                 email: req.body.email,
-                                address: req.body.address,
-                                lat: req.body.lat,
-                                non_profit_id: req.body.nonProfitID,
+                                address: req.body.streetAddr,
+                                phone: req.body.phone,
+                                google_place_id: req.body.googlePlaceID,
+                                organization_name: req.body.orgName,
+                                non_profit_id: req.body.npID,
                                 role: role,
                                 hash: hashedPassword,
                                 salt: salt
@@ -84,7 +86,73 @@ module.exports = function (app) {
                             .then(function (result) {
                                 // redirect to user.html with username in welcome message
                                 req.session.newRegister = true;
-                                res.redirect('adminMaps');
+                                res.redirect('index');
+                            });
+                    }
+
+                });
+        }
+    });
+
+    //REGISTER NEW ADMIN
+    app.post("/user/signup", function (req, res, next) {
+        //Validation - checks if form is filled out properly
+        console.log("user");
+        // req.checkBody('email', 'Email is required').notEmpty();
+        // req.checkBody('email', 'Email is not valid').isEmail();
+        // req.checkBody('adminName', 'Username is required').notEmpty();
+        // req.checkBody('pswd1', 'Password is required').notEmpty();
+        // req.checkBody('pswd2', 'Passwords do not match').equals(req.body.pswd1);
+
+        var errors = req.validationErrors();
+
+        if (errors) { //if errors, restart register page
+            req.session.errors = errors;
+            req.session.success = false;
+            res.render('register', {
+                errors: errors
+            });
+        } else {
+            //else look if there is a current user with same username or same email address
+            db.Users.findAll({
+                    where: {
+                        $or: [{
+                            username: req.body.userName
+                        }, {
+                            email: req.body.email
+                        },
+                            // google_place_id: req.body.googlePlaceID
+                        {
+                            // non_profit_id: req.body.npID
+                        }]
+                    }
+                })
+                .then(function (userResults) {
+                    if (userResults.length) { //if there is a match of same name, restart register page
+                        res.render('register', {
+                            errors: [{
+                                msg: "Username or e-mail already in use"
+                            }]
+                        });
+                    } else { //else hash password and create the user
+                        req.session.success = true;
+                        var salt = genRandomString(32);
+                        var hashedPassword = sha512(req.body.pswd1, salt).passwordHash;
+                        var role = "user";
+                        db.Users.create({
+                                username: req.body.username,
+                                email: req.body.email,
+                                address: req.body.streetAddr,
+                                phone: req.body.phone,
+                                google_place_id: req.body.googlePlaceID,
+                                role: role,
+                                hash: hashedPassword,
+                                salt: salt
+                            })
+                            .then(function (result) {
+                                // redirect to user.html with username in welcome message
+                                req.session.newRegister = true;
+                                res.redirect('index');
                             });
                     }
 
@@ -100,7 +168,7 @@ module.exports = function (app) {
         console.log("am here");
         session.newRegister = false;
         //checks hash against hash for entry validation
-        db.User.findOne({
+        db.Users.findOne({
             where: {
                 email: email
             }
@@ -148,7 +216,7 @@ module.exports = function (app) {
         console.log("Inside api-routing /volunteer function");
         if (userID == req.body.user_id) {
             console.log("User Id = reqbodyuserId; Data querying now.");
-            db.Animal.findAll({
+            db.Animals.findAll({
                 attributes: ['user_volunteered_flag', 'updatedAt', 'createdAt'],
                 where: {
                     user_id: UserID,
@@ -161,7 +229,7 @@ module.exports = function (app) {
             }).then(function (volunteerData) {
                 console.log(volunteerData);
                 if (volunteerData.length === 0) {
-                    db.Animal.create({
+                    db.Animals.create({
                         user_id: UserID,
                         animal_id: AnimalID,
                         user_volunteered_flag: 1
@@ -170,7 +238,7 @@ module.exports = function (app) {
                     });
                 } else {
                     var updatedAt = registeredData[0].dataValues.updatedAt;
-                    db.User.update({
+                    db.Users.update({
                         player_volunteered_flag: 1
                     }, {
                         where: {
@@ -199,7 +267,7 @@ module.exports = function (app) {
         resultsArray.forEach(function (item) {
             // console.log(item);
             updatesPromiseArray.push(
-                db.Animal.update({
+                db.Animals.update({
                     location: item.location
                 }, {
                     where: {
@@ -211,11 +279,11 @@ module.exports = function (app) {
         });
 
         updatesPromiseArray.push(
-            db.Animal.update({
+            db.Animals.update({
                 active_flag: 0
             }, {
                 where: {
-                    id: req.body.resultsDataArray[0].AnimalId
+                    animal_id: req.body.resultsDataArray[0].AnimalId
                 }
             })
         );
