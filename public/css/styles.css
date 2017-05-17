@@ -74,7 +74,7 @@ img {
 
 
 body {
-    background-color: #000000 !important;
+    background-color:orangered!important;
 }
 
 
@@ -84,10 +84,22 @@ body {
     position: relative;
 }
 
+.donate-amount-container,
+ .card-details-container,
+ .personal-details-container,
+ .donate-container
+  {
+padding-right: 50px;
+padding-left: 50px;
+padding-bottom: 20px;
+font-size: 18px;
+background-color:white;
+}
 
+#donatebtn{
+    padding-right: 40px;
 
-
-
+}
 
 
 h1 {
@@ -111,3 +123,11 @@ a {
 }
 
 
+.page-head {
+    background-image:"/images/carousel/puppy2.jpg"; 
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    
+}

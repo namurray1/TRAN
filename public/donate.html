@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <title>TRAN</title>
+</head>
+
+
+<body data-spy="scroll" data-target=".navbar" data-offset-top="10">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top opaque-navbar " data-spy="affix" data-offset="200">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">TRAN</a>
+            </div>
+            <div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#section1">About Us</a></li>
+                        <li><a href="#section2">Pet Profile</a></li>
+                        <li><a href="#section3">Contact Us</a></li>
+                        <li><a href="#section4">Maps</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="notSignedIn"><a href="#" data-target="#loginmodal"><span class="glyphicon usersignup"></span> Signup</a></li>
+                        <li class="notSignedIn"><a href="#" data-target="#loginmodal"><span class="glyphicon userlogin"></span> Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- =========================
+     PAGE HEADER 
+============================== -->
+    <div class="page-head">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <header class="section-header">
+                        <h1 class="title-text"></h1>
+                    </header>
+
+
+
+                    <div class="static-content">
+                        <div class="container">
+                            <image src="images/carousel/puppy2.jpg"
+                            <h1 class="title-text"></h1>
+                            <ul>
+                                <li>Adopt</li>
+                                <li>Care</li>
+                                <li>Love</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <!-- =========================
+     PAGE BODY 
+============================== -->
+    <div class="page-body">
+        <div class="donate-container">
+            <p class="donate-title">
+                Your Generosity Helps to Keep Us on the Road!
+            </p>
+
+
+            <div class="donate-amount-container">
+                <p><strong>Please select the amount of your donation</strong></p>
+                <input type="radio" name="donate-amount-btn" id="donate-amount-btn-1" class="donate-amount-btn">
+                <label for="donate-amount-btn-1">$ 10</label>
+
+                <input type="radio" name="donate-amount-btn" id="donate-amount-btn-2" class="donate-amount-btn">
+                <label for="donate-amount-btn-2">$ 20</label>
+
+                <input type="radio" name="donate-amount-btn" id="donate-amount-btn-3" class="donate-amount-btn">
+                <label for="donate-amount-btn-3">$ 30</label>
+
+                <input type="radio" name="donate-amount-btn" id="donate-amount-btn-4" class="donate-amount-btn">
+                <label for="donate-amount-btn-4">$ 100</label>
+
+                <input type="radio" name="donate-amount-btn" id="donate-amount-btn-5" class="donate-amount-btn">
+                <label for="donate-amount-btn-5">Other</label>
+            </div>
+            <!-- /.donate-amount-container -->
+
+
+            <div class="personal-details-container">
+                <p><strong>Fill out your personal details in the following form</strong></p>
+                <input type="checkbox" name="make-anonymous" id="make-anonymous" class="make-anonymous">
+                <label for="make-anonymous">Make me anonymous (means your name cannot show on public as a donator)</label>
+
+                <div class="row margin-top-50">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Full Name</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="icon-user"></i></div>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your full name" required="required">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Your country</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="icon-globe-world"></i></div>
+                                <input type="text" class="form-control" id="country" name="name" placeholder="Your country">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Your email</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="icon-email-envelope"></i></div>
+                                <input type="text" class="form-control" id="email" name="name" placeholder="Your emal address" required="required">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Your address</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="icon-paper-plane"></i></div>
+                                <input type="text" class="form-control" id="address" name="name" placeholder="Your address">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Phone number</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="icon-call-phone"></i></div>
+                                <input type="text" class="form-control" id="phone" name="name" placeholder="Phone number (obtional)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="sr-only" for="name">Your zipcode</label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="icon-pin-map"></i></div>
+                                <input type="text" class="form-control" id="zip" name="name" placeholder="Your zipcode">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.personal-details-container -->
+
+
+            <div class="card-details-container">
+                <p><strong>Input your card details and complete your donation</strong></p>
+                <div class="card-option">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#credit-card" aria-controls="credit-card" role="tab" data-toggle="tab">Credit Card</a></li>
+                        <li role="presentation"><a href="#paypal" aria-controls="paypal" role="tab" data-toggle="tab">Paypal Card</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="credit-card">
+                            <p class="msg">You are donating $50 for Give dog a better home</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card-field">
+                                        <label for="card-number">Your credit card number</label>
+                                        <input type="text" name="card-number" id="card-number" class="form-control">
+                                    </div>
+                                </div>
+                                <span class="clearfix"></span>
+
+                                <div class="col-md-6">
+                                    <div class="card-field">
+                                        <label for="card-security">Card security number</label>
+                                        <input type="text" name="card-security" id="card-security" class="form-control">
+                                    </div>
+                                </div>
+                                <span class="clearfix"></span>
+
+                                <div class="col-md-6">
+                                    <div class="card-field">
+                                        <label for="card-holder">Card holder name</label>
+                                        <input type="text" name="card-holder" id="card-holder" class="form-control">
+                                    </div>
+                                </div>
+                                <span class="clearfix"></span>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="paypal">
+                            <p class="msg">You are donating $50 for Give dog a better home</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card-field">
+                                        <label for="paypal-email">Paypal email </label>
+                                        <input type="text" name="paypal-email" id="paypal-email" class="form-control">
+                                    </div>
+                                </div>
+                                <span class="clearfix"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-option -->
+            </div>
+
+
+            <input type="submit" class="btn donate-submit" id="donatebtn" value="Donate Now">
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+    <!-- =========================
+     FOOTER 
+============================== -->
+    <footer class="footer">
+        <div class="footer-head">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2 class="title-text">TRAN</h2>
+                    </div>
+                    <div class="text-right col-sm-6">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="footer-foot">
+            <div class="container">
+                <p>Copyright 2017 University of North Carolina Charlotte</p>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="./js/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
