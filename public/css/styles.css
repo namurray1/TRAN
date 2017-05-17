@@ -16,10 +16,7 @@ body {
     
 }
 
-div.row {
 
-
-}
 
 div.carousel-caption > p,
 h3 {
@@ -158,13 +155,18 @@ p {
   background: #3498db;
   padding: 7px 20px 10px 20px;
   text-decoration: none;
-  border: none;
 }
 
 .btn:hover {
   background: #3cb0fd;
   text-decoration: none;
   
+}
+
+/*Properties were being overridden in CSS and Bootstrap, so I had to use !important*/
+
+.btn:focus,.btn:active {
+   outline: none !important;
 }
 
 div.panel-body a {
