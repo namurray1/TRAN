@@ -18,6 +18,8 @@ CREATE TABLE users(
     user_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email varchar(255) DEFAULT NULL,
     username varchar(255) NOT NULL,
+    address varchar(255) NOT NULL,
+    phone varchar(255) NOT NULL,
     hash varchar(255) DEFAULT NULL,
     salt varchar(255) DEFAULT NULL,
     role varchar(255) NOT NULL

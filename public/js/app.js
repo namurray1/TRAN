@@ -82,7 +82,7 @@ $(document).ready(function () {
         var lng = place.geometry.location.lng();
     });
 
-    $(".userlogin").on("click", function () {
+    $(".submit_btn").on("click", function () {
         // not sure about this one, Melinda.
         // fill in some blanks for me?
         if (sessionStorage.length !== 0) {
