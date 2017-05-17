@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Place Autocomplete</title>
+    <title>Signup</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
 
@@ -57,12 +57,21 @@
                             <form method="post">
                                 <div class="form-group ">
                                     <label class="control-label requiredField" for="adminName">
-                                                User Name
+                                                Name
                                                 <span class="asteriskField">
                                                     *
                                                 </span>
                                             </label>
-                                    <input class="form-control" id="adminName" name="adminName" placeholder="UserName" type="text" />
+                                    <input class="form-control" id="adminName" name="adminName" placeholder="Bob Smith" type="text" />
+                                </div>
+                                <div class="form-group ">
+                                    <label class="control-label requiredField" for="orgName">
+                                                Organization Name
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                    <input class="form-control" id="orgName" name="orgName" placeholder="Bob Smith" type="text" />
                                 </div>
                                 <div class="form-group ">
                                     <label class="control-label requiredField" for="pswd1">
@@ -75,7 +84,7 @@
                                 </div>
                                 <div class="form-group ">
                                     <label class="control-label requiredField" for="pswd2">
-                                                Password
+                                                Confirm Password
                                                 <span class="asteriskField">
                                                     *
                                                 </span>
@@ -101,10 +110,13 @@
                                     <input class="form-control" id="streetAddr" name="streetAddr" placeholder="111 Main St, SS, 12345" type="text" />
                                 </div>
                                 <div class="form-group ">
-                                    <label class="control-label " for="mailAddr">
-                                                Mailing Address (If different than Street Address)
+                                    <label class="control-label " for="phone">
+                                                Phone Number
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
                                             </label>
-                                    <input class="form-control" id="mailAddr" name="mailAddr" placeholder="111 Main St." type="text" />
+                                    <input class="form-control" id="phone" name="phone" placeholder="5551234567" type="text" />
                                 </div>
                                 <div class="form-group ">
                                     <label class="control-label requiredField" for="npID">
@@ -114,15 +126,6 @@
                                                 </span>
                                             </label>
                                     <input class="form-control" id="npID" name="npID" placeholder="341142324" type="text" />
-                                </div>
-                                <div class="form-group ">
-                                    <label class="control-label requiredField" for="tel">
-                                                Telephone #
-                                                <span class="asteriskField">
-                                                    *
-                                                </span>
-                                            </label>
-                                    <input class="form-control" id="tel" name="tel" placeholder="5551234567" type="text" />
                                 </div>
                                 <div class="form-group">
                                     <div>
@@ -145,11 +148,11 @@
                 (document.getElementById('streetAddr')), {
                     types: ['geocode']
                 });
-            autocomplete2 = new google.maps.places.Autocomplete(
-                /** @type {!HTMLInputElement} */
-                (document.getElementById('mailAddr')), {
-                    types: ['geocode']
-                });
+            // autocomplete2 = new google.maps.places.Autocomplete(
+            //     /** @type {!HTMLInputElement} */
+            //     (document.getElementById('mailAddr')), {
+            //         types: ['geocode']
+            //     });
 
             // When the user selects an address from the dropdown, populate the address
             // fields in the form.
@@ -159,10 +162,11 @@
             // Should we be saving anthing else about the place in the DB?
             // We could capture street address, state, zip code etc. and populate the form thusly:
             // https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-            document.getElementById('mailAddr').val(document.getElementById('streetAddr').val())
+
+            // document.getElementById('mailAddr').text(document.getElementById('streetAddr').text())
         }
     </script>
-    <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places&sensor=false"></script>
+    <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places&callback=initAutocomplete"></script>
 </body>
 
 </html>

@@ -9,6 +9,11 @@ Make sure to add smooth scrolling to the project. Think about adding a page head
 
 /*Navbar*/
 
+body {
+    margin:0;
+    
+}
+
 div#myNavbar.collapse.navbar-collapse {
     background-color: rgba(0,0,0,0.9);
     height: 60px;
@@ -35,37 +40,37 @@ article {
     padding-top: 50px;
     height: 500px;
     color: #fff;
-    background-color: red;
+    background-color: darkgrey;
 }
 
 #section2 {
     padding-top: 50px;
     height: 500px;
     color: #fff;
-    background-color: white;
+    background-color: darkgrey;
 }
 
 #section3 {
     padding-top: 50px;
     height: 500px;
     color: #fff;
-    background-color: blue;
+    background-color: darkgrey;
 }
 
 #section4 {
     padding-top: 50px;
     height: 500px;
     color: #fff;
-    background-color: green;
+    background-color: darkgrey;
 }
 
 
 /*image files for the sections*/
 
-/*img {
-    width: 100%;
-    height: 100%;
-}*/
+img {
+    /*width: 100%;*/
+    height: 500px;
+}
 
 
 body {

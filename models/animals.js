@@ -49,15 +49,43 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        lat: {
-            type: DataTypes.DECIMAL(3 , 14),
+        origin_address: {
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1]
             }
         },
-        lng: {
-            type: DataTypes.DECIMAL(3 , 14),
+        destination_address: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        lat_origin: {
+            type: DataTypes.DECIMAL(17, 14),
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        lng_origin: {
+            type: DataTypes.DECIMAL(17 , 14),
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        lat_destination: {
+            type: DataTypes.DECIMAL(17, 14),
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        lng_destination: {
+            type: DataTypes.DECIMAL(17 , 14),
             allowNull: false,
             validate: {
                 len: [1]
