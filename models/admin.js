@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-    var Admin = sequelize.define("Admin", {
-            name: {
+    var Admins = sequelize.define("Admins", {
+            full_name: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
@@ -43,7 +43,7 @@ module.exports = function (sequelize, DataTypes) {
             },
             lat: {
                 type: DataTypes.DECIMAL(17, 14),
-                allowNull: false,
+                allowNull: true,
                 validate: {
                     min: -90,
                     max: 90
@@ -51,7 +51,7 @@ module.exports = function (sequelize, DataTypes) {
             },
             lng: {
                 type: DataTypes.DECIMAL(17, 14),
-                allowNull: false,
+                allowNull: true,
                 validate: {
                     min: -180,
                     max: 180
@@ -86,5 +86,5 @@ module.exports = function (sequelize, DataTypes) {
         //     }
         // }
     )
-    return Admin;
+    return Admins;
 };

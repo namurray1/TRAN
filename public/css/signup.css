@@ -39,7 +39,7 @@ fieldset {
     padding: 20px;
     margin-top: 50px;
     border-radius: 5px;
-    margin-left: 85px;
+    margin-left: 2px;
     box-shadow: 3px 3px 25px 1px gray;
 }
 
@@ -103,5 +103,12 @@ li {
 
 .asteriskField {
     color: red;
+}
+body{
+     background-image: url("paper.gif");
+     background-color: #cccccc;
+}
+.regform{
+background-color: ghostwhite;
 }
 

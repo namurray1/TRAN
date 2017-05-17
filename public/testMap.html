@@ -164,6 +164,11 @@
                 position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                 map: map
             });
+            // this will also work if we need it to
+            // marker.setPlace({
+            //     placeId: place.place_id,
+            //     location: place.geometry.location
+            // });
             google.maps.event.addListener(marker, 'click', (function (marker, i) {
                 return function () {
                     infowindow.setContent(locations[i][0]);
@@ -214,7 +219,7 @@
     }
 
     function getLocations() {
-          var locations = [
+        var locations = [
             ['Title A', 35.11529400000001, -80.75715200000002, 1],
             ['Title B', 35.7826363, -80.88729590000003, 2],
             ['Title C', 35.9556923, -80.00531760000001, 3],
