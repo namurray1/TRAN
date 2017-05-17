@@ -8,17 +8,6 @@ Make sure to add smooth scrolling to the project. Think about adding a page head
 }*/
 
 /*Navbar*/
-/*#div {
-display: block;
-}*/
-
-#wrapper {
-    display: block;
-    width: 100%;
-    margin: auto;
-    padding: 0;
-}
-
 
 body {
     margin:0;
@@ -48,40 +37,39 @@ article {
 /*CSS for handling how the sections scroll. Change the numbers after speaking to team*/
 
 #section1 {
-    padding-top: 0px;
+    padding-top: 50px;
     height: 500px;
     color: #fff;
-    background-color: orangered;
+    background-color: darkgrey;
 }
 
 #section2 {
-    padding-top:0px;
+    padding-top: 50px;
     height: 500px;
     color: #fff;
-    background-color: orangered;
+    background-color: darkgrey;
 }
 
 #section3 {
-    padding-top:0px;
+    padding-top: 50px;
     height: 500px;
     color: #fff;
-    background-color: orangered;
+    background-color: darkgrey;
 }
 
 #section4 {
-    padding-top:0px;
+    padding-top: 50px;
     height: 500px;
     color: #fff;
-    background-color: orangered;
+    background-color: darkgrey;
 }
 
 
 /*image files for the sections*/
 
 img {
-    width: 100%;
-    height: 100%;
-    margin: 0;
+    /*width: 100%;*/
+    height: 500px;
 }
 
 
