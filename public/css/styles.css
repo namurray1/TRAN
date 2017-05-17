@@ -2,18 +2,6 @@
 Leave area for Map, and descript on pet. Add css styling based on Barbs desciption. Make navbar transparent. 
 Make sure to add smooth scrolling to the project. Think about adding a page header instead of a Jumbotron.*/
 
-/*buttons {}*/
-
-/*.jumbotron {
-	font-family: 'Amatic SC', cursive;
-	text-align: center;
-}*/
-
-/*Navbar*/
-/*#div {
-display: block;
-}*/
-
 #wrapper {
     display: block;
     width: 100%;
@@ -21,30 +9,41 @@ display: block;
     padding: 0;
 }
 
-
 body {
-    margin:0;
+    width: auto;
+    margin: auto;
+    background-color: orangered!important;
     
 }
 
-div.carousel-caption h3, p {
+div.row {
+
+
+}
+
+div.carousel-caption > p,
+h3 {
     color: white;
-    text-align:center !important;
+    text-align: center;
+}
+
+.panel-body>p {
+    color: black;
 }
 
 div#myNavbar.collapse.navbar-collapse {
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     height: 60px;
     border-bottom: 0px;
     /*transition: background-color .5s ease 0s;*/
     /*color: white;*/
-
 }
+
+
 /* Glyphicons */
 
-.section1.section2.section3{
+.section1.section2.section3 {
     background-image: url()
-
 }
 
 article {
@@ -62,65 +61,62 @@ article {
 }
 
 #section2 {
-    padding-top:0px;
+    padding-top: 0px;
     height: 500px;
     color: #fff;
     background-color: orangered;
 }
 
 #section3 {
-    padding-top:0px;
+    padding-top: 0px;
     height: 500px;
     color: #fff;
     background-color: orangered;
 }
 
 #section4 {
-    padding-top:0px;
+    padding-top: 0px;
     height: 800px;
     color: #fff;
     background-color: orangered;
 }
 
 
-/*image files for the sections*/
+/*First three sections with image and paragraphy*/
+div.col-sm-6 {
+    width: 50%;
+}
 
 img {
     width: 100%;
     height: 100%;
     margin: 0;
+    display: block;
 }
 
-
-body {
-    background-color:orangered!important;
-}
 
 
 /*look into this as it may be impacting the background images in the application*/
 
-body {
+/*body {
     position: relative;
-}
+}*/
 
 .donate-amount-container,
- .card-details-container,
- .personal-details-container,
- .donate-container
-  {
-padding-right: 50px;
-padding-left: 50px;
-padding-bottom: 20px;
-font-size: 18px;
-background-color:white;
+.card-details-container,
+.personal-details-container,
+.donate-container {
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    font-size: 18px;
+    background-color: white;
+
 }
 
-#donatebtn{
-    margin-left: 40px;
+#donatebtn {
     padding-right: 40px;
-
 }
-
 
 h1 {
     color: black !important;
@@ -143,18 +139,9 @@ a {
 }
 
 
-
 .page-head {
-    background-image:url("/images/carousel/puppy2.jpg"); 
-        background-repeat: no-repeat;
-        background-size: cover;
+    background-image: url("/images/carousel/puppy2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
-.donate-container {
-    background-image:"/images/carousel/puppy2.jpg"; 
-        background-repeat: no-repeat;
-        background-size: cover;
-}
-    
-
 
