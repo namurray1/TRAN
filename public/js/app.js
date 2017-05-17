@@ -1,11 +1,13 @@
-//this is the code for scrollspy to allow smooth transitioning between the sections.
-userName = "";
-password = "";
+// address is getting populated via geolocation
+var address = "";
+
+// place is the geolocated object that will be returned
+var place;
 
 $(document).ready(function () {
 
-// since we're not using a multi-page app anymore, we couldn't refrence body
-// moved code below into the html file
+    // since we're not using a multi-page app anymore, we couldn't refrence body
+    // moved code below into the html file
     // // Add scrollspy to <body>
     // $('#main-body').scrollspy({
     //     target: ".navbar",
@@ -33,68 +35,121 @@ $(document).ready(function () {
         }
     });
 
+    // if it is the signup page being loaded, hide the 2 divs
     $('.showVolunteer').hide();
     $('.showRescue').hide();
 
     $("input[name=admin][type=radio]").change(function () {
-        // alert($(this).attr("id") + " checked");
+        // user has chosen the admin role
         $('.showVolunteer').hide('fast');
         $('.showRescue').show('fast');
         $('.account').hide('fast');
-        // capture the email an password
-        
+        // capture the email and password
+        email = $("input[name=email][type=email]").text();
+        password = $("input[name=pass][type=password]").text();
     });
 
     $("input[name=user][type=radio]").change(function () {
-        // alert($(this).attr("id") + " checked");
+        // user has chosen to volunteer
         $('.showVolunteer').show('fast');
         $('.showRescue').hide('fast');
         $('.account').hide('fast');
     });
 
-    $(".next_button").click(function () {
-        $("#rad2").prop('checked', true).change();
-
-        // gather users data and push to db HERE
+    $("button[name=admin-btn]").click(function () {
+        // new admin is signing up
+        // - get ready to push data to db
+        var email = $('input[name=email][type=email]').text();
+        var password = $("input[name=pass][type=password]").text();
+        var adminName = $('input[name=adminName][type=text]').text();
+        var orgName = $('input[name=orgName][type=text]').text();
+        var aStreetAddr = $('input[name=a-streetAddr][type=text]').text();
+        var aPhone = $('input[name=a-phone][type=text]').text();
+        var npID = $('input[name=npID][type=text]').text();
+        var lat = place.geometry.location.lat();
+        var lng = place.geometry.location.lng();
     });
 
-});
+    $("button[name=user-btn]").click(function () {
+        // new volunteer is signing up
+        // get ready to push data to db
+        var email = $('input[name=email][type=email]').text();
+        var password = $("input[name=pass][type=password]").text();
+        var userName = $('input[name=userName][type=text]').text();
+        var vStreetAddr = $('input[name=v-streetAddr][type=text]').text();
+        var vPhone = $('input[name=v-phone][type=text]').text();
+        var lat = place.geometry.location.lat();
+        var lng = place.geometry.location.lng();
+    });
 
-$(".userlogin").on("click", function () {
-    if (sessionStorage.length !== 0) {
-        if (sessionStorage.role === "user") {
-            window.location = "/user/" + sessionStorage.userID;
-        } else if (sessionStorage.role === "admin") {
-            window.location = "/admin";
+    $(".submit_btn").on("click", function () {
+        // not sure about this one, Melinda.
+        // fill in some blanks for me?
+        if (sessionStorage.length !== 0) {
+            if (sessionStorage.role === "user") {
+                window.location = "/user/" + sessionStorage.userID;
+            } else if (sessionStorage.role === "admin") {
+                window.location = "/admin/" + sessionStorage.userID;
+            }
         }
-    } else {
-        $('#loginModal').modal('show');
+    });
+
+    function initAutocomplete() {
+        // admin address
+        autocomplete1 = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */
+            (document.getElementById('a-streetAddr')), {
+                types: ['geocode']
+            });
+
+        // volunteer address
+        autocomplete2 = new google.maps.places.Autocomplete(
+            /** @type {!HTMLInputElement} */
+            (document.getElementById('v-mailAddr')), {
+                types: ['geocode']
+            });
+        //
+
+        autocomplete1.addListener('place_changed', function () {
+            place = autocomplete.getPlace();
+            if (!place.geometry) {
+                // User entered the name of a Place that was not suggested and
+                // pressed the Enter key, or the Place Details request failed.
+                window.alert("No details available for input: '" + place.name + "'");
+                return;
+            }
+
+            address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+            console.log("place is :");
+            console.log(place);
+        });
+
+        autocomplete2.addListener('place_changed', function () {
+            place = autocomplete.getPlace();
+            if (!place.geometry) {
+                // User entered the name of a Place that was not suggested and
+                // pressed the Enter key, or the Place Details request failed.
+                window.alert("No details available for input: '" + place.name + "'");
+                return;
+            }
+
+            address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+            console.log("place is :");
+            console.log(place);
+        });
     }
 });
-
-function initAutocomplete() {
-    // Create the autocomplete object, restricting the search to geographical
-    // location types.
-    autocomplete1 = new google.maps.places.Autocomplete(
-        /** @type {!HTMLInputElement} */
-        (document.getElementById('streetAddr')), {
-            types: ['geocode']
-        });
-    // autocomplete2 = new google.maps.places.Autocomplete(
-    //     /** @type {!HTMLInputElement} */
-    //     (document.getElementById('mailAddr')), {
-    //         types: ['geocode']
-    //     });
-
-    // When the user selects an address from the dropdown, populate the address
-    // fields in the form.
-    autocomplete1.addListener('place_changed', fillInAddress);
-}
-
-function fillInAddress() {
-    // Should we be saving anthing else about the place in the DB?
-    // We could capture street address, state, zip code etc. and populate the form thusly:
-    // https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-
-    // document.getElementById('mailAddr').text(document.getElementById('streetAddr').text())
-}

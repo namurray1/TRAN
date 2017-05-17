@@ -12,6 +12,7 @@ Make sure to add smooth scrolling to the project. Think about adding a page head
 body {
     width: auto;
     margin: auto;
+    
 }
 
 div.carousel-caption>p,
@@ -103,6 +104,7 @@ body {
     padding-bottom: 20px;
     font-size: 18px;
     background-color: white;
+
 }
 
 #donatebtn {
@@ -129,8 +131,10 @@ a {
     padding-left: 50px;
 }
 
+
 .page-head {
     background-image: url("/images/carousel/puppy2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
+
