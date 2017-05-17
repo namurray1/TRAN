@@ -6,11 +6,18 @@ module.exports = function (sequelize, DataTypes) {
                     isEmail: true
                 }
             },
-            username: {
+            name: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
             address: {
+                type: DataTypes.STRING,
+                allowNull: false,
+                validate: {
+                    len: [1]
+                }
+            },
+            phone: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 validate: {
@@ -24,18 +31,16 @@ module.exports = function (sequelize, DataTypes) {
                 type: DataTypes.STRING
             },
             animals_delivered: {
-                type: DataTypes.INTEGER(11),
+                type: DataTypes.INTEGER,
                 allowNull: true,
                 validate: {
                     len: [1]
                 }
             },
-            user_volunteered_flag: {
-                type: DataTypes.BOOLEAN,
-                allowNull: true,
-                validate: {
-                    len: [1]
-                }
+            // animal associated i.e. pet is with user en route to new destination
+            animal_id: {
+                type: DataTypes.INTEGER,
+                allowNull: true
             },
             lat: {
                 type: DataTypes.DECIMAL(17, 14),
