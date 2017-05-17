@@ -2,18 +2,6 @@
 Leave area for Map, and descript on pet. Add css styling based on Barbs desciption. Make navbar transparent. 
 Make sure to add smooth scrolling to the project. Think about adding a page header instead of a Jumbotron.*/
 
-/*buttons {}*/
-
-/*.jumbotron {
-	font-family: 'Amatic SC', cursive;
-	text-align: center;
-}*/
-
-/*Navbar*/
-/*#div {
-display: block;
-}*/
-
 #wrapper {
     display: block;
     width: 100%;
@@ -21,30 +9,34 @@ display: block;
     padding: 0;
 }
 
-
 body {
-    margin:0;
-    
+    width: auto;
+    margin: auto;
 }
 
-div.carousel-caption h3, p {
+div.carousel-caption>p,
+h3 {
     color: white;
-    text-align:center !important;
+    text-align: center;
+}
+
+.panel-body>p {
+    color: black;
 }
 
 div#myNavbar.collapse.navbar-collapse {
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     height: 60px;
     border-bottom: 0px;
     /*transition: background-color .5s ease 0s;*/
     /*color: white;*/
-
 }
+
+
 /* Glyphicons */
 
-.section1.section2.section3{
+.section1.section2.section3 {
     background-image: url()
-
 }
 
 article {
@@ -62,21 +54,21 @@ article {
 }
 
 #section2 {
-    padding-top:0px;
+    padding-top: 0px;
     height: 500px;
     color: #fff;
     background-color: orangered;
 }
 
 #section3 {
-    padding-top:0px;
+    padding-top: 0px;
     height: 500px;
     color: #fff;
     background-color: orangered;
 }
 
 #section4 {
-    padding-top:0px;
+    padding-top: 0px;
     height: 800px;
     color: #fff;
     background-color: orangered;
@@ -91,9 +83,8 @@ img {
     margin: 0;
 }
 
-
 body {
-    background-color:orangered!important;
+    background-color: orangered!important;
 }
 
 
@@ -104,22 +95,19 @@ body {
 }
 
 .donate-amount-container,
- .card-details-container,
- .personal-details-container,
- .donate-container
-  {
-padding-right: 50px;
-padding-left: 50px;
-padding-bottom: 20px;
-font-size: 18px;
-background-color:white;
+.card-details-container,
+.personal-details-container,
+.donate-container {
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    font-size: 18px;
+    background-color: white;
 }
 
-#donatebtn{
+#donatebtn {
     padding-right: 40px;
-
 }
-
 
 h1 {
     color: black !important;
@@ -141,12 +129,8 @@ a {
     padding-left: 50px;
 }
 
-
 .page-head {
-    background-image:url("/images/carousel/puppy2.jpg"); 
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    
-
+    background-image: url("/images/carousel/puppy2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
