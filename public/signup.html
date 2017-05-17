@@ -2,7 +2,7 @@
 
 <head>
     <title>Signup Form</title>
-    <meta name="robots" content="noindex, nofollow"/>
+    <meta name="robots" content="noindex, nofollow" />
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/signup.css" />
@@ -96,7 +96,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div>
-                                                    <button class="btn btn-primary " name="admin-btn" type="submit"<a href="signin.html">>Submit</button>
+                                                    <button class="btn btn-primary " name="admin-btn" type="submit" <a href="signin.html">>Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -129,8 +129,8 @@
                                                     *
                                                 </span>
                                                 </label>
-                                                    <input class="form-control" id="userName" name="userName" placeholder="Bob Smith" type="text" />
-                                                </div>
+                                                <input class="form-control" id="userName" name="userName" placeholder="Bob Smith" type="text" />
+                                            </div>
                                             <div class="form-group ">
                                                 <label class="control-label requiredField" for="v-streetAddr">
                                                     Street Address
@@ -164,6 +164,74 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function () {
+            function initAutocomplete() {
+                // admin address
+                autocomplete1 = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */
+                    (document.getElementById('a-streetAddr')), {
+                        types: ['geocode']
+                    });
+
+                // volunteer address
+                autocomplete2 = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */
+                    (document.getElementById('v-streetAddr')), {
+                        types: ['geocode']
+                    });
+
+                autocomplete1.addListener('place_changed', function () {
+                    place = autocomplete1.getPlace();
+                    if (!place.geometry) {
+                        // User entered the name of a Place that was not suggested and
+                        // pressed the Enter key, or the Place Details request failed.
+                        window.alert("No details available for input: '" + place.name + "'");
+                        return;
+                    }
+
+                    address = '';
+                    if (place.address_components) {
+                        address = [
+                            (place.address_components[0] && place.address_components[0].short_name ||
+                                ''),
+                            (place.address_components[1] && place.address_components[1].short_name ||
+                                ''),
+                            (place.address_components[2] && place.address_components[2].short_name ||
+                                '')
+                        ].join(' ');
+                    }
+                    console.log("place is :");
+                    console.log(place);
+                });
+
+                autocomplete2.addListener('place_changed', function () {
+                    place = autocomplete2.getPlace();
+                    if (!place.geometry) {
+                        // User entered the name of a Place that was not suggested and
+                        // pressed the Enter key, or the Place Details request failed.
+                        window.alert("No details available for input: '" + place.name + "'");
+                        return;
+                    }
+
+                    address = '';
+                    if (place.address_components) {
+                        address = [
+                            (place.address_components[0] && place.address_components[0].short_name ||
+                                ''),
+                            (place.address_components[1] && place.address_components[1].short_name ||
+                                ''),
+                            (place.address_components[2] && place.address_components[2].short_name ||
+                                '')
+                        ].join(' ');
+                    }
+                    console.log("place is :");
+                    console.log(place);
+                });
+            }
+            initAutocomplete();
+        });
+    </script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places"></script>
 </body>
 
