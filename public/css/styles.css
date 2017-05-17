@@ -12,10 +12,16 @@ Make sure to add smooth scrolling to the project. Think about adding a page head
 body {
     width: auto;
     margin: auto;
+    background-color: orangered!important;
     
 }
 
-div.carousel-caption>p,
+div.row {
+
+
+}
+
+div.carousel-caption > p,
 h3 {
     color: white;
     text-align: center;
@@ -76,24 +82,25 @@ article {
 }
 
 
-/*image files for the sections*/
+/*First three sections with image and paragraphy*/
+div.col-sm-6 {
+    width: 50%;
+}
 
 img {
     width: 100%;
     height: 100%;
     margin: 0;
+    display: block;
 }
 
-body {
-    background-color: orangered!important;
-}
 
 
 /*look into this as it may be impacting the background images in the application*/
 
-body {
+/*body {
     position: relative;
-}
+}*/
 
 .donate-amount-container,
 .card-details-container,
