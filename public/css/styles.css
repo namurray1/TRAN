@@ -2,6 +2,8 @@
 Leave area for Map, and descript on pet. Add css styling based on Barbs desciption. Make navbar transparent. 
 Make sure to add smooth scrolling to the project. Think about adding a page header instead of a Jumbotron.*/
 
+/*buttons {}*/
+
 /*.jumbotron {
 	font-family: 'Amatic SC', cursive;
 	text-align: center;
@@ -70,7 +72,7 @@ article {
 
 #section4 {
     padding-top:0px;
-    height: 500px;
+    height: 800px;
     color: #fff;
     background-color: orangered;
 }
