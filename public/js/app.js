@@ -1,6 +1,11 @@
 //this is the code for scrollspy to allow smooth transitioning between the sections.
+userName = "";
+password = "";
 
 $(document).ready(function () {
+
+// since we're not using a multi-page app anymore, we couldn't refrence body
+// moved code below into the html file
     // // Add scrollspy to <body>
     // $('#main-body').scrollspy({
     //     target: ".navbar",
@@ -36,6 +41,8 @@ $(document).ready(function () {
         $('.showVolunteer').hide('fast');
         $('.showRescue').show('fast');
         $('.account').hide('fast');
+        // capture the email an password
+        
     });
 
     $("input[name=user][type=radio]").change(function () {
