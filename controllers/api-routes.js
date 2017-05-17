@@ -27,9 +27,9 @@ const genRandomString = (length) => {
 
 module.exports = function (app) {
     //REGISTER NEW USER
-    app.post("/signup", function (req, res, next) {
+    app.post("/admin/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
-        console.log("here: ");
+        console.log("admin");
         // req.checkBody('email', 'Email is required').notEmpty();
         // req.checkBody('email', 'Email is not valid').isEmail();
         // req.checkBody('adminName', 'Username is required').notEmpty();
