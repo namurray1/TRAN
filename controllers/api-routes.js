@@ -29,11 +29,13 @@ module.exports = function (app) {
     //REGISTER NEW USER
     app.post("/admin/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
-        req.checkBody('email', 'Email is required').notEmpty();
-        req.checkBody('email', 'Email is not valid').isEmail();
-        req.checkBody('adminName', 'Username is required').notEmpty();
-        req.checkBody('pass', 'Password is required').notEmpty();
-        req.checkBody('cpass', 'Passwords do not match').equals(req.body.pass);
+        console.log("admin");
+        // req.checkBody('email', 'Email is required').notEmpty();
+        // req.checkBody('email', 'Email is not valid').isEmail();
+        // req.checkBody('adminName', 'Username is required').notEmpty();
+        // req.checkBody('pswd1', 'Password is required').notEmpty();
+        // req.checkBody('pswd2', 'Passwords do not match').equals(req.body.pswd1);
+
 
         var errors = req.validationErrors();
 
