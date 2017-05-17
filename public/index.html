@@ -14,7 +14,7 @@
 </head>
 
 
-<body data-spy="scroll" data-target=".navbar" data-offset-top="10">
+<body id="main-body" data-spy="scroll" data-target=".navbar" data-offset-top="10">
 
     <nav class="navbar navbar-inverse navbar-fixed-top opaque-navbar " data-spy="affix" data-offset="200">
         <div class="container-fluid">
@@ -35,8 +35,8 @@
                         <li><a href="#section4">Maps</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="notSignedIn"><a href="#" data-target="#loginmodal"><span class="glyphicon usersignup"></span> Signup</a></li>
-                        <li class="notSignedIn"><a href="#" data-target="#loginmodal"><span class="glyphicon userlogin"></span> Login</a></li>
+                        <li class="notSignedIn"><a href="signup"><span class="glyphicon usersignup"></span> Signup</a></li>
+                        <li class="notSignedIn"><a href="login"><span class="glyphicon userlogin"></span> Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -129,8 +129,8 @@
                 </div>
             </div>
         </div>
-    <!--add sections for maps here-->
-    <div id="section4" class="container-fluid">
+        <!--add sections for maps here-->
+        <div id="section4" class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
                     <span><img src='http://placekitten.com/800/500' class='image-reponsive' /></span>
@@ -148,10 +148,15 @@
         </div>
     </div>
     <!--add footer here along with contact information at the bottom-->
-
-
-
-
+    <script>
+        $(document).ready(function () {
+            // Add scrollspy to <body>
+            $('#main-body').scrollspy({
+                target: ".navbar",
+                offset: 50
+            });
+        });
+    </script>
 
 
     <script src="./js/app.js"></script>

@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var expressValidator = require('express-validator');
 var expressSession = require('express-session');
+var path = require("path");
 
 // Require History Schema Create Instance of Express
 var app = express();
@@ -24,7 +25,7 @@ app.use(bodyParser.json({type: "application/vnd.api+json"}));
 // validator
 app.use(expressValidator());
 
-app.use(express.static("./public"));
+app.use(express.static(path.join(__dirname, "./public")));
 
 //Express Session
 app.use(expressSession({
