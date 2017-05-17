@@ -1,4 +1,3 @@
-
 var path = require("path");
 var db = require("../models");
 var moment = require("moment");
@@ -7,31 +6,49 @@ var session;
 
 // Routes
 // =============================================================
-module.exports = function(app) {
+module.exports = function (app) {
 
-    app.get("/", function(req, res) {
+    app.get("/", function (req, res) {
         res.sendFile(__dirname + "/public/index.html");
     });
 
     // Render animal data on admin page
-    app.get("/admin", function(req, res) {
-        session = req.session;
-        if (session.uniqueID[1] === 'admin') {
-            db.Animal.findAll({
-            }).then(function(animalResults) {
-                res.render("admin", {
-                    animal: animalResults,
-                    userName: req.session.uniqueID[3],
-                });
-            });
-        } else {
-            console.log('unauthorized access');
-            res.redirect('/');
-        }
+    // app.get("/admin", function (req, res) {
+    //     session = req.session;
+    //     if (session.uniqueID[1] === 'admin') {
+    //         db.Animal.findAll({}).then(function (animalResults) {
+    //             res.render("admin", {
+    //                 animal: animalResults,
+    //                 userName: req.session.uniqueID[3],
+    //             });
+    //         });
+    //     } else {
+    //         console.log('unauthorized access');
+    //         res.redirect('/');
+    //     }
+    // });
+
+    app.get("/css/*", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/css/" + req.params[0]));
+    });
+    
+    app.get("/img/*", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/img/" + req.params[0]));
+    });
+
+    app.get("/login", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/signin.html" ));
+        // res.sendFile(path.join(__dirname, "./signin.html" + req.params[0]));
+    });
+
+
+    app.get("/signup", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/signup.html"));
+        // res.sendFile(path.join(__dirname, "../public/signup.html" + req.params[0]));
     });
 
     // Render animal info specific to user who volunteered
-    app.get("/user/:id", function(req, res) {
+    app.get("/user/:id", function (req, res) {
         console.log("------");
         console.log(req.session.uniqueID);
         console.log("------");
@@ -64,25 +81,24 @@ module.exports = function(app) {
     //         }]
 
     //LOGOUT
-    app.get('/logout', function(req, res) {
+    app.get('/logout', function (req, res) {
         console.log('get logout');
-        req.session.destroy(function(error) {
+        req.session.destroy(function (error) {
             console.log(error);
             res.redirect('/');
         });
     });
 
-    app.use(function(err, req, res, next) {
-        console.log(err.stack);
-        res.status(401);
-        res.render('401');
-    });
+    // app.use(function (err, req, res, next) {
+    //     console.log(err.stack);
+    //     res.status(401);
+    //     res.render('401');
+    // });
 
-    app.use(function(err, req, res, next) {
-        console.log(err.stack);
-        res.status(500);
-        res.render('500');
-    });
+    // app.use(function (err, req, res, next) {
+    //     console.log(err.stack);
+    //     res.status(500);
+    //     res.render('500');
+    // });
 
 }
-
