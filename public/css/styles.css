@@ -111,6 +111,7 @@ background-color:white;
 }
 
 #donatebtn{
+    margin-left: 40px;
     padding-right: 40px;
 
 }
@@ -137,7 +138,7 @@ a {
 }
 
 
-.page-head {
+.donate-container {
     background-image:"/images/carousel/puppy2.jpg"; 
         background-repeat: no-repeat;
         background-size: cover;
@@ -145,3 +146,4 @@ a {
 
     
 }
+
