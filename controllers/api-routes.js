@@ -69,12 +69,12 @@ module.exports = function (app) {
                     } else { //else hash password and create the user
                         req.session.success = true;
                         var salt = genRandomString(32);
-                        var hashedPassword = sha512(req.body.pswd1, salt).passwordHash;
+                        var hashedPassword = sha512(req.body.pass, salt).passwordHash;
                         var role = "admin";
                         db.Admins.create({
                                 full_name: req.body.adminName,
                                 email: req.body.email,
-                                address: req.body.streetAddr,
+                                address: req.body.a-streetAddr,
                                 phone: req.body.phone,
                                 google_place_id: req.body.googlePlaceID,
                                 organization_name: req.body.orgName,
@@ -94,7 +94,7 @@ module.exports = function (app) {
         }
     });
 
-    //REGISTER NEW ADMIN
+    //REGISTER NEW USER
     app.post("/user/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
         console.log("user");
