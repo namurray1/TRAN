@@ -105,13 +105,12 @@ $(document).ready(function () {
         // volunteer address
         autocomplete2 = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */
-            (document.getElementById('v-mailAddr')), {
+            (document.getElementById('v-streetAddr')), {
                 types: ['geocode']
             });
-        //
 
         autocomplete1.addListener('place_changed', function () {
-            place = autocomplete.getPlace();
+            place = autocomplete1.getPlace();
             if (!place.geometry) {
                 // User entered the name of a Place that was not suggested and
                 // pressed the Enter key, or the Place Details request failed.
@@ -132,7 +131,7 @@ $(document).ready(function () {
         });
 
         autocomplete2.addListener('place_changed', function () {
-            place = autocomplete.getPlace();
+            place = autocomplete2.getPlace();
             if (!place.geometry) {
                 // User entered the name of a Place that was not suggested and
                 // pressed the Enter key, or the Place Details request failed.
@@ -152,4 +151,5 @@ $(document).ready(function () {
             console.log(place);
         });
     }
+    initAutocomplete();
 });
