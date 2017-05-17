@@ -114,7 +114,7 @@ module.exports = function (app) {
                     });
                 } else if (data.role === "user") {
                     res.send({
-                        redirect: '/user/' + data.id
+                        redirect: '/user' + data.id
                     });
                 } else {
                     console.log('No role found');

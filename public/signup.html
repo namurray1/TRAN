@@ -1,0 +1,235 @@
+<html>
+
+<head>
+    <title>Signup Form</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/signup.css" />
+    <script src="./js/app.js"></script>
+</head>
+
+<body>
+    <div class="content" <!-- multistep form -->
+        <div class="main">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Create Account</li>
+                <li>Profile Details</li>
+
+            </ul>
+
+            <!-- fieldsets -->
+            <div class="account">
+                <fieldset id="first">
+                    <h2 class="title">Create your account</h2>
+                    <p class="subtitle">Step 1</p>
+                    <input type="text" class="text_field" name="email" placeholder="Email" /><br/>
+                    <input type="password" class="text_field" name="pass" placeholder="Password" /><br/>
+                    <input type="password" class="text_field" name="cpass" placeholder="Confirm Password" /><br/>
+                    <label>Role</label><br/>
+                    <input name="admin" id="rad1" type="radio" value="Rescue" />Rescue Group<br/>
+                    <input name="user" id="rad2" type="radio" value="Volunteer" />Volunteer Transport<br/>
+                    <!--	<input type="button" name="next" class="next_btn" value="Next" />-->
+                </fieldset>
+            </div>
+
+            <div class="showRescue">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Signup Your Organization</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <!--
+                            note the bootstrap-iso stylesheet above
+                            from https://formden.com/form-builder/
+                            -->
+                        <div class="bootstrap-iso">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form method="post">
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="adminName">
+                                                Name
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="adminName" name="adminName" placeholder="Bob Smith" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="orgName">
+                                                Organization Name
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="orgName" name="orgName" placeholder="Bob Smith" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="pswd1">
+                                                Password
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="pswd1" name="pswd1" placeholder="6 character minimum" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="pswd2">
+                                                Confirm Password
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="pswd2" name="pswd2" placeholder="6 character minimum" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="email">
+                                                Email
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="email" name="email" placeholder="user@email.com" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="streetAddr">
+                                                Street Address
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="streetAddr" name="streetAddr" placeholder="111 Main St, SS, 12345" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label " for="phone">
+                                                Phone Number
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="phone" name="phone" placeholder="5551234567" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="npID">
+                                                Non Profit ID (501c3)
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="npID" name="npID" placeholder="341142324" type="text" />
+                                            </div>
+                                            <div class="form-group">
+                                                <div>
+                                                    <button class="btn btn-primary " name="admin-btn" type="submit">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="showVolunteer">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Volunteer to Transport</h3>
+                    </div>
+                    <div class="panel-body text-center">
+                        <!--
+                            note the bootstrap-iso stylesheet above
+                            from https://formden.com/form-builder/
+                            -->
+                        <div class="bootstrap-iso">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form method="post">
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="userName">
+                                                Name
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="adminName" name="adminName" placeholder="Bob Smith" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <!--<label class="control-label requiredField" for="userEmail">
+                                                Email address
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="orgName" name="orgName" placeholder="Bob Smith" type="text" />
+                                            </div>-->
+                                             <div class="form-group ">
+                                                <label class="control-label requiredField" for="email">
+                                                Email
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="email" name="email" placeholder="user@email.com" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="pswd1">
+                                                Password
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="pswd1" name="pswd1" placeholder="6 character minimum" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="pswd2">
+                                                Confirm Password
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="pswd2" name="pswd2" placeholder="6 character minimum" type="text" />
+                                            </div>
+                                           
+                                            <div class="form-group ">
+                                                <label class="control-label requiredField" for="streetAddr">
+                                                Street Address
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="streetAddr" name="streetAddr" placeholder="111 Main St, SS, 12345" type="text" />
+                                            </div>
+                                            <div class="form-group ">
+                                                <label class="control-label " for="phone">
+                                                Phone Number
+                                                <span class="asteriskField">
+                                                    *
+                                                </span>
+                                            </label>
+                                                <input class="form-control" id="phone" name="phone" placeholder="5551234567" type="text" />
+                                            </div>
+                                            <div class="form-group">
+                                                <div>
+                                                    <button class="btn btn-primary " name="user-btn" type="submit">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places&callback=initAutocomplete"></script>
+</body>
+
+
+</html>
