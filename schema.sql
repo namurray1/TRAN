@@ -1,7 +1,7 @@
 CREATE DATABASE tran_db;
 use tran_db;
 
-CREATE TABLE animal(
+CREATE TABLE animals(
     animal_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     pet_name varchar(255),
     pet_type varchar(255),
@@ -14,7 +14,7 @@ CREATE TABLE animal(
     lng decimal(17, 14)
 );
 
-CREATE TABLE user(
+CREATE TABLE users(
     user_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     email varchar(255) DEFAULT NULL,
     username varchar(255) NOT NULL,
@@ -23,23 +23,13 @@ CREATE TABLE user(
     role varchar(255) NOT NULL
 );
 
-CREATE TABLE volunteer(
-    user_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    animal_id int(11),
-    animals_delivered int(11) NULL,
-    user_volunteered_flag tinyint(1) NULL DEFAULT 0,
-    createdAt datetime NOT NULL,
-    updatedAt datetime NOT NULL,
-    lat decimal(17, 14),
-    lng decimal(17, 14),
-    FOREIGN KEY (animal_id) REFERENCES Animal(animal_id)
-);
-
-CREATE TABLE admin(
-	admin_name varchar(255) NOT NULL,
+CREATE TABLE admins(
+	full_name varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     address varchar(255) NOT NULL,
     non_profit_id int NOT NULL,
+    organization_name varchar(255) NOT NULL,
+    phone varchar(255) NOT NULL,
     lat decimal(17, 14),
     lng decimal(17, 14),
     role varchar(255) NOT NULL

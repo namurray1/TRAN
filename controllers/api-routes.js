@@ -29,11 +29,13 @@ module.exports = function (app) {
     //REGISTER NEW USER
     app.post("/admin/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
-        req.checkBody('email', 'Email is required').notEmpty();
-        req.checkBody('email', 'Email is not valid').isEmail();
-        req.checkBody('adminName', 'Username is required').notEmpty();
-        req.checkBody('pswd1', 'Password is required').notEmpty();
-        req.checkBody('pswd2', 'Passwords do not match').equals(req.body.pswd1);
+        console.log("admin");
+        // req.checkBody('email', 'Email is required').notEmpty();
+        // req.checkBody('email', 'Email is not valid').isEmail();
+        // req.checkBody('adminName', 'Username is required').notEmpty();
+        // req.checkBody('pswd1', 'Password is required').notEmpty();
+        // req.checkBody('pswd2', 'Passwords do not match').equals(req.body.pswd1);
+
 
         var errors = req.validationErrors();
 
@@ -73,7 +75,7 @@ module.exports = function (app) {
                                 admin_name: req.body.adminName,
                                 email: req.body.email,
                                 address: req.body.address,
-                                google_place_id: req.body.googlePlaceID,
+                                lat: req.body.lat,
                                 non_profit_id: req.body.nonProfitID,
                                 role: role,
                                 hash: hashedPassword,

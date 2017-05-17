@@ -27,6 +27,11 @@ body {
     
 }
 
+div.carousel-caption h3, p {
+    color: white;
+    text-align:center !important;
+}
+
 div#myNavbar.collapse.navbar-collapse {
     background-color: rgba(0,0,0,0.9);
     height: 60px;
@@ -123,7 +128,7 @@ h1 {
 
 p {
     text-align: left;
-    color: black;
+    color: white;
     padding-top: 20px;
     padding-right: 50px;
     padding-bottom: 20px;
@@ -138,12 +143,18 @@ a {
 }
 
 
+
+.page-head {
+    background-image:url("/images/carousel/puppy2.jpg"); 
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+
 .donate-container {
     background-image:"/images/carousel/puppy2.jpg"; 
         background-repeat: no-repeat;
         background-size: cover;
-    }
-
-    
 }
+    
+
 
