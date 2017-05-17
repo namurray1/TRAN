@@ -27,13 +27,14 @@ const genRandomString = (length) => {
 
 module.exports = function (app) {
     //REGISTER NEW USER
-    app.post("/admin/signup", function (req, res, next) {
+    app.post("/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
-        req.checkBody('email', 'Email is required').notEmpty();
-        req.checkBody('email', 'Email is not valid').isEmail();
-        req.checkBody('adminName', 'Username is required').notEmpty();
-        req.checkBody('pswd1', 'Password is required').notEmpty();
-        req.checkBody('pswd2', 'Passwords do not match').equals(req.body.pswd1);
+        console.log("here: ");
+        // req.checkBody('email', 'Email is required').notEmpty();
+        // req.checkBody('email', 'Email is not valid').isEmail();
+        // req.checkBody('adminName', 'Username is required').notEmpty();
+        // req.checkBody('pswd1', 'Password is required').notEmpty();
+        // req.checkBody('pswd2', 'Passwords do not match').equals(req.body.pswd1);
 
         var errors = req.validationErrors();
 
@@ -45,16 +46,16 @@ module.exports = function (app) {
             });
         } else {
             //else look if there is a current user with same username or same email address
-            db.Admin.findAll({
+            db.Admins.findAll({
                     where: {
                         $or: [{
-                            admin_name: req.body.adminName
+                            full_name: req.body.adminName
                         }, {
                             email: req.body.email
-                        }, {
-                            google_place_id: req.body.googlePlaceID
-                        }, {
-                            non_profit_id: req.body.nonProfitID
+                        },
+                            // google_place_id: req.body.googlePlaceID
+                        {
+                            non_profit_id: req.body.npID
                         }]
                     }
                 })
@@ -68,13 +69,16 @@ module.exports = function (app) {
                     } else { //else hash password and create the user
                         req.session.success = true;
                         var salt = genRandomString(32);
-                        var hashedPassword = sha512(req.body.password, salt).passwordHash;
-                        db.Admin.create({
-                                admin_name: req.body.adminName,
+                        var hashedPassword = sha512(req.body.pswd1, salt).passwordHash;
+                        var role = "admin";
+                        db.Admins.create({
+                                full_name: req.body.adminName,
                                 email: req.body.email,
-                                address: req.body.address,
+                                address: req.body.streetAddr,
+                                phone: req.body.phone,
                                 google_place_id: req.body.googlePlaceID,
-                                non_profit_id: req.body.nonProfitID,
+                                organization_name: req.body.orgName,
+                                non_profit_id: req.body.npID,
                                 role: role,
                                 hash: hashedPassword,
                                 salt: salt
@@ -82,7 +86,7 @@ module.exports = function (app) {
                             .then(function (result) {
                                 // redirect to user.html with username in welcome message
                                 req.session.newRegister = true;
-                                res.redirect('adminMaps');
+                                // res.redirect('adminMaps');
                             });
                     }
 
