@@ -41,7 +41,7 @@ module.exports = function (app) {
         if (errors) { //if errors, restart register page
             req.session.errors = errors;
             req.session.success = false;
-            res.render('register', {
+            res.render('signup', {
                 errors: errors
             });
         } else {
@@ -51,7 +51,7 @@ module.exports = function (app) {
                         $or: [{
                             full_name: req.body.adminName
                         }, {
-                            email: req.body.email
+                            email: req.body.haemail
                         },
                             // google_place_id: req.body.googlePlaceID
                         {
@@ -61,7 +61,7 @@ module.exports = function (app) {
                 })
                 .then(function (adminResults) {
                     if (adminResults.length) { //if there is a match of same name, restart register page
-                        res.render('register', {
+                        res.render('signup', {
                             errors: [{
                                 msg: "Username or e-mail already in use"
                             }]
@@ -69,14 +69,16 @@ module.exports = function (app) {
                     } else { //else hash password and create the user
                         req.session.success = true;
                         var salt = genRandomString(32);
-                        var hashedPassword = sha512(req.body.pass, salt).passwordHash;
+                        var hashedPassword = sha512(req.body.hapass, salt).passwordHash;
                         var role = "admin";
+                        console.log("after checks");
+
                         db.Admins.create({
                                 full_name: req.body.adminName,
-                                email: req.body.email,
-                                address: req.body.a-streetAddr,
-                                phone: req.body.phone,
-                                google_place_id: req.body.googlePlaceID,
+                                email: req.body.haemail,
+                                address: req.body.astreetAddr,
+                                phone: req.body.aphone,
+                                // google_place_id: req.body.googlePlaceID,
                                 organization_name: req.body.orgName,
                                 non_profit_id: req.body.npID,
                                 role: role,
@@ -86,7 +88,7 @@ module.exports = function (app) {
                             .then(function (result) {
                                 // redirect to user.html with username in welcome message
                                 req.session.newRegister = true;
-                                res.redirect('index');
+                                res.redirect('./public/index');
                             });
                     }
 
@@ -109,7 +111,7 @@ module.exports = function (app) {
         if (errors) { //if errors, restart register page
             req.session.errors = errors;
             req.session.success = false;
-            res.render('register', {
+            res.render('signup', {
                 errors: errors
             });
         } else {
@@ -119,17 +121,13 @@ module.exports = function (app) {
                         $or: [{
                             username: req.body.userName
                         }, {
-                            email: req.body.email
-                        },
-                            // google_place_id: req.body.googlePlaceID
-                        {
-                            // non_profit_id: req.body.npID
+                            email: req.body.huemail
                         }]
                     }
                 })
                 .then(function (userResults) {
                     if (userResults.length) { //if there is a match of same name, restart register page
-                        res.render('register', {
+                        res.render('signup', {
                             errors: [{
                                 msg: "Username or e-mail already in use"
                             }]
@@ -137,14 +135,14 @@ module.exports = function (app) {
                     } else { //else hash password and create the user
                         req.session.success = true;
                         var salt = genRandomString(32);
-                        var hashedPassword = sha512(req.body.pswd1, salt).passwordHash;
+                        var hashedPassword = sha512(req.body.hupass, salt).passwordHash;
                         var role = "user";
                         db.Users.create({
-                                username: req.body.username,
-                                email: req.body.email,
-                                address: req.body.streetAddr,
-                                phone: req.body.phone,
-                                google_place_id: req.body.googlePlaceID,
+                                username: req.body.userName,
+                                email: req.body.huemail,
+                                address: req.body.vstreetAddr,
+                                phone: req.body.vphone,
+                                // google_place_id: req.body.googlePlaceID,
                                 role: role,
                                 hash: hashedPassword,
                                 salt: salt
@@ -152,7 +150,7 @@ module.exports = function (app) {
                             .then(function (result) {
                                 // redirect to user.html with username in welcome message
                                 req.session.newRegister = true;
-                                res.redirect('index');
+                                res.redirect('./public/index');
                             });
                     }
 
@@ -168,23 +166,24 @@ module.exports = function (app) {
         console.log("am here");
         session.newRegister = false;
         //checks hash against hash for entry validation
+        // do if statement for user and for admin here
         db.Users.findOne({
             where: {
                 email: email
             }
         }).then(function (data) {
             var salt = data.salt;
-            var hashedPassword = sha512(req.body.password, salt).passwordHash;
+            var hashedPassword = sha512(req.body.pass, salt).passwordHash;
             if (hashedPassword === data.hash) {
                 session.loggedIn = true;
                 session.uniqueID = [data.email, data.role, data.id, data.username];
                 if (data.role === "admin") {
                     res.send({
-                        redirect: '/admin'
+                        redirect: '/index'
                     });
                 } else if (data.role === "user") {
                     res.send({
-                        redirect: '/user' + data.id
+                        redirect: '/index'
                     });
                 } else {
                     console.log('No role found');
