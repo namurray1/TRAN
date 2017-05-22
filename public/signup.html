@@ -2,7 +2,7 @@
 
 <head>
     <title>Signup Form</title>
-    <meta name="robots" content="noindex, nofollow"/>
+    <meta name="robots" content="noindex, nofollow" />
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/signup.css" />
@@ -24,9 +24,9 @@
                 <fieldset id="first">
                     <h2 class="title">Create your account</h2>
                     <p class="subtitle">Step 1</p>
-                    <input type="email" class="text_field" name="email" placeholder="Email" /><br/>
-                    <input type="password" class="text_field" name="pass" placeholder="Password" /><br/>
-                    <input type="password" class="text_field" name="cpass" placeholder="Confirm Password" /><br/>
+                    <input type="email" class="text_field" id="email" name="email" placeholder="Email" /><br/>
+                    <input type="password" class="text_field" id="pass" name="pass" placeholder="Password" /><br/>
+                    <input type="password" class="text_field" id="cpass" name="cpass" placeholder="Confirm Password" /><br/>
                     <label>Role</label><br/>
                     <input name="admin" id="rad1" type="radio" value="Rescue" />Rescue Group<br/>
                     <input name="user" id="rad2" type="radio" value="Volunteer" />Volunteer Transport<br/>
@@ -50,6 +50,8 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <form method="post" action="/admin/signup">
                                             <div class="form-group ">
+                                                <input type="hidden" id="haemail" name="haemail"/>
+                                                <input type="hidden" id="hapass" name="hapass"/>
                                                 <label class="control-label requiredField" for="adminName">
                                                     Name
                                                     <span class="asteriskField">
@@ -68,22 +70,22 @@
                                                 <input class="form-control" id="orgName" name="orgName" placeholder="Bob Smith" type="text" />
                                             </div>
                                             <div class="form-group ">
-                                                <label class="control-label requiredField" for="a-streetAddr">
+                                                <label class="control-label requiredField" for="astreetAddr">
                                                     Street Address
                                                     <span class="asteriskField">
                                                         *
                                                     </span>
                                                 </label>
-                                                <input class="form-control" id="a-streetAddr" name="a-streetAddr" placeholder="111 Main St, SS, 12345" type="text" />
+                                                <input class="form-control" id="astreetAddr" name="astreetAddr" placeholder="111 Main St, SS, 12345" type="text" />
                                             </div>
                                             <div class="form-group ">
-                                                <label class="control-label " for="a-phone">
+                                                <label class="control-label " for="aphone">
                                                     Phone Number
                                                     <span class="asteriskField">
                                                         *
                                                     </span>
                                                 </label>
-                                                <input class="form-control" id="a-phone" name="a-phone" placeholder="5551234567" type="text" />
+                                                <input class="form-control" id="aphone" name="aphone" placeholder="5551234567" type="text" />
                                             </div>
                                             <div class="form-group ">
                                                 <label class="control-label requiredField" for="npID">
@@ -96,7 +98,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <div>
-                                                    <button class="btn btn-primary " name="admin-btn" type="submit"<a href="signin.html">>Submit</button>
+                                                    <button class="btn btn-primary " name="admin-btn" type="submit" <a href="signin.html">>Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -123,35 +125,37 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <form method="post" action="/user/signup">
                                             <div class="form-group ">
+                                                <input type="hidden" id="huemail" name="huemail"/>
+                                                <input type="hidden" id="hupass" name="hupass"/>
                                                 <label class="control-label requiredField" for="userName">
                                                 Name
                                                 <span class="asteriskField">
                                                     *
                                                 </span>
                                                 </label>
-                                                    <input class="form-control" id="userName" name="userName" placeholder="Bob Smith" type="text" />
-                                                </div>
+                                                <input class="form-control" id="userName" name="userName" placeholder="Bob Smith" type="text" />
+                                            </div>
                                             <div class="form-group ">
-                                                <label class="control-label requiredField" for="v-streetAddr">
+                                                <label class="control-label requiredField" for="vstreetAddr">
                                                     Street Address
                                                     <span class="asteriskField">
                                                         *
                                                     </span>
                                                 </label>
-                                                <input class="form-control" id="v-streetAddr" name="v-streetAddr" placeholder="111 Main St, SS, 12345" type="text" />
+                                                <input class="form-control" id="vstreetAddr" name="vstreetAddr" placeholder="111 Main St, SS, 12345" type="text" />
                                             </div>
                                             <div class="form-group ">
-                                                <label class="control-label " for="v-phone">
+                                                <label class="control-label " for="vphone">
                                                     Phone Number
                                                     <span class="asteriskField">
                                                         *
                                                     </span>
                                                 </label>
-                                                <input class="form-control" id="v-phone" name="v-phone" placeholder="5551234567" type="text" />
+                                                <input class="form-control" id="vphone" name="vphone" placeholder="5551234567" type="text" />
                                             </div>
                                             <div class="form-group">
                                                 <div>
-                                                    <button class="btn btn-primary " name="user-btn" type="submit">Submit</button>
+                                                    <button class="btn btn-primary " id="user-btn" name="user-btn" type="submit">Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -164,7 +168,75 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places&callback=initAutocomplete"></script>
+    <script>
+        $(document).ready(function () {
+            function initAutocomplete() {
+                // admin address
+                autocomplete1 = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */
+                    (document.getElementById('astreetAddr')), {
+                        types: ['geocode']
+                    });
+
+                // volunteer address
+                autocomplete2 = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */
+                    (document.getElementById('v-streetAddr')), {
+                        types: ['geocode']
+                    });
+
+                autocomplete1.addListener('place_changed', function () {
+                    place = autocomplete1.getPlace();
+                    if (!place.geometry) {
+                        // User entered the name of a Place that was not suggested and
+                        // pressed the Enter key, or the Place Details request failed.
+                        window.alert("No details available for input: '" + place.name + "'");
+                        return;
+                    }
+
+                    address = '';
+                    if (place.address_components) {
+                        address = [
+                            (place.address_components[0] && place.address_components[0].short_name ||
+                                ''),
+                            (place.address_components[1] && place.address_components[1].short_name ||
+                                ''),
+                            (place.address_components[2] && place.address_components[2].short_name ||
+                                '')
+                        ].join(' ');
+                    }
+                    console.log("place is :");
+                    console.log(place);
+                });
+
+                autocomplete2.addListener('place_changed', function () {
+                    place = autocomplete2.getPlace();
+                    if (!place.geometry) {
+                        // User entered the name of a Place that was not suggested and
+                        // pressed the Enter key, or the Place Details request failed.
+                        window.alert("No details available for input: '" + place.name + "'");
+                        return;
+                    }
+
+                    address = '';
+                    if (place.address_components) {
+                        address = [
+                            (place.address_components[0] && place.address_components[0].short_name ||
+                                ''),
+                            (place.address_components[1] && place.address_components[1].short_name ||
+                                ''),
+                            (place.address_components[2] && place.address_components[2].short_name ||
+                                '')
+                        ].join(' ');
+                    }
+                    console.log("place is :");
+                    console.log(place);
+                });
+            }
+            initAutocomplete();
+        });
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places"></script>
 </body>
 
 

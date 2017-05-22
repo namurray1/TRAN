@@ -15,14 +15,18 @@ CREATE TABLE animals(
 );
 
 CREATE TABLE users(
-    user_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    email varchar(255) DEFAULT NULL,
-    username varchar(255) NOT NULL,
+    id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	username varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,    
     address varchar(255) NOT NULL,
     phone varchar(255) NOT NULL,
-    hash varchar(255) DEFAULT NULL,
-    salt varchar(255) DEFAULT NULL,
-    role varchar(255) NOT NULL
+    hash varchar(255) NOT NULL,
+    salt varchar(255) NOT NULL,
+    role varchar(255) NOT NULL,
+	lat decimal(17, 14),
+    lng decimal(17, 14),
+	createdAt datetime NOT NULL,
+    updatedAt datetime NOT NULL
 );
 
 CREATE TABLE admins(
@@ -31,6 +35,8 @@ CREATE TABLE admins(
     address varchar(255) NOT NULL,
     non_profit_id int NOT NULL,
     organization_name varchar(255) NOT NULL,
+	hash varchar(255) NOT NULL,
+    salt varchar(255) NOT NULL,
     phone varchar(255) NOT NULL,
     lat decimal(17, 14),
     lng decimal(17, 14),

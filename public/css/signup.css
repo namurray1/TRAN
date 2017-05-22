@@ -20,7 +20,8 @@
 }
 
 .active {
-    color: red;
+    color: darkorange;
+    margin-left: 400px;
 }
 
 fieldset {
@@ -39,7 +40,7 @@ fieldset {
     padding: 20px;
     margin-top: 50px;
     border-radius: 5px;
-    margin-left: 2px;
+    margin-left: 275px;
     box-shadow: 3px 3px 25px 1px gray;
 }
 
@@ -99,7 +100,7 @@ li {
 
 .bootstrap-iso form button,
 .bootstrap-iso form button:hover {
-    color: white !important;
+    color: darkorange !important;
 }
 
 .asteriskField {

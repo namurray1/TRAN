@@ -63,93 +63,44 @@ $(document).ready(function () {
         var password = $("input[name=pass][type=password]").text();
         var adminName = $('input[name=adminName][type=text]').text();
         var orgName = $('input[name=orgName][type=text]').text();
-        var aStreetAddr = $('input[name=a-streetAddr][type=text]').text();
-        var aPhone = $('input[name=a-phone][type=text]').text();
+        var aStreetAddr = $('input[name=astreetAddr][type=text]').text();
+        var aPhone = $('input[name=aphone][type=text]').text();
         var npID = $('input[name=npID][type=text]').text();
+        $('#haemail').val($('#email').val());
+        $('#hapass').val($('#pass').val());
         var lat = place.geometry.location.lat();
         var lng = place.geometry.location.lng();
+        alert($('#haemail').val());
+
     });
 
     $("button[name=user-btn]").click(function () {
         // new volunteer is signing up
         // get ready to push data to db
+        alert("@user");
         var email = $('input[name=email][type=email]').text();
         var password = $("input[name=pass][type=password]").text();
         var userName = $('input[name=userName][type=text]').text();
-        var vStreetAddr = $('input[name=v-streetAddr][type=text]').text();
-        var vPhone = $('input[name=v-phone][type=text]').text();
-        var lat = place.geometry.location.lat();
-        var lng = place.geometry.location.lng();
+        var vStreetAddr = $('input[name=vstreetAddr][type=text]').text();
+        var vPhone = $('input[name=vphone][type=text]').text();
+                alert("@phone");
+        $('#huemail').val($('#email').val());
+        $('#hupass').val($('#pass').val());
+                alert("@hupass");
+        // var lat = place.geometry.location.lat();
+        // var lng = place.geometry.location.lng();
+        
+        alert($('#huemail').val());
     });
 
-    $(".submit_btn").on("click", function () {
-        // not sure about this one, Melinda.
-        // fill in some blanks for me?
-        if (sessionStorage.length !== 0) {
-            if (sessionStorage.role === "user") {
-                window.location = "/user/" + sessionStorage.userID;
-            } else if (sessionStorage.role === "admin") {
-                window.location = "/admin/" + sessionStorage.userID;
-            }
-        }
+
+    $(".login_btn").on("click", function () {
+        // if (sessionStorage.length !== 0) {
+        //     if (sessionStorage.role === "user") {
+        //         window.location = "/user/" + sessionStorage.userID;
+        //     } else if (sessionStorage.role === "admin") {
+        //         window.location = "/admin/" + sessionStorage.userID;
+        //     }
+        // }
     });
-
-    function initAutocomplete() {
-        // admin address
-        autocomplete1 = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */
-            (document.getElementById('a-streetAddr')), {
-                types: ['geocode']
-            });
-
-        // volunteer address
-        autocomplete2 = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */
-            (document.getElementById('v-mailAddr')), {
-                types: ['geocode']
-            });
-        //
-
-        autocomplete1.addListener('place_changed', function () {
-            place = autocomplete.getPlace();
-            if (!place.geometry) {
-                // User entered the name of a Place that was not suggested and
-                // pressed the Enter key, or the Place Details request failed.
-                window.alert("No details available for input: '" + place.name + "'");
-                return;
-            }
-
-            address = '';
-            if (place.address_components) {
-                address = [
-                    (place.address_components[0] && place.address_components[0].short_name || ''),
-                    (place.address_components[1] && place.address_components[1].short_name || ''),
-                    (place.address_components[2] && place.address_components[2].short_name || '')
-                ].join(' ');
-            }
-            console.log("place is :");
-            console.log(place);
-        });
-
-        autocomplete2.addListener('place_changed', function () {
-            place = autocomplete.getPlace();
-            if (!place.geometry) {
-                // User entered the name of a Place that was not suggested and
-                // pressed the Enter key, or the Place Details request failed.
-                window.alert("No details available for input: '" + place.name + "'");
-                return;
-            }
-
-            address = '';
-            if (place.address_components) {
-                address = [
-                    (place.address_components[0] && place.address_components[0].short_name || ''),
-                    (place.address_components[1] && place.address_components[1].short_name || ''),
-                    (place.address_components[2] && place.address_components[2].short_name || '')
-                ].join(' ');
-            }
-            console.log("place is :");
-            console.log(place);
-        });
-    }
 });
