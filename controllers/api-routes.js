@@ -78,7 +78,8 @@ module.exports = function (app) {
                                 email: req.body.haemail,
                                 address: req.body.astreetAddr,
                                 phone: req.body.aphone,
-                                // google_place_id: req.body.googlePlaceID,
+                                lat: req.body.alat,
+                                lng: req.body.alng,
                                 organization_name: req.body.orgName,
                                 non_profit_id: req.body.npID,
                                 role: role,
@@ -88,7 +89,7 @@ module.exports = function (app) {
                             .then(function (result) {
                                 // redirect to user.html with username in welcome message
                                 req.session.newRegister = true;
-                                res.redirect('./public/index');
+                                res.redirect('/');
                             });
                     }
 
@@ -142,7 +143,8 @@ module.exports = function (app) {
                                 email: req.body.huemail,
                                 address: req.body.vstreetAddr,
                                 phone: req.body.vphone,
-                                // google_place_id: req.body.googlePlaceID,
+                                lat: req.body.vlat,
+                                lng: req.body.vlng,
                                 role: role,
                                 hash: hashedPassword,
                                 salt: salt
