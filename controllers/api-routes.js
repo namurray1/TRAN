@@ -70,7 +70,7 @@ module.exports = function (app,passport) {
                 })
                 .then(function (adminResults) {
                     if (adminResults.length) { //if there is a match of same name, restart register page
-                        res.render('./public/signup.html', { message: req.flash('signupMessage') } {
+                        res.render('./public/signup.html', { message: req.flash('signupMessage') }, {
                             errors: [{
                                 msg: "Username or e-mail already in use"
                             }]
@@ -365,7 +365,7 @@ module.exports = function (app,passport) {
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
-    // if user is authenticated in the session, carry on 
+    // if user is authenticated in the session, carry on
     if (req.isAuthenticated())
         return next();
 
