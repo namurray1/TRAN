@@ -29,6 +29,12 @@ h3 {
     color: black;
 }
 
+/*navbar CSS*/
+
+/*.navbar-collapse.in {
+    overflow-y: visible;
+}*/
+
 div#myNavbar.collapse.navbar-collapse {
     background-color: rgba(0, 0, 0, 0.9);
     height: 60px;
@@ -170,7 +176,7 @@ p {
    outline: none !important;
 }
 
-div.panel-body a {
+div.panel-footer a {
 
     text-decoration: none;
     
@@ -178,8 +184,8 @@ div.panel-body a {
 
 
 /*media queries*/
-@media only screen and (min-width: 768px) {
-    /* For desktop: */
+/*@media only screen and (min-width: 768px) {
+  
     .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
     .col-3 {width: 25%;}
@@ -192,7 +198,9 @@ div.panel-body a {
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
-}
+}*/
+
+
 
 
 
