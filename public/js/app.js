@@ -93,6 +93,12 @@ $(document).ready(function () {
         // alert($('#huemail').val());
     });
 
+    $("button[name=animal-btn]").click(function () {
+        // new anmial is being added
+        // api-routes will push data to db
+        alert("animals latitude of origin is " + $("input[name=olat]").val())
+    });
+
 
     $(".login_btn").on("click", function () {
         // if (sessionStorage.length !== 0) {

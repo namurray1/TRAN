@@ -1,0 +1,238 @@
+<html>
+
+<head>
+    <title>Add an Animal</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/signup.css" />
+    <script src="./js/app.js"></script>
+</head>
+
+<body>
+    <div class="content" <!-- multistep form -->
+        <div class="main">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title text-center">Add an Animal for Tranportation</h3>
+                </div>
+                <div class="panel-body text-center">
+                    <!--
+                    note the bootstrap-iso stylesheet above
+                    from https://formden.com/form-builder/
+                    -->
+                    <div class="bootstrap-iso">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <form method="post" action="/add/animal">
+                                        <!--  set the latitude and longitude for the origin and destination of the animal -->
+                                        <input type="hidden" id="olat" name="olat" />
+                                        <input type="hidden" id="olng" name="olng" />
+                                        <input type="hidden" id="dlat" name="dlat" />
+                                        <input type="hidden" id="dlng" name="dlng" />
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="pet_name">
+                                                    Animal Name
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="pet_name" name="pet_name" placeholder="Fluffy" type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="pet_type">
+                                                    Animal Type
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="pet_type" name="pet_type" placeholder="Dog, Cat, etc." type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="gender">
+                                                    Animal Gender
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="gender" name="gender" placeholder="M, F" type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="breed">
+                                                    Breed
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="breed" name="breed" placeholder="Labrador" type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="temperament">
+                                                    Animal Temprement
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="temperament" name="temperament" placeholder="Fearful, calm, aggressive, friendly, etc." type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="summary">
+                                                    About the Animal
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="summary" name="summary" placeholder="Fluffy's Story...'" type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="link_to_picture">
+                                                    Link to a Picture
+                                                </label>
+                                            <input class="form-control" id="link_to_picture" name="link_to_picture" placeholder="Facebook, etc." type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="weight">
+                                                    Animal Weight (in pounds)
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="weight" name="weight" placeholder="20" type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="special_needs">
+                                                    Special Needs
+                                                </label>
+                                            <input class="form-control" id="special_needs" name="special_needs" placeholder="Meds twice a day" type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="origin_address">
+                                                    Your Address
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="origin_address" name="origin_address" placeholder="111 Main St, SS, 12345" type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="origin_phone">
+                                                    Your Phone
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="origin_phone" name="origin_phone" placeholder="5551234567" type="number" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="destination_address">
+                                                    Destination Address
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="destination_address" name="destination_address" placeholder="111 Main St, SS, 12345" type="text" />
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="control-label requiredField" for="destination_phone">
+                                                    Destination Phone
+                                                    <span class="asteriskField">
+                                                        *
+                                                    </span>
+                                                </label>
+                                            <input class="form-control" id="destination_phone" name="destination_phone" placeholder="5551234567" type="number" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div>
+                                                <button class="btn btn-primary " name="animal-btn" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        var lat = 0.0;
+        var lng = 0.0;
+        var place;
+        $(document).ready(function () {
+            function initAutocomplete() {
+                // admin address
+                var autocomplete1 = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */
+                    (document.getElementById('origin_address')), {
+                        types: ['geocode']
+                    });
+
+                // volunteer address
+                var autocomplete2 = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */
+                    (document.getElementById('destination_address')), {
+                        types: ['geocode']
+                    });
+
+                autocomplete1.addListener('place_changed', function () {
+                    place = autocomplete1.getPlace();
+                    if (!place.geometry) {
+                        // User entered the name of a Place that was not suggested and
+                        // pressed the Enter key, or the Place Details request failed.
+                        window.alert("No details available for input: '" + place.name + "'");
+                        return;
+                    }
+                    address = '';
+                    if (place.address_components) {
+                        address = [
+                            (place.address_components[0] && place.address_components[0].short_name ||
+                                ''),
+                            (place.address_components[1] && place.address_components[1].short_name ||
+                                ''),
+                            (place.address_components[2] && place.address_components[2].short_name ||
+                                '')
+                        ].join(' ');
+                    }
+                    console.log("place is :");
+                    console.log(place);
+                    // put the latitude and longitude onto the form in the hidden inputs
+                    $('#olat').val(place.geometry.location.lat());
+                    $('#olng').val(place.geometry.location.lng());
+                });
+                autocomplete2.addListener('place_changed', function () {
+                    place = autocomplete2.getPlace();
+                    if (!place.geometry) {
+                        // User entered the name of a Place that was not suggested and
+                        // pressed the Enter key, or the Place Details request failed.
+                        window.alert("No details available for input: '" + place.name + "'");
+                        return;
+                    }
+                    address = '';
+                    if (place.address_components) {
+                        address = [
+                            (place.address_components[0] && place.address_components[0].short_name ||
+                                ''),
+                            (place.address_components[1] && place.address_components[1].short_name ||
+                                ''),
+                            (place.address_components[2] && place.address_components[2].short_name ||
+                                '')
+                        ].join(' ');
+                    }
+                    console.log("place is :");
+                    console.log(place);
+                    // put the latitude and longitude onto the form in the hidden inputs
+                    $('#dlat').val(place.geometry.location.lat());
+                    $('#dlng').val(place.geometry.location.lng());
+                });
+            }
+            initAutocomplete();
+        });
+    </script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places"></script>
+</body>
+
+</html>
