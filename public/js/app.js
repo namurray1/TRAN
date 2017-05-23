@@ -78,20 +78,18 @@ $(document).ready(function () {
     $("button[name=user-btn]").click(function () {
         // new volunteer is signing up
         // get ready to push data to db
-        alert("@user");
+        // alert("@user");
         var email = $('input[name=email][type=email]').text();
         var password = $("input[name=pass][type=password]").text();
         var userName = $('input[name=userName][type=text]').text();
         var vStreetAddr = $('input[name=vstreetAddr][type=text]').text();
         var vPhone = $('input[name=vphone][type=text]').text();
-        alert("@phone");
+        // alert("@phone");
         $('#huemail').val($('#email').val());
         $('#hupass').val($('#pass').val());
-        alert("@hupass");
-        // lat and lng will be filled below in autocomplete listeners on html page script
-        // lat = place.geometry.location.lat();
-        // lng = place.geometry.location.lng();
-
+        // alert("@hupass");
+        // var lat = place.geometry.location.lat();
+        // var lng = place.geometry.location.lng();
         // alert($('#huemail').val());
     });
 

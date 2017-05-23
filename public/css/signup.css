@@ -78,6 +78,12 @@ input[type=button] {
     font-family: 'Droid Serif', serif;
 }
 
+form.regform {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 h2,
 p {
     text-align: center;
@@ -109,6 +115,7 @@ li {
 body{
      background-image: url("paper.gif");
      background-color: #cccccc;
+     
 }
 
 
