@@ -8,9 +8,12 @@ var path = require("path");
 var passport = require("passport");
 var flash = require("connect-flash");
 require('./config/passport')(passport); // pass passport for configuration
+var cookieParser = require('cookie-parser');
+var morgan = require("morgan");
 
 // Require History Schema Create Instance of Express
 var app = express();
+
 // Sets an initial port. We'll use this later in our listener
 var PORT = process.env.PORT || 3000;
 
@@ -18,7 +21,7 @@ var PORT = process.env.PORT || 3000;
 var db = require("./models");
 
 // set up ejs for templating
-app.set('view engine', 'ejs'); 
+app.set('view engine', 'ejs');
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -31,25 +34,24 @@ app.use(cookieParser()); // read cookies (needed for auth)
 // set up our express application
 app.use(morgan('dev')); // log every request to the console
 
-
 app.use(express.static(path.join(__dirname, "./public")));
 
 // - Mel - commenting this out for now while I work out passportJS to use instead of this
-// //Express Session
-// app.use(expressSession({
-//     secret: 'secret code',
-//     // If saveUnitialized is set to true it will save a session to our session
-//     // storage even if it is not initialized
-//     saveUninitialized: false,
-//     // If resave is set to true it will save our session after each request false
-//     // will only save if we change something
-//     resave: false
-// }));
+//Express Session
+app.use(expressSession({
+    secret: 'secret code',
+    // If saveUnitialized is set to true it will save a session to our session
+    // storage even if it is not initialized
+    saveUninitialized: false,
+    // If resave is set to true it will save our session after each request false
+    // will only save if we change something
+    resave: false
+}));
 
 // required for passport
-app.use(session({ secret: 'superhero' })); // session secret
+// app.use(session({ secret: 'superhero' })); // session secret
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
+app.use(passport.session({ secret: 'superhero' })); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 require("./controllers/html-routes.js")(app,passport);

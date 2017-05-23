@@ -3,12 +3,8 @@
 <head>
     <title>Signup Form</title>
     <meta name="robots" content="noindex, nofollow" />
-<<<<<<< HEAD
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-=======
-
->>>>>>> 40de296ae26d00124e249bd2821ef213b47128a4
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/signup.css" />
     <script src="./js/app.js"></script>
@@ -27,7 +23,7 @@
             <!-- fieldsets -->
             <div class="account">
                 <fieldset id="first">
-                    <h2 class="title">Create your account</h2> 
+                    <h2 class="title">Create your account</h2>
                      <!-- show any messages that come back with authentication -->
                           <% if (message.length > 0) { %>
                          <div class="alert alert-danger"><%= message %></div>
@@ -110,14 +106,10 @@
                                             </div>
                                             <div class="form-group">
                                                 <div>
-<<<<<<< HEAD
                                                     <button class="btn btn-primary " name="admin-btn" type="submit" <a href="signin.html">Submit</button>
-=======
-                                                    <button class="btn btn-primary " name="admin-btn" type="submit" <a href="signin.html">>Submit</button>
->>>>>>> 40de296ae26d00124e249bd2821ef213b47128a4
                                                 </div>
                                             </div>
-                                        </form> 
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +206,6 @@
                         window.alert("No details available for input: '" + place.name + "'");
                         return;
                     }
-
                     address = '';
                     if (place.address_components) {
                         address = [
@@ -232,7 +223,6 @@
                     $('#alat').val(place.geometry.location.lat());
                     $('#alng').val(place.geometry.location.lng());
                 });
-
                 autocomplete2.addListener('place_changed', function () {
                     place = autocomplete2.getPlace();
                     if (!place.geometry) {
@@ -241,7 +231,6 @@
                         window.alert("No details available for input: '" + place.name + "'");
                         return;
                     }
-
                     address = '';
                     if (place.address_components) {
                         address = [
@@ -265,6 +254,4 @@
     </script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places"></script>
 </body>
-
-
 </html>
