@@ -31,7 +31,7 @@ module.exports = function (app) {
     app.get("/css/*", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/css/" + req.params[0]));
     });
-    
+
     app.get("/img/*", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/img/" + req.params[0]));
     });
@@ -41,9 +41,13 @@ module.exports = function (app) {
         // res.sendFile(path.join(__dirname, "./signin.html" + req.params[0]));
     });
 
-
     app.get("/signup", function (req, res) {
         res.sendFile(path.join(__dirname, "../public/signup.html"));
+        // res.sendFile(path.join(__dirname, "../public/signup.html" + req.params[0]));
+    });
+
+    app.get("/add/animal", function (req, res) {
+        res.sendFile(path.join(__dirname, "../public/addAnimal.html"));
         // res.sendFile(path.join(__dirname, "../public/signup.html" + req.params[0]));
     });
 

@@ -3,12 +3,8 @@
 <head>
     <title>Signup Form</title>
     <meta name="robots" content="noindex, nofollow" />
-<<<<<<< HEAD
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-=======
-
->>>>>>> 40de296ae26d00124e249bd2821ef213b47128a4
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/signup.css" />
     <script src="./js/app.js"></script>
@@ -27,7 +23,7 @@
             <!-- fieldsets -->
             <div class="account">
                 <fieldset id="first">
-                    <h2 class="title">Create your account</h2> 
+                    <h2 class="title">Create your account</h2>
                      <!-- show any messages that come back with authentication -->
                           <% if (message.length > 0) { %>
                          <div class="alert alert-danger"><%= message %></div>
@@ -59,6 +55,8 @@
                                 <div class="row">
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <form method="post" action="/admin/signup">
+                                            <input type="hidden" id="alat" name="alat"/>
+                                            <input type="hidden" id="alng" name="alng"/>
                                             <div class="form-group ">
                                                 <input type="hidden" id="haemail" name="haemail"/>
                                                 <input type="hidden" id="hapass" name="hapass"/>
@@ -77,7 +75,7 @@
                                                         *
                                                     </span>
                                                 </label>
-                                                <input class="form-control" id="orgName" name="orgName" placeholder="Bob Smith" type="text" />
+                                                <input class="form-control" id="orgName" name="orgName" placeholder="Your Organization's Name'" type="text" />
                                             </div>
                                             <div class="form-group ">
                                                 <label class="control-label requiredField" for="astreetAddr">
@@ -108,14 +106,10 @@
                                             </div>
                                             <div class="form-group">
                                                 <div>
-<<<<<<< HEAD
                                                     <button class="btn btn-primary " name="admin-btn" type="submit" <a href="signin.html">Submit</button>
-=======
-                                                    <button class="btn btn-primary " name="admin-btn" type="submit" <a href="signin.html">>Submit</button>
->>>>>>> 40de296ae26d00124e249bd2821ef213b47128a4
                                                 </div>
                                             </div>
-                                        </form> 
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -139,8 +133,10 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <form method="post" action="/user/signup">
                                             <div class="form-group ">
-                                                <input type="hidden" id="huemail" name="huemail"/>
-                                                <input type="hidden" id="hupass" name="hupass"/>
+                                                <input type="hidden" id="huemail" name="huemail" />
+                                                <input type="hidden" id="hupass" name="hupass" />
+                                                <input type="hidden" id="vlat" name="vlat" />
+                                                <input type="hidden" id="vlng" name="vlng" />
                                                 <label class="control-label requiredField" for="userName">
                                                 Name
                                                 <span class="asteriskField">
@@ -183,17 +179,20 @@
         </div>
     </div>
     <script>
+        var lat = 0.0;
+        var lng = 0.0;
+        var place;
         $(document).ready(function () {
             function initAutocomplete() {
                 // admin address
-                autocomplete1 = new google.maps.places.Autocomplete(
+                var autocomplete1 = new google.maps.places.Autocomplete(
                     /** @type {!HTMLInputElement} */
                     (document.getElementById('astreetAddr')), {
                         types: ['geocode']
                     });
 
                 // volunteer address
-                autocomplete2 = new google.maps.places.Autocomplete(
+                var autocomplete2 = new google.maps.places.Autocomplete(
                     /** @type {!HTMLInputElement} */
                     (document.getElementById('v-streetAddr')), {
                         types: ['geocode']
@@ -207,7 +206,6 @@
                         window.alert("No details available for input: '" + place.name + "'");
                         return;
                     }
-
                     address = '';
                     if (place.address_components) {
                         address = [
@@ -221,8 +219,10 @@
                     }
                     console.log("place is :");
                     console.log(place);
+                    // put the latitude and longitude onto the form in the hidden inputs
+                    $('#alat').val(place.geometry.location.lat());
+                    $('#alng').val(place.geometry.location.lng());
                 });
-
                 autocomplete2.addListener('place_changed', function () {
                     place = autocomplete2.getPlace();
                     if (!place.geometry) {
@@ -231,7 +231,6 @@
                         window.alert("No details available for input: '" + place.name + "'");
                         return;
                     }
-
                     address = '';
                     if (place.address_components) {
                         address = [
@@ -245,6 +244,9 @@
                     }
                     console.log("place is :");
                     console.log(place);
+                    // put the latitude and longitude onto the form in the hidden inputs
+                    $('#vlat').val(place.geometry.location.lat());
+                    $('#vlng').val(place.geometry.location.lng());
                 });
             }
             initAutocomplete();
@@ -252,6 +254,4 @@
     </script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb83AdUnIv7TTeO4X2cvtmP8zkOuELvxM&libraries=places"></script>
 </body>
-
-
 </html>

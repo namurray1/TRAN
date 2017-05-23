@@ -4,7 +4,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 
 // load up the user model
-var Users = require('./models/user');
+var Users = require('../models/user');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -73,7 +73,7 @@ module.exports = function(passport) {
                 });
             }
 
-        });    
+        });
 
         });
 

@@ -68,9 +68,10 @@ $(document).ready(function () {
         var npID = $('input[name=npID][type=text]').text();
         $('#haemail').val($('#email').val());
         $('#hapass').val($('#pass').val());
-        var lat = place.geometry.location.lat();
-        var lng = place.geometry.location.lng();
-        alert($('#haemail').val());
+        // lat and lng will be filled below in autocomplete listeners on html page script
+        // lat = place.geometry.location.lat();
+        // lng = place.geometry.location.lng();
+        // alert($('#haemail').val());
 
     });
 
@@ -83,14 +84,19 @@ $(document).ready(function () {
         var userName = $('input[name=userName][type=text]').text();
         var vStreetAddr = $('input[name=vstreetAddr][type=text]').text();
         var vPhone = $('input[name=vphone][type=text]').text();
-                // alert("@phone");
+        // alert("@phone");
         $('#huemail').val($('#email').val());
         $('#hupass').val($('#pass').val());
-                // alert("@hupass");
+        // alert("@hupass");
         // var lat = place.geometry.location.lat();
         // var lng = place.geometry.location.lng();
-        
         // alert($('#huemail').val());
+    });
+
+    $("button[name=animal-btn]").click(function () {
+        // new anmial is being added
+        // api-routes will push data to db
+        alert("animals latitude of origin is " + $("input[name=olat]").val())
     });
 
 
@@ -103,4 +109,6 @@ $(document).ready(function () {
         //     }
         // }
     });
+
+
 });
