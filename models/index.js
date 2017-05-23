@@ -6,6 +6,21 @@ var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
+var bcrypt   = require('bcrypt-nodejs');
+
+
+//bcrypt auth
+// generating a hash
+// Users.methods.generateHash = function(password) {
+//     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+// };
+
+// // checking if password is valid
+// Users.methods.validPassword = function(password) {
+//     return bcrypt.compareSync(password, this.local.password);
+// };
+
+//
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
