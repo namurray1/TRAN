@@ -25,12 +25,12 @@ const genRandomString = (length) => {
 
 // Routes =============================================================
 
-module.exports = function (app,passport) {
+module.exports = function (app, passport) {
 
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
-    app.get('/', function(req, res) {
+    app.get('/', function (req, res) {
         res.render('index.html'); // load the index file
     });
 
@@ -58,19 +58,22 @@ module.exports = function (app,passport) {
             db.Admins.findAll({
                     where: {
                         $or: [{
-                            full_name: req.body.adminName
-                        }, {
-                            email: req.body.haemail
-                        },
+                                full_name: req.body.adminName
+                            }, {
+                                email: req.body.haemail
+                            },
                             // google_place_id: req.body.googlePlaceID
-                        {
-                            non_profit_id: req.body.npID
-                        }]
+                            {
+                                non_profit_id: req.body.npID
+                            }
+                        ]
                     }
                 })
                 .then(function (adminResults) {
                     if (adminResults.length) { //if there is a match of same name, restart register page
-                        res.render('./public/signup.html', { message: req.flash('signupMessage') }, {
+                        res.render('./public/signup.html', {
+                            message: req.flash('signupMessage')
+                        }, {
                             errors: [{
                                 msg: "Username or e-mail already in use"
                             }]
@@ -212,10 +215,35 @@ module.exports = function (app,passport) {
 
     //ADD AN ANIMAL
     app.post("/add/animal", function (req, res) {
-        db.Animal.create(req.body).then(function (result) {
-            // redirect to admin.html page to add new animal
-            res.redirect("./public/index.html");
-        });
+        // We need validation here
+        db.Animal.create({
+                pet_name: req.body.pet_name,
+                pet_type: req.body.pet_type,
+                gender: req.body.gender,
+                breed: req.body.breed,
+                summary: req.body.summary,
+                link_to_picture: req.body.link_to_picture,
+                weight: req.body.weight,
+                temperament: req.body.temperament,
+                special_needs: req.body.special_needs,
+                origin_phone: req.body.origin_phone,
+                destination_phone: req.body.destination_phone,
+                origin_address: req.body.origin_address,
+                destination_address: req.body.destination_address,
+                lat_origin: req.body.olat,
+                lng_origin: req.body.olng,
+                lat_destination: req.body.dlat,
+                lng_destination: req.body.dlng,
+            })
+            .then(function (result) {
+                // redirect to user.html with username in welcome message
+                req.session.newRegister = true;
+                res.redirect('/');
+            })
+            .catch(function (err) {
+                res.send(err);
+            });
+
     });
 
 
@@ -351,9 +379,9 @@ module.exports = function (app,passport) {
     // we will want this protected so you have to be logged in to visit
     // we will use route middleware to verify this (the isLoggedIn function)
     // this needs to be changed from index to a user or admin view or profile view
-    app.get('/profile', isLoggedIn, function(req, res) {
+    app.get('/profile', isLoggedIn, function (req, res) {
         res.render('index.html', {
-            user : req.user // get the user out of session and pass to template
+            user: req.user // get the user out of session and pass to template
         });
     });
 
@@ -362,22 +390,35 @@ module.exports = function (app,passport) {
         res.json(req.session);
     });
 
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
+    // route middleware to make sure a user is logged in
+    function isLoggedIn(req, res, next) {
 
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
+        // if user is authenticated in the session, carry on
+        if (req.isAuthenticated())
+            return next();
 
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}
+        // if they aren't redirect them to the home page
+        res.redirect('/');
+    }
 
-        // =====================================
+    // =====================================
     // LOGOUT ==============================
     // =====================================
-    app.get('/logout', function(req, res) {
+    app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+    // GET ALL ANIMALS FOR THE PURPOSES OF MAPPING
+    app.get('/animallocations', function (req, res) {
+        var animalID = req.body.animal_id;
+        var userID = req.session.uniqueID[2];
+        console.log("Inside api-routing /animallocations function");
+        if (userID == req.body.user_id) {
+            db.Animals.findAll({}).then(function (animalData) {
+                console.log(animalData);
+                res.json(animalData);
+            });
+        }
     });
 };
