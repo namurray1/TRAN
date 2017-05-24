@@ -16,21 +16,21 @@
 
 <body id="main-body" data-spy="scroll" data-target=".navbar">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top opaque-navbar " data-spy="affix" data-offset="0">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">TRAN</a>
                     
-                </button>
-                <a class="navbar-brand" href="#">TRAN</a>
             </div>
             <div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#section1">About Us</a></li>
+                        <li><a href="#section1">About Us</a></li>
                         <li><a href="#section2">Maps</a></li>
                         <li><a href="#section3">Contact Us</a></li>
                         <li><a href="#section4">Pet Profile</a></li>
@@ -162,7 +162,7 @@
                 <h2>Pet Profiles</h2>
             </div>
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-xs-12">
                     <div class="panel panel-default text-center">
                         <div class="panel-heading">
                             <image src="images/animal-thumbs/fred.jpg" alt="red">
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-xs-12">
                     <div class="panel panel-default text-center">
                         <div class="panel-heading">
                             <image src="images/animal-thumbs/pit.jpg" alt="red">
@@ -198,7 +198,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-xs-12">
                     <div class="panel panel-default text-center">
                         <div class="panel-heading">
                             <image src="images/animal-thumbs/orangekit.jpg" alt="red">
@@ -216,7 +216,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-xs-12">
                     <div class="panel panel-default text-center">
                         <div class="panel-heading">
                             <image src="images/animal-thumbs/puppies.jpeg" alt="red">
@@ -237,8 +237,6 @@
             </div>
         </div>
     </div>
-    <br>
-    <br>
     <div class="navbar navbar-inverse navbar-fixed-bottom">
         <div class="container-fluid">
             <p class="navbar-text pull-left">TRAN built and designed by M. Ames, B. Mitchell, M. Owen, and A. Murray &#169 2017</p>
@@ -267,7 +265,7 @@
     <!--add footer here along with contact information at the bottom-->
     <script>
         $(document).ready(function () {
-            // Add scrollspy to <body>
+            // Add scrollspy to body
             $('#main-body').scrollspy({
                 target: ".navbar",
                 offset: 50

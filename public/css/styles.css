@@ -2,6 +2,12 @@
 Leave area for Map, and descript on pet. Add css styling based on Barbs desciption. Make navbar transparent. 
 Make sure to add smooth scrolling to the project. Think about adding a page header instead of a Jumbotron.*/
 
+/*adding noScroll to prevent code from scrolling overlays are up*/
+/*.noScroll {
+    overflow: hidden;
+    position: fixed;
+}*/
+
 #wrapper {
     display: block;
     max-width: 100%;
@@ -34,19 +40,21 @@ h3 {
     color: black;
 }
 
-/*navbar CSS*/
+/*no scrolling within the navbar when in mobile or tablet view below*/
 
-/*.navbar-collapse.in {
-    overflow-y: visible;
-}*/
+.navbar-collapse.in {
+    overflow: hidden;
+    max-height: none !important;
+    height: auto !important;
+}
 
-div#myNavbar.collapse.navbar-collapse {
+/*div#myNavbar.collapse.navbar-collapse {
     background-color: rgba(0, 0, 0, 0.9);
     height: 60px;
     border-bottom: 0px;
-    /*transition: background-color .5s ease 0s;*/
-    /*color: white;*/
-}
+    transition: background-color .5s ease 0s;
+    color: white;
+}*/
 
 
 /* Glyphicons */
