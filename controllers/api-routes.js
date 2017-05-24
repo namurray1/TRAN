@@ -124,7 +124,8 @@ module.exports = function (app,passport) {
             res.render('./public/signup.html', {
                 errors: errors
             });
-        } else {
+        } 
+        else {
             //else look if there is a current user with same username or same email address
             db.Users.findAll({
                     where: {

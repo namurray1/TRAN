@@ -95,13 +95,13 @@ $(document).ready(function () {
 
 
     $(".login_btn").on("click", function () {
-        // if (sessionStorage.length !== 0) {
-        //     if (sessionStorage.role === "user") {
-        //         window.location = "/user/" + sessionStorage.userID;
-        //     } else if (sessionStorage.role === "admin") {
-        //         window.location = "/admin/" + sessionStorage.userID;
-        //     }
-        // }
+        if (sessionStorage.length !== 0) {
+            if (sessionStorage.role === "user") {
+                window.location = "/user/" + sessionStorage.userID;
+            } else if (sessionStorage.role === "admin") {
+                window.location = "/admin/" + sessionStorage.userID;
+            }
+        }
     });
 
 
