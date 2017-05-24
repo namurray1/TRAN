@@ -48,13 +48,14 @@ h3 {
     height: auto !important;
 }
 
-/*div#myNavbar.collapse.navbar-collapse {
-    background-color: rgba(0, 0, 0, 0.9);
-    height: 60px;
-    border-bottom: 0px;
+/*navbar is now opaque by using rgba change the last value to affect level of opacity*/
+.opaque-navbar {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 10px;
+    /*border-bottom: 60px;*/
     transition: background-color .5s ease 0s;
-    color: white;
-}*/
+    
+}
 
 
 /* Glyphicons */

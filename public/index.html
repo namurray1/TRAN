@@ -16,7 +16,7 @@
 
 <body id="main-body" data-spy="scroll" data-target=".navbar">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top opaque-navbar">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -24,8 +24,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">TRAN</a>
-                    
+                <a class="navbar-brand" href="#">TRAN</a>
+
             </div>
             <div>
                 <div class="collapse navbar-collapse" id="myNavbar">
@@ -240,9 +240,9 @@
     <div class="navbar navbar-inverse navbar-fixed-bottom">
         <div class="container-fluid">
             <p class="navbar-text pull-left">TRAN built and designed by M. Ames, B. Mitchell, M. Owen, and A. Murray &#169 2017</p>
-            <a class= "navbar-button btn btn-info btn-sm pull-right">Contact Us</a>
-        </div> 
-    <!--<footer class="footer">
+            <a class="navbar-button btn btn-info btn-sm pull-right">Contact Us</a>
+        </div>
+        <!--<footer class="footer">
         <div class="footer-head">
             <div class="container-fluid">
                 <div class="row">
@@ -262,21 +262,21 @@
 
     </footer>-->
 
-    <!--add footer here along with contact information at the bottom-->
-    <script>
-        $(document).ready(function () {
-            // Add scrollspy to body
-            $('#main-body').scrollspy({
-                target: ".navbar",
-                offset: 50
+        <!--add footer here along with contact information at the bottom-->
+        <script>
+            $(document).ready(function () {
+                // Add scrollspy to body
+                $('#main-body').scrollspy({
+                    target: ".navbar",
+                    offset: 50
+                });
             });
-        });
-    </script>
+        </script>
 
 
-    <script src="./js/app.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="./js/app.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 
