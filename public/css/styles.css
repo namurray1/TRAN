@@ -40,9 +40,10 @@ h3 {
 /*no scrolling within the navbar when in mobile or tablet view below*/
 
 .navbar-collapse.in {
-    overflow: hidden;
-    max-height: none !important;
-    height: auto !important;
+    /*overflow: hidden;*/
+    background: rgba(0, 0, 0, 0.8);
+    /*max-height: none !important;
+    height: auto !important;*/
 }
 
 
@@ -161,7 +162,7 @@ p {
 .page-head {
     background-image: url("/images/carousel/puppy2.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    /*background-size: cover;*/
 }
 
 
@@ -199,7 +200,7 @@ div.panel-footer a {
 /*media queries*/
 
 
-/*@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) {
   
     .col-1 {width: 8.33%;}
     .col-2 {width: 16.66%;}
@@ -213,7 +214,9 @@ div.panel-footer a {
     .col-10 {width: 83.33%;}
     .col-11 {width: 91.66%;}
     .col-12 {width: 100%;}
-}*/
+}
+
+/*Set media queries for medium and large devices here*/
 
 footer {
     text-align: center;
