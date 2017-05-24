@@ -69,8 +69,8 @@ $(document).ready(function () {
         $('#haemail').val($('#email').val());
         $('#hapass').val($('#pass').val());
         // lat and lng will be filled below in autocomplete listeners on html page script
-        $('#alat').val(place.geometry.location.lat());
-        $('#alng').val(place.geometry.location.lng());
+        // lat = place.geometry.location.lat();
+        // lng = place.geometry.location.lng();
         // alert($('#haemail').val());
 
     });
@@ -88,8 +88,8 @@ $(document).ready(function () {
         $('#huemail').val($('#email').val());
         $('#hupass').val($('#pass').val());
         // alert("@hupass");
-        $('#vlat').val(place.geometry.location.lat());
-        $('#vlng').val(place.geometry.location.lng());
+        // var lat = place.geometry.location.lat();
+        // var lng = place.geometry.location.lng();
         // alert($('#huemail').val());
     });
 
