@@ -5,7 +5,7 @@ var crypto = require('crypto');
 
 var session;
 
-//hash functions
+//hash functions -- this is for crypto for future implementation
 const sha512 = (password, salt) => {
     let hash = crypto.createHmac('sha512', salt);
     hash.update(password);
@@ -31,7 +31,7 @@ module.exports = function (app, passport) {
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function (req, res) {
-        res.render('index.html'); // load the index file
+        res.render('index'); // load the index file
     });
 
 
@@ -71,9 +71,7 @@ module.exports = function (app, passport) {
                 })
                 .then(function (adminResults) {
                     if (adminResults.length) { //if there is a match of same name, restart register page
-                        res.render('./public/signup.html', {
-                            message: req.flash('signupMessage')
-                        }, {
+                        res.render('signup', {
                             errors: [{
                                 msg: "Username or e-mail already in use"
                             }]
@@ -99,7 +97,7 @@ module.exports = function (app, passport) {
                                 salt: salt
                             })
                             .then(function (result) {
-                                // redirect to user.html with username in welcome message
+                                console.log("bam");
                                 req.session.newRegister = true;
                                 res.redirect('/');
                             });
@@ -124,7 +122,7 @@ module.exports = function (app, passport) {
         if (errors) { //if errors, restart register page
             req.session.errors = errors;
             req.session.success = false;
-            res.render('./public/signup.html', {
+            res.render('index', {
                 errors: errors
             });
         } 
@@ -141,7 +139,7 @@ module.exports = function (app, passport) {
                 })
                 .then(function (userResults) {
                     if (userResults.length) { //if there is a match of same name, restart register page
-                        res.sendFile('./public/signup.html', {
+                        res.sendFile('signup', {
                             errors: [{
                                 msg: "Username or e-mail already in use"
                             }]
@@ -165,7 +163,7 @@ module.exports = function (app, passport) {
                             .then(function (result) {
                                 // redirect to user.html with username in welcome message
                                 req.session.newRegister = true;
-                                res.redirect('./public/index.html');
+                                res.redirect('/');
                             });
                     }
 
@@ -174,7 +172,7 @@ module.exports = function (app, passport) {
     });
 
     //SESSION LOGIN
-    app.post("/login", function (req, res) {
+    app.post("/login", function (req, res, next) {
         var session = req.session;
         var email = req.body.email;
         var password = req.body.password;
@@ -187,32 +185,32 @@ module.exports = function (app, passport) {
                 email: email
             }
         }).then(function (data) {
-            var salt = data.salt;
-            var hashedPassword = sha512(req.body.pass, salt).passwordHash;
-            if (hashedPassword === data.hash) {
-                session.loggedIn = true;
-                session.uniqueID = [data.email, data.role, data.id, data.username];
-                if (data.role === "admin") {
-                    res.send({
-                        redirect: '/index'
-                    });
-                } else if (data.role === "user") {
-                    res.send({
-                        redirect: '/index'
-                    });
-                } else {
-                    console.log('No role found');
+            if (data) {
+                var salt = data.salt;
+                var hashedPassword = sha512(req.body.pass, salt).passwordHash;
+                if (hashedPassword === data.hash) {
+                    session.loggedIn = true;
+                    req.session.authenticated = true;
+                    session.uniqueID = [data.email, data.role, data.id, data.username];
+                    if (data.role === "admin") {
+                        res.redirect('/');
+                    } else if (data.role === "user") {
+                        res.redirect('/');    
+                    } else {
+                        res.send('invalid role detected for username');
+                        res.redirect('/login');
+                    }
                 }
-            } else {
-                console.log("Illegal entry detected.");
-                res.status(400).send();
             }
+            else {
+                res.send('invalid username or password');
+                res.redirect('/login');
+            } 
+            
 
-        }).catch(function (err) {
-            console.log("The error is" + err);
-            res.status(400).send();
         });
     });
+
 
     //ADD AN ANIMAL
     app.post("/add/animal", function (req, res) {
@@ -402,15 +400,7 @@ module.exports = function (app, passport) {
         res.redirect('/');
     }
 
-    // =====================================
-    // LOGOUT ==============================
-    // =====================================
-    app.get('/logout', function (req, res) {
-        req.logout();
-        res.redirect('/');
-    });
-
-    // GET ALL ANIMALS FOR THE PURPOSES OF MAPPING
+        // GET ALL ANIMALS FOR THE PURPOSES OF MAPPING
     app.get('/animallocations', function (req, res) {
         var animalID = req.body.animal_id;
         var userID = req.session.uniqueID[2];
@@ -422,4 +412,16 @@ module.exports = function (app, passport) {
             });
         }
     });
-};
+
+
+    // =====================================
+    // LOGOUT ==============================
+    // =====================================
+    app.get('/logout', function (req, res, next) {
+		delete req.session.authenticated;
+		res.redirect('/');
+	});
+
+ };
+
+

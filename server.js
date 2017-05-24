@@ -6,7 +6,7 @@ var expressValidator = require('express-validator');
 var expressSession = require('express-session');
 var path = require("path");
 // var passport = require("passport");
-var flash = require("connect-flash");
+// var flash = require("connect-flash");
 // require('./config/passport')(passport); // pass passport for configuration
 var cookieParser = require('cookie-parser');
 var morgan = require("morgan");
@@ -21,7 +21,7 @@ var PORT = process.env.PORT || 3000;
 var db = require("./models");
 
 // set up ejs for templating
-// app.set('view engine', 'ejs');
+app.set('view engine', 'html');
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -30,6 +30,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type: "application/vnd.api+json"}));
 app.use(cookieParser()); // read cookies (needed for auth)
+
+app.use(expressValidator());
 app.use(express.static(path.join(__dirname, "./public")));
 
 // - Mel - commenting this out for now while I work out passportJS to use instead of this
