@@ -2,43 +2,40 @@
 Leave area for Map, and descript on pet. Add css styling based on Barbs desciption. Make navbar transparent. 
 Make sure to add smooth scrolling to the project. Think about adding a page header instead of a Jumbotron.*/
 
-/*adding noScroll to prevent code from scrolling overlays are up*/
-/*.noScroll {
-    overflow: hidden;
-    position: fixed;
-}*/
+
+
 
 #wrapper {
     display: block;
     max-width: 100%;
-    margin:0 auto;
+    margin: 0 auto;
     padding: 0;
 }
+
+
 /*consider adding max-width: 100% and margin:0 auto if this works*/
 
 body {
     width: auto;
     margin: auto;
     background-color: orangered!important;
-    
 }
 
-
-
-div.carousel-caption > p,
+div.carousel-caption>p,
 h3 {
     color: white;
     text-align: center;
 }
 
 .carousel-inner {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 }
 
 .panel-body>p {
     color: black;
 }
+
 
 /*no scrolling within the navbar when in mobile or tablet view below*/
 
@@ -48,13 +45,14 @@ h3 {
     height: auto !important;
 }
 
+
 /*navbar is now opaque by using rgba change the last value to affect level of opacity*/
+
 .opaque-navbar {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     height: 10px;
     /*border-bottom: 60px;*/
     transition: background-color .5s ease 0s;
-    
 }
 
 
@@ -101,6 +99,7 @@ article {
 
 
 /*First three sections with image and paragraphy*/
+
 div.col-sm-6 {
     width: 50%;
 }
@@ -113,8 +112,8 @@ img {
 }
 
 
-
 /*look into this as it may be impacting the background images in the application*/
+
 
 /*body {
     position: relative;
@@ -129,7 +128,6 @@ img {
     padding-bottom: 20px;
     font-size: 18px;
     background-color: white;
-
 }
 
 #donatebtn {
@@ -148,7 +146,10 @@ p {
     padding-bottom: 20px;
     /*padding-left: 10Spx;*/
 }
+
+
 /*this is what was causing the buttons to blow up the page in the panels*/
+
 
 /*a {
     padding-top: 20px;
@@ -157,47 +158,47 @@ p {
     padding-left: 50px;
 }*/
 
-
 .page-head {
     background-image: url("/images/carousel/puppy2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+
 /*Buttons in the panel*/
 
 .btn {
-  -webkit-border-radius: 28;
-  -moz-border-radius: 28;
-  border-radius: 28px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  background: #3498db;
-  padding: 7px 20px 10px 20px;
-  
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #3498db;
+    padding: 7px 20px 10px 20px;
 }
 
 .btn:hover {
-  background: #3cb0fd;
-  text-decoration: none;
-  
+    background: #3cb0fd;
+    text-decoration: none;
 }
+
 
 /*Properties were being overridden in CSS and Bootstrap, so I had to use !important*/
 
-.btn:focus,.btn:active {
-   outline: none !important;
+.btn:focus,
+.btn:active {
+    outline: none !important;
 }
 
 div.panel-footer a {
-
     text-decoration: none;
-    
 }
 
 
 /*media queries*/
+
+
 /*@media only screen and (min-width: 768px) {
   
     .col-1 {width: 8.33%;}
@@ -214,12 +215,7 @@ div.panel-footer a {
     .col-12 {width: 100%;}
 }*/
 
-
-
-
-
-footer{
+footer {
     text-align: center;
     color: white;
 }
-
