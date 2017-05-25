@@ -57,9 +57,12 @@ module.exports = function (app, passport) {
                 }
             })
             .then(function (adminResults) {
-                if (adminResults.length) {
-                    //if there is a match of same name, restart register page
-                    res.send("E-mail already in use");
+                if (adminResults.length) { //if there is a match of same name, restart register page
+                    res.render('signup', {
+                        errors: [{
+                            msg: "E-mail already in use"
+                        }]
+                    });
                 } else {
                     //else hash password and create the user
                     req.session.success = true;
@@ -74,7 +77,6 @@ module.exports = function (app, passport) {
                             salt: salt
                         })
                         .then(function (result) {
-                            // now create the admin profile
                             db.Admins.create({
                                     full_name: req.body.adminName,
                                     email: req.body.haemail,
@@ -92,13 +94,17 @@ module.exports = function (app, passport) {
                                 });
                         })
                         .catch(function (err) {
-                            res.send("E-mail already in use");
+                            res.render('signup', {
+                                errors: [{
+                                    msg: "E-mail already in use"
+                                }]
+                            });
+
                         });
                 }
             });
         // }
     });
-
     //REGISTER NEW USER
     app.post("/user/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
@@ -121,15 +127,13 @@ module.exports = function (app, passport) {
                 }
             })
             .then(function (userResults) {
-                if (userResults.length) {
-                    //if there is a match of same name, restart register page
+                if (userResults.length) { //if there is a match of same name, restart register page
                     res.sendFile('signup', {
                         errors: [{
                             msg: "Email already in use"
                         }]
                     });
-                } else {
-                    //else hash password and create the user
+                } else { //else hash password and create the user
                     req.session.success = true;
                     var salt = genRandomString(32);
                     var hashedPassword = sha512(req.body.hupass, salt).passwordHash;
