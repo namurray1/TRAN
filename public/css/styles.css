@@ -19,7 +19,7 @@ body {
     background-color: orangered!important;
 }
 
-div.carousel-caption>p,
+div.carousel-caption>p
 {
     color: white;
     text-align: center;
