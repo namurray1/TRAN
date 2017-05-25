@@ -3,6 +3,7 @@ var address = "";
 
 // place is the geolocated object that will be returned
 var place;
+/*$('body').addClass('noScroll');*/ //added this to prevent scrolling in the background. You might need to remove this later, Alex
 
 $(document).ready(function () {
 
