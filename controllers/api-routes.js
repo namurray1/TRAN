@@ -38,137 +38,134 @@ module.exports = function (app, passport) {
     //REGISTER NEW ADMIN
     app.post("/admin/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
-        console.log("admin");
-        // req.checkBody('email', 'Email is required').notEmpty();
-        // req.checkBody('email', 'Email is not valid').isEmail();
-        // req.checkBody('adminName', 'Username is required').notEmpty();
-        // req.checkBody('pswd1', 'Password is required').notEmpty();
-        // req.checkBody('pswd2', 'Passwords do not match').equals(req.body.pswd1);
+        // console.log("admin");
 
-        var errors = req.validationErrors();
+        // VALIDATION IS NEVER RETURNING ERRORS
 
-        if (errors) { //if errors, restart register page
-            req.session.errors = errors;
-            req.session.success = false;
-            res.render('signup', {
-                errors: errors
-            });
-        } else {
-            //else look if there is a current user with same username or same email address
-            db.Admins.findAll({
-                    where: {
-                        $or: [{
-                                full_name: req.body.adminName
-                            }, {
-                                email: req.body.haemail
-                            },
-                            // google_place_id: req.body.googlePlaceID
-                            {
-                                non_profit_id: req.body.npID
-                            }
-                        ]
-                    }
-                })
-                .then(function (adminResults) {
-                    if (adminResults.length) { //if there is a match of same name, restart register page
-                        res.render('signup', {
-                            errors: [{
-                                msg: "Username or e-mail already in use"
-                            }]
-                        });
-                    } else { //else hash password and create the user
-                        req.session.success = true;
-                        var salt = genRandomString(32);
-                        var hashedPassword = sha512(req.body.hapass, salt).passwordHash;
-                        var role = "admin";
-                        console.log("after checks");
-
-                        db.Admins.create({
-                                full_name: req.body.adminName,
-                                email: req.body.haemail,
-                                address: req.body.astreetAddr,
-                                phone: req.body.aphone,
-                                lat: req.body.alat,
-                                lng: req.body.alng,
-                                organization_name: req.body.orgName,
-                                non_profit_id: req.body.npID,
-                                role: role,
-                                hash: hashedPassword,
-                                salt: salt
-                            })
-                            .then(function (result) {
-                                console.log("bam");
-                                req.session.newRegister = true;
-                                res.redirect('/');
+        // var errors = req.validationErrors();
+        // if (errors) { //if errors, restart register page
+        //     req.session.errors = errors;
+        //     req.session.success = false;
+        //     res.render('signup', {
+        //         errors: errors
+        //     });
+        // } else {
+        //else look if there is a current user with same email address
+        db.AllUsers.findAll({
+                where: {
+                    email: req.body.haemail
+                }
+            })
+            .then(function (adminResults) {
+                if (adminResults.length) { //if there is a match of same name, restart register page
+                    res.render('signup', {
+                        errors: [{
+                            msg: "E-mail already in use"
+                        }]
+                    });
+                } else {
+                    //else hash password and create the user
+                    req.session.success = true;
+                    var salt = genRandomString(32);
+                    var hashedPassword = sha512(req.body.hapass, salt).passwordHash;
+                    var role = "admin";
+                    console.log("Creating admin");
+                    db.AllUsers.create({
+                            email: req.body.haemail,
+                            role: role,
+                            hash: hashedPassword,
+                            salt: salt
+                        })
+                        .then(function (result) {
+                            db.Admins.create({
+                                    full_name: req.body.adminName,
+                                    email: req.body.haemail,
+                                    address: req.body.astreetAddr,
+                                    phone: req.body.aphone,
+                                    lat: req.body.alat,
+                                    lng: req.body.alng,
+                                    organization_name: req.body.orgName,
+                                    non_profit_id: req.body.npID
+                                })
+                                .then(function (result) {
+                                    console.log("bam");
+                                    req.session.newRegister = true;
+                                    res.redirect('/');
+                                });
+                        })
+                        .catch(function (err) {
+                            res.render('signup', {
+                                errors: [{
+                                    msg: "E-mail already in use"
+                                }]
                             });
-                    }
 
-                });
-        }
+                        });
+                }
+            });
+        // }
     });
-
     //REGISTER NEW USER
     app.post("/user/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
-        console.log("user");
-        // req.checkBody('email', 'Email is required').notEmpty();
-        // req.checkBody('email', 'Email is not valid').isEmail();
-        // req.checkBody('adminName', 'Username is required').notEmpty();
-        // req.checkBody('pswd1', 'Password is required').notEmpty();
-        // req.checkBody('pswd2', 'Passwords do not match').equals(req.body.pswd1);
+        // console.log("user");
 
-        var errors = req.validationErrors();
+        // VALIDATION IS NEVER RETURNING ERRORS
 
-        if (errors) { //if errors, restart register page
-            req.session.errors = errors;
-            req.session.success = false;
-            res.render('index', {
-                errors: errors
-            });
-        } 
-        else {
-            //else look if there is a current user with same username or same email address
-            db.Users.findAll({
-                    where: {
-                        $or: [{
-                            username: req.body.userName
-                        }, {
-                            email: req.body.huemail
+        // var errors = req.validationErrors();
+        // if (errors) { //if errors, restart register page
+        //     req.session.errors = errors;
+        //     req.session.success = false;
+        //     res.render('index', {
+        //         errors: errors
+        //     });
+        // } else {
+        //else look if there is a current user with same email address
+        db.AllUsers.findAll({
+                where: {
+                    email: req.body.huemail
+                }
+            })
+            .then(function (userResults) {
+                if (userResults.length) { //if there is a match of same name, restart register page
+                    res.sendFile('signup', {
+                        errors: [{
+                            msg: "Email already in use"
                         }]
-                    }
-                })
-                .then(function (userResults) {
-                    if (userResults.length) { //if there is a match of same name, restart register page
-                        res.sendFile('signup', {
-                            errors: [{
-                                msg: "Username or e-mail already in use"
-                            }]
-                        });
-                    } else { //else hash password and create the user
-                        req.session.success = true;
-                        var salt = genRandomString(32);
-                        var hashedPassword = sha512(req.body.hupass, salt).passwordHash;
-                        var role = "user";
-                        db.Users.create({
-                                username: req.body.userName,
-                                email: req.body.huemail,
-                                address: req.body.vstreetAddr,
-                                phone: req.body.vphone,
-                                lat: req.body.vlat,
-                                lng: req.body.vlng,
-                                role: role,
-                                hash: hashedPassword,
-                                salt: salt
-                            })
-                            .then(function (result) {
-                                // redirect to user.html with username in welcome message
-                                req.session.newRegister = true;
-                                res.redirect('/');
-                            });
-                    }
+                    });
+                } else { //else hash password and create the user
+                    req.session.success = true;
+                    var salt = genRandomString(32);
+                    var hashedPassword = sha512(req.body.hupass, salt).passwordHash;
+                    var role = "user";
+                    // create the shared users table first
+                    db.AllUsers.create({
+                            email: req.body.huemail,
+                            role: role,
+                            hash: hashedPassword,
+                            salt: salt
+                        })
+                        .then(function (result) {
+                            // now create the actual user
+                            db.User.create({
+                                    email: req.body.huemail,
+                                    username: req.body.userName,
+                                    address: req.body.vstreetAddr,
+                                    phone: req.body.vphone,
+                                    lat: req.body.vlat,
+                                    lng: req.body.vlng
+                                })
+                                .then(function (result) {
+                                    // redirect to user.html with username in welcome message
+                                    req.session.newRegister = true;
+                                    res.redirect('/');
 
-                });
-        }
+                                })
+                        });
+                }
+
+            });
+        // }
     });
 
     //SESSION LOGIN
@@ -180,7 +177,7 @@ module.exports = function (app, passport) {
         session.newRegister = false;
         //checks hash against hash for entry validation
         // do if statement for user and for admin here
-        db.Users.findOne({
+        db.AllUsers.findOne({
             where: {
                 email: email
             }
@@ -195,19 +192,16 @@ module.exports = function (app, passport) {
                     if (data.role === "admin") {
                         res.redirect('/');
                     } else if (data.role === "user") {
-                        res.redirect('/');    
+                        res.redirect('/');
                     } else {
                         res.send('invalid role detected for username');
                         res.redirect('/login');
                     }
                 }
-            }
-            else {
+            } else {
                 res.send('invalid username or password');
                 res.redirect('/login');
-            } 
-            
-
+            }
         });
     });
 
@@ -242,7 +236,6 @@ module.exports = function (app, passport) {
             .catch(function (err) {
                 res.send(err);
             });
-
     });
 
 
@@ -274,24 +267,25 @@ module.exports = function (app, passport) {
                         console.log(data);
                     });
                 } else {
-                    var updatedAt = registeredData[0].dataValues.updatedAt;
-                    db.Users.update({
-                        player_volunteered_flag: 1
-                    }, {
-                        where: {
-                            user_id: UserID,
-                            animal_id: AnimalID,
-                            updatedAt: updatedAt
-                        }
-                    }).then(function (data) {
-                        console.log(data);
-                    });
+                    // THIS NEEDS WORK
+
+                    // var updatedAt = registeredData[0].dataValues.updatedAt;
+                    // db.Users.update({
+                    //     player_volunteered_flag: 1
+                    // }, {
+                    //     where: {
+                    //         user_id: UserID,
+                    //         animal_id: AnimalID,
+                    //         updatedAt: updatedAt
+                    //     }
+                    // }).then(function (data) {
+                    //     console.log(data);
+                    // });
                 }
                 // res.redirect("/user/"+userID);
                 res.json("User has volunteered.");
             });
         }
-
     });
 
     // PUT route to update animal location
@@ -400,10 +394,10 @@ module.exports = function (app, passport) {
         res.redirect('/');
     }
 
-        // GET ALL ANIMALS FOR THE PURPOSES OF MAPPING
+    // GET ALL ANIMALS FOR THE PURPOSES OF MAPPING
     app.get('/animallocations', function (req, res) {
-        var animalID = req.body.animal_id;
-        var userID = req.session.uniqueID[2];
+        // var animalID = req.body.animal_id;
+        // var userID = req.session.uniqueID[2];
         console.log("Inside api-routing /animallocations function");
         if (userID == req.body.user_id) {
             db.Animals.findAll({}).then(function (animalData) {
@@ -418,10 +412,8 @@ module.exports = function (app, passport) {
     // LOGOUT ==============================
     // =====================================
     app.get('/logout', function (req, res, next) {
-		delete req.session.authenticated;
-		res.redirect('/');
-	});
+        delete req.session.authenticated;
+        res.redirect('/');
+    });
 
- };
-
-
+};

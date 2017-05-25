@@ -21,15 +21,12 @@ $(document).ready(function () {
         if (this.hash !== "") {
             // Prevent default anchor click behavior
             event.preventDefault();
-
             // This variable will store hash
             var hash = this.hash;
-
             // This section of the code will animate the navbar and the speed can be change by using milliseconds.
             $('html, body').animate({
                 scrollTop: $(hash).offset().top
             }, 1000, function () {
-
                 // Add hash (#) to URL when done scrolling (default click behavior)
                 window.location.hash = hash;
             });
@@ -42,56 +39,69 @@ $(document).ready(function () {
 
     $("input[name=admin][type=radio]").change(function () {
         // user has chosen the admin role
-        $('.showVolunteer').hide('fast');
-        $('.showRescue').show('fast');
-        $('.account').hide('fast');
-        // capture the email and password
-        email = $("input[name=email][type=email]").text();
-        password = $("input[name=pass][type=password]").text();
+        if ($('input[name=email][type=email]').val() == "") {
+            alert("email is required");
+            this.checked = false;
+            return false;
+        } else if ($("input[name=pass][type=password]").val() == "") {
+            alert("Password is required");
+            this.checked = false;
+            return false;
+        } else {
+            $('.showVolunteer').hide('fast');
+            $('.showRescue').show('fast');
+            $('.account').hide('fast');
+        }
     });
 
     $("input[name=user][type=radio]").change(function () {
         // user has chosen to volunteer
-        $('.showVolunteer').show('fast');
-        $('.showRescue').hide('fast');
-        $('.account').hide('fast');
+        if ($('input[name=email][type=email]').val() == "") {
+            alert("email is required");
+            this.checked = false;
+            return false;
+        } else if ($("input[name=pass][type=password]").val() == "") {
+            alert("Password is required");
+            this.checked = false;
+            return false;
+        } else {
+            $('.showVolunteer').show('fast');
+            $('.showRescue').hide('fast');
+            $('.account').hide('fast');
+        }
     });
 
-    $("button[name=admin-btn]").click(function () {
+    $("button[name=admin-btn]").click(function (btn) {
+        btn.preventDefault();
         // new admin is signing up
-        // - get ready to push data to db
-        var email = $('input[name=email][type=email]').text();
-        var password = $("input[name=pass][type=password]").text();
-        var adminName = $('input[name=adminName][type=text]').text();
-        var orgName = $('input[name=orgName][type=text]').text();
-        var aStreetAddr = $('input[name=astreetAddr][type=text]').text();
-        var aPhone = $('input[name=aphone][type=text]').text();
-        var npID = $('input[name=npID][type=text]').text();
-        $('#haemail').val($('#email').val());
-        $('#hapass').val($('#pass').val());
+        $('#haemail').val($('input[name=email][type=email]').val());
+        $('#hapass').val($('input[name=pass][type=password]').val());
         // lat and lng will be filled below in autocomplete listeners on html page script
-        $('#alat').val(place.geometry.location.lat());
-        $('#alng').val(place.geometry.location.lng());
+        if (typeof (place) != "undefined") {
+            $('#alat').val(place.geometry.location.lat());
+            $('#alng').val(place.geometry.location.lng());
+        } else {
+            alert("Please select an address from dropdown list.")
+            return false;
+        }
         // alert($('#haemail').val());
-
+        $("#adminForm").submit();
     });
 
     $("button[name=user-btn]").click(function () {
         // new volunteer is signing up
-        // get ready to push data to db
-        // alert("@user");
-        var email = $('input[name=email][type=email]').text();
-        var password = $("input[name=pass][type=password]").text();
-        var userName = $('input[name=userName][type=text]').text();
-        var vStreetAddr = $('input[name=vstreetAddr][type=text]').text();
-        var vPhone = $('input[name=vphone][type=text]').text();
-        // alert("@phone");
-        $('#huemail').val($('#email').val());
-        $('#hupass').val($('#pass').val());
-        // alert("@hupass");
-        $('#vlat').val(place.geometry.location.lat());
-        $('#vlng').val(place.geometry.location.lng());
+        $('#huemail').val($('input[name=email][type=email]').val());
+        $('#hupass').val($('input[name=pass][type=password]').val());
+        // lat and lng will be filled below in autocomplete listeners on html page script
+        if (typeof (place) != "undefined") {
+            $('#vlat').val(place.geometry.location.lat());
+            $('#vlng').val(place.geometry.location.lng());
+        } else {
+            alert("Please select an address from dropdown list.")
+            return false;
+        }
         // alert($('#huemail').val());
+        $("#volunteerForm").submit();
     });
 
     $("button[name=animal-btn]").click(function () {
@@ -99,7 +109,6 @@ $(document).ready(function () {
         // api-routes will push data to db
         alert("animals latitude of origin is " + $("input[name=olat]").val())
     });
-
 
     $(".login_btn").on("click", function () {
         // if (sessionStorage.length !== 0) {
