@@ -33,7 +33,7 @@ CREATE TABLE admins(
 	full_name varchar(255) NOT NULL,
     email varchar(255) NOT NULL,
     address varchar(255) NOT NULL,
-    non_profit_id int NOT NULL,
+    non_profit_id varchar(255) NOT NULL,
     organization_name varchar(255) NOT NULL,
 	hash varchar(255) NOT NULL,
     salt varchar(255) NOT NULL,

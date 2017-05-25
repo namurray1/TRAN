@@ -28,6 +28,17 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
+        summary: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1]
+            }
+        },
+        link_to_picture: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         weight: {
             type: DataTypes.DECIMAL(3, 2),
             allowNull: false,
@@ -44,9 +55,20 @@ module.exports = function (sequelize, DataTypes) {
         },
         special_needs: {
             type: DataTypes.STRING,
+            allowNull: true
+        },
+        origin_phone: {
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
-                len: [1]
+                len: [10]
+            }
+        },
+        destination_phone: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            validate: {
+                len: [10]
             }
         },
         origin_address: {

@@ -5,7 +5,7 @@ var crypto = require('crypto');
 
 var session;
 
-//hash functions
+//hash functions -- this is for crypto for future implementation
 const sha512 = (password, salt) => {
     let hash = crypto.createHmac('sha512', salt);
     hash.update(password);
@@ -25,7 +25,16 @@ const genRandomString = (length) => {
 
 // Routes =============================================================
 
-module.exports = function (app) {
+module.exports = function (app, passport) {
+
+    // =====================================
+    // HOME PAGE (with login links) ========
+    // =====================================
+    app.get('/', function (req, res) {
+        res.render('index'); // load the index file
+    });
+
+
     //REGISTER NEW ADMIN
     app.post("/admin/signup", function (req, res, next) {
         //Validation - checks if form is filled out properly
@@ -49,14 +58,15 @@ module.exports = function (app) {
             db.Admins.findAll({
                     where: {
                         $or: [{
-                            full_name: req.body.adminName
-                        }, {
-                            email: req.body.haemail
-                        },
+                                full_name: req.body.adminName
+                            }, {
+                                email: req.body.haemail
+                            },
                             // google_place_id: req.body.googlePlaceID
-                        {
-                            non_profit_id: req.body.npID
-                        }]
+                            {
+                                non_profit_id: req.body.npID
+                            }
+                        ]
                     }
                 })
                 .then(function (adminResults) {
@@ -78,7 +88,8 @@ module.exports = function (app) {
                                 email: req.body.haemail,
                                 address: req.body.astreetAddr,
                                 phone: req.body.aphone,
-                                // google_place_id: req.body.googlePlaceID,
+                                lat: req.body.alat,
+                                lng: req.body.alng,
                                 organization_name: req.body.orgName,
                                 non_profit_id: req.body.npID,
                                 role: role,
@@ -86,9 +97,9 @@ module.exports = function (app) {
                                 salt: salt
                             })
                             .then(function (result) {
-                                // redirect to user.html with username in welcome message
+                                console.log("bam");
                                 req.session.newRegister = true;
-                                res.redirect('./public/index');
+                                res.redirect('/');
                             });
                     }
 
@@ -111,10 +122,11 @@ module.exports = function (app) {
         if (errors) { //if errors, restart register page
             req.session.errors = errors;
             req.session.success = false;
-            res.render('signup', {
+            res.render('index', {
                 errors: errors
             });
-        } else {
+        } 
+        else {
             //else look if there is a current user with same username or same email address
             db.Users.findAll({
                     where: {
@@ -127,7 +139,7 @@ module.exports = function (app) {
                 })
                 .then(function (userResults) {
                     if (userResults.length) { //if there is a match of same name, restart register page
-                        res.render('signup', {
+                        res.sendFile('signup', {
                             errors: [{
                                 msg: "Username or e-mail already in use"
                             }]
@@ -142,7 +154,8 @@ module.exports = function (app) {
                                 email: req.body.huemail,
                                 address: req.body.vstreetAddr,
                                 phone: req.body.vphone,
-                                // google_place_id: req.body.googlePlaceID,
+                                lat: req.body.vlat,
+                                lng: req.body.vlng,
                                 role: role,
                                 hash: hashedPassword,
                                 salt: salt
@@ -150,7 +163,7 @@ module.exports = function (app) {
                             .then(function (result) {
                                 // redirect to user.html with username in welcome message
                                 req.session.newRegister = true;
-                                res.redirect('./public/index');
+                                res.redirect('/');
                             });
                     }
 
@@ -159,7 +172,7 @@ module.exports = function (app) {
     });
 
     //SESSION LOGIN
-    app.post("/login", function (req, res) {
+    app.post("/login", function (req, res, next) {
         var session = req.session;
         var email = req.body.email;
         var password = req.body.password;
@@ -172,39 +185,64 @@ module.exports = function (app) {
                 email: email
             }
         }).then(function (data) {
-            var salt = data.salt;
-            var hashedPassword = sha512(req.body.pass, salt).passwordHash;
-            if (hashedPassword === data.hash) {
-                session.loggedIn = true;
-                session.uniqueID = [data.email, data.role, data.id, data.username];
-                if (data.role === "admin") {
-                    res.send({
-                        redirect: '/index'
-                    });
-                } else if (data.role === "user") {
-                    res.send({
-                        redirect: '/index'
-                    });
-                } else {
-                    console.log('No role found');
+            if (data) {
+                var salt = data.salt;
+                var hashedPassword = sha512(req.body.pass, salt).passwordHash;
+                if (hashedPassword === data.hash) {
+                    session.loggedIn = true;
+                    req.session.authenticated = true;
+                    session.uniqueID = [data.email, data.role, data.id, data.username];
+                    if (data.role === "admin") {
+                        res.redirect('/');
+                    } else if (data.role === "user") {
+                        res.redirect('/');    
+                    } else {
+                        res.send('invalid role detected for username');
+                        res.redirect('/login');
+                    }
                 }
-            } else {
-                console.log("Illegal entry detected.");
-                res.status(400).send();
             }
+            else {
+                res.send('invalid username or password');
+                res.redirect('/login');
+            } 
+            
 
-        }).catch(function (err) {
-            console.log("The error is" + err);
-            res.status(400).send();
         });
     });
 
+
     //ADD AN ANIMAL
     app.post("/add/animal", function (req, res) {
-        db.Animal.create(req.body).then(function (result) {
-            // redirect to admin.html page to add new animal
-            res.redirect("/admin");
-        });
+        // We need validation here
+        db.Animal.create({
+                pet_name: req.body.pet_name,
+                pet_type: req.body.pet_type,
+                gender: req.body.gender,
+                breed: req.body.breed,
+                summary: req.body.summary,
+                link_to_picture: req.body.link_to_picture,
+                weight: req.body.weight,
+                temperament: req.body.temperament,
+                special_needs: req.body.special_needs,
+                origin_phone: req.body.origin_phone,
+                destination_phone: req.body.destination_phone,
+                origin_address: req.body.origin_address,
+                destination_address: req.body.destination_address,
+                lat_origin: req.body.olat,
+                lng_origin: req.body.olng,
+                lat_destination: req.body.dlat,
+                lng_destination: req.body.dlng,
+            })
+            .then(function (result) {
+                // redirect to user.html with username in welcome message
+                req.session.newRegister = true;
+                res.redirect('/');
+            })
+            .catch(function (err) {
+                res.send(err);
+            });
+
     });
 
 
@@ -335,9 +373,55 @@ module.exports = function (app) {
         });
     });
 
+    // PROFILE SECTION =====================
+    // =====================================
+    // we will want this protected so you have to be logged in to visit
+    // we will use route middleware to verify this (the isLoggedIn function)
+    // this needs to be changed from index to a user or admin view or profile view
+    app.get('/profile', isLoggedIn, function (req, res) {
+        res.render('index.html', {
+            user: req.user // get the user out of session and pass to template
+        });
+    });
 
     // Get request to get session data
     app.get("/loggedIn", function (req, res) {
         res.json(req.session);
     });
-};
+
+    // route middleware to make sure a user is logged in
+    function isLoggedIn(req, res, next) {
+
+        // if user is authenticated in the session, carry on
+        if (req.isAuthenticated())
+            return next();
+
+        // if they aren't redirect them to the home page
+        res.redirect('/');
+    }
+
+        // GET ALL ANIMALS FOR THE PURPOSES OF MAPPING
+    app.get('/animallocations', function (req, res) {
+        var animalID = req.body.animal_id;
+        var userID = req.session.uniqueID[2];
+        console.log("Inside api-routing /animallocations function");
+        if (userID == req.body.user_id) {
+            db.Animals.findAll({}).then(function (animalData) {
+                console.log(animalData);
+                res.json(animalData);
+            });
+        }
+    });
+
+
+    // =====================================
+    // LOGOUT ==============================
+    // =====================================
+    app.get('/logout', function (req, res, next) {
+		delete req.session.authenticated;
+		res.redirect('/');
+	});
+
+ };
+
+

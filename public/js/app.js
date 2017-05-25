@@ -68,29 +68,35 @@ $(document).ready(function () {
         var npID = $('input[name=npID][type=text]').text();
         $('#haemail').val($('#email').val());
         $('#hapass').val($('#pass').val());
-        var lat = place.geometry.location.lat();
-        var lng = place.geometry.location.lng();
-        alert($('#haemail').val());
+        // lat and lng will be filled below in autocomplete listeners on html page script
+        $('#alat').val(place.geometry.location.lat());
+        $('#alng').val(place.geometry.location.lng());
+        // alert($('#haemail').val());
 
     });
 
     $("button[name=user-btn]").click(function () {
         // new volunteer is signing up
         // get ready to push data to db
-        alert("@user");
+        // alert("@user");
         var email = $('input[name=email][type=email]').text();
         var password = $("input[name=pass][type=password]").text();
         var userName = $('input[name=userName][type=text]').text();
         var vStreetAddr = $('input[name=vstreetAddr][type=text]').text();
         var vPhone = $('input[name=vphone][type=text]').text();
-                alert("@phone");
+        // alert("@phone");
         $('#huemail').val($('#email').val());
         $('#hupass').val($('#pass').val());
-                alert("@hupass");
-        // var lat = place.geometry.location.lat();
-        // var lng = place.geometry.location.lng();
-        
-        alert($('#huemail').val());
+        // alert("@hupass");
+        $('#vlat').val(place.geometry.location.lat());
+        $('#vlng').val(place.geometry.location.lng());
+        // alert($('#huemail').val());
+    });
+
+    $("button[name=animal-btn]").click(function () {
+        // new anmial is being added
+        // api-routes will push data to db
+        alert("animals latitude of origin is " + $("input[name=olat]").val())
     });
 
 
@@ -103,4 +109,6 @@ $(document).ready(function () {
         //     }
         // }
     });
+
+
 });
