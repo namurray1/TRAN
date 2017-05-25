@@ -7,7 +7,7 @@ var place;
 
 $(document).ready(function () {
 
-    // since we're not using a multi-page app anymore, we couldn't refrence body
+    // since we're not using a multi-page app anymore, we couldn't reference body
     // moved code below into the html file
     // // Add scrollspy to <body>
     // $('#main-body').scrollspy({
@@ -105,7 +105,7 @@ $(document).ready(function () {
     });
 
     $("button[name=animal-btn]").click(function () {
-        // new anmial is being added
+        // new animal is being added
         // api-routes will push data to db
         alert("animals latitude of origin is " + $("input[name=olat]").val())
     });
