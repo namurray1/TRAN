@@ -32,6 +32,7 @@ fieldset {
     margin-left: 85px;
     border-radius: 5px;
     box-shadow: 3px 3px 25px 1px gray;
+    background-color: white;
 }
 
 #first {
