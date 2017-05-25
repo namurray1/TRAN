@@ -113,7 +113,8 @@ li {
     color: red;
 }
 body{
-     /*background-image: url("paper.gif");*/
+
+     background-image: url("public/images/greypaper.jpg");
      background-color: #cccccc;
 
 }
