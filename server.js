@@ -26,9 +26,13 @@ app.set('view engine', 'html');
 // Run Morgan for Logging
 app.use(logger("dev"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.text());
-app.use(bodyParser.json({type: "application/vnd.api+json"}));
+app.use(bodyParser.json({
+    type: "application/vnd.api+json"
+}));
 app.use(cookieParser()); // read cookies (needed for auth)
 
 app.use(expressValidator());
@@ -58,7 +62,9 @@ require("./controllers/api-routes.js")(app);
 // Syncing our sequelize models and then starting our express app
 db
     .sequelize
-    .sync({force: false})
+    .sync({
+        force: false
+    })
     .then(function () {
         app
             .listen(PORT, function () {
