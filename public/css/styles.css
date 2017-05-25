@@ -5,12 +5,12 @@ Make sure to add smooth scrolling to the project. Think about adding a page head
 
 
 
-#wrapper {
+/*#wrapper {
     display: block;
     max-width: 100%;
     margin: 0 auto;
     padding: 0;
-}
+}*/
 
 
 /*consider adding max-width: 100% and margin:0 auto if this works*/
@@ -36,12 +36,17 @@ h3 {
     color: black;
 }
 
+.img-responsive {
+    padding: 0px;
+    height: 100%;
+}
+
 
 /*no scrolling within the navbar when in mobile or tablet view below*/
 
 .navbar-collapse.in {
     /*overflow: hidden;*/
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8) !important;
     /*max-height: none !important;
     height: auto !important;*/
 }
