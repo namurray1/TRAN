@@ -193,7 +193,7 @@ h5 {
 
 /*Buttons in the panel*/
 
-.btn {
+/* .btn {
     -webkit-border-radius: 28px;
     -moz-border-radius: 28px;
     border-radius: 28px;
@@ -207,15 +207,15 @@ h5 {
 .btn:hover {
     background: #3cb0fd;
     text-decoration: none;
-}
+} */
 
 
 /*Properties were being overridden in CSS and Bootstrap, so I had to use !important*/
 
-.btn:focus,
+/* .btn:focus,
 .btn:active {
     outline: none !important;
-}
+} */
 
 div.panel-footer a {
     text-decoration: none;
