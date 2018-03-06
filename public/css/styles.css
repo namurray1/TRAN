@@ -16,7 +16,7 @@ Make sure to add smooth scrolling to the project. Think about adding a page head
 body {
     width: auto;
     margin: auto;
-    background-color: #f1f8e9!important;
+    background-color: #afc2cb!important;
 }
 
 div.carousel-caption>p
@@ -93,28 +93,28 @@ article {
     padding-top: 0px;
     height: 500px;
     color: #fff;
-    background-color: #e0f2f1;
+    background-color: #eceff1;
 }
 
 #section2 {
     padding-top: 0px;
     height: 500px;
     color: #fff;
-    background-color: #aebfbe;
+    background-color: #ffffff;
 }
 
 #section3 {
     padding-top: 0px;
     height: 500px;
     color: #fff;
-    background-color: #f1f8e9
+    background-color: #afc2cb
 }
 
 #section4 {
     padding-top: 0px;
     height: 800px;
     color: #fff;
-    background-color: #bec5b7 ;
+    background-color: #e1f5fe ;
 }
 
 
