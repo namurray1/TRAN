@@ -39,11 +39,11 @@ $(document).ready(function () {
 
     $("input[name=admin][type=radio]").change(function () {
         // user has chosen the admin role
-        if ($('input[name=email][type=email]').val() == "") {
+        if ($('input[name=email][type=email]').val() === "") {
             alert("email is required");
             this.checked = false;
             return false;
-        } else if ($("input[name=pass][type=password]").val() == "") {
+        } else if ($("input[name=pass][type=password]").val() === "") {
             alert("Password is required");
             this.checked = false;
             return false;
@@ -56,11 +56,11 @@ $(document).ready(function () {
 
     $("input[name=user][type=radio]").change(function () {
         // user has chosen to volunteer
-        if ($('input[name=email][type=email]').val() == "") {
+        if ($('input[name=email][type=email]').val() === "") {
             alert("email is required");
             this.checked = false;
             return false;
-        } else if ($("input[name=pass][type=password]").val() == "") {
+        } else if ($("input[name=pass][type=password]").val() === "") {
             alert("Password is required");
             this.checked = false;
             return false;
@@ -81,7 +81,7 @@ $(document).ready(function () {
             $('#alat').val(place.geometry.location.lat());
             $('#alng').val(place.geometry.location.lng());
         } else {
-            alert("Please select an address from dropdown list.")
+            alert("Please select an address from dropdown list.");
             return false;
         }
         // alert($('#haemail').val());
@@ -97,7 +97,7 @@ $(document).ready(function () {
             $('#vlat').val(place.geometry.location.lat());
             $('#vlng').val(place.geometry.location.lng());
         } else {
-            alert("Please select an address from dropdown list.")
+            alert("Please select an address from dropdown list.");
             return false;
         }
         // alert($('#huemail').val());
@@ -107,7 +107,7 @@ $(document).ready(function () {
     $("button[name=animal-btn]").click(function () {
         // new animal is being added
         // api-routes will push data to db
-        alert("animals latitude of origin is " + $("input[name=olat]").val())
+        alert("animals latitude of origin is " + $("input[name=olat]").val());
     });
 
     $(".login_btn").on("click", function () {

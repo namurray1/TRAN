@@ -78,9 +78,9 @@ h4 {
 
 /* Glyphicons */
 
-.section1.section2.section3 {
-    background-image: url()
-}
+/* .section1.section2.section3 {
+    background-image: url();
+} */
 
 article {
     float: right;
@@ -194,8 +194,8 @@ h5 {
 /*Buttons in the panel*/
 
 .btn {
-    -webkit-border-radius: 28;
-    -moz-border-radius: 28;
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
     border-radius: 28px;
     font-family: Arial;
     color: #ffffff;
@@ -270,3 +270,16 @@ footer {
     text-align: center;
     color: white;
 }
+
+/* as of 03/05/2018 this is the flex-container section that you are changing to */
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
