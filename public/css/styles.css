@@ -17,19 +17,23 @@ body {
     background-color: #afc2cb !important;
 }
 
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
 div.carousel-caption>p {
     color: white;
     text-align: center;
 }
 
 h3 {
-    color: darkorange;
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 26px;
 }
 
 h4 {
-    color: darkorange;
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 20px
 }
@@ -255,10 +259,10 @@ div.panel-footer a {
 
 /*Set media queries for medium and large devices here*/
 
-footer {
+/* footer {
     text-align: center;
     color: white;
-}
+} */
 
 /* as of 03/05/2018 this is the flex-container section that you are changing to */
 
@@ -274,7 +278,18 @@ footer {
     flex-direction: row-reverse;
 }
 
+.flex-container, #section3 {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
 .au,
 .om {
     margin: 25px;
 }
+
+/* #footer {
+    text-align: center;
+} */
