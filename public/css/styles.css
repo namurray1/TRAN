@@ -2,7 +2,6 @@
 Leave area for Map, and descript on pet. Add css styling based on Barbs desciption. Make navbar transparent. 
 Make sure to add smooth scrolling to the project. Think about adding a page header instead of a Jumbotron.*/
 
-
 /*#wrapper {
     display: block;
     max-width: 100%;
@@ -10,17 +9,15 @@ Make sure to add smooth scrolling to the project. Think about adding a page head
     padding: 0;
 }*/
 
-
 /*consider adding max-width: 100% and margin:0 auto if this works*/
 
 body {
     width: auto;
     margin: auto;
-    background-color: #afc2cb!important;
+    background-color: #afc2cb !important;
 }
 
-div.carousel-caption>p
-{
+div.carousel-caption>p {
     color: white;
     text-align: center;
 }
@@ -37,9 +34,13 @@ h4 {
     font-size: 20px
 }
 
-.carousel-inner {
-    width: 100%;
+.carousel-inner>.item>img,
+.carousel-inner>.item>a>img {
+    display: block;
     height: 100%;
+    max-width: 100%;
+    line-height: 1;
+    width: 100%;
 }
 
 .panel-body>p {
@@ -51,7 +52,6 @@ h4 {
     height: 100%;
 }
 
-
 /*no scrolling within the navbar when in mobile or tablet view below*/
 
 .navbar-collapse.in {
@@ -60,7 +60,6 @@ h4 {
     /*max-height: none !important;
     height: auto !important;*/
 }
-
 
 /*navbar is now opaque by using rgba change the last value to affect level of opacity*/
 
@@ -75,7 +74,6 @@ h4 {
     text-align: center;
 }
 
-
 /* Glyphicons */
 
 /* .section1.section2.section3 {
@@ -85,7 +83,6 @@ h4 {
 article {
     float: right;
 }
-
 
 /*CSS for handling how the sections scroll. Change the numbers after speaking to team*/
 
@@ -114,9 +111,8 @@ article {
     padding-top: 0px;
     height: 800px;
     color: #fff;
-    background-color: #e1f5fe ;
+    background-color: #e1f5fe;
 }
-
 
 /*First three sections with image and paragraphy*/
 
@@ -131,9 +127,7 @@ div.col-sm-6 {
     display: block;
 } */
 
-
 /*look into this as it may be impacting the background images in the application*/
-
 
 /*body {
     position: relative;
@@ -173,9 +167,7 @@ h5 {
     font-size: 16px;
 }
 
-
 /*this is what was causing the buttons to blow up the page in the panels*/
-
 
 /*a {
     padding-top: 20px;
@@ -189,7 +181,6 @@ h5 {
     background-repeat: no-repeat;
     
 } */
-
 
 /*Buttons in the panel*/
 
@@ -209,7 +200,6 @@ h5 {
     text-decoration: none;
 } */
 
-
 /*Properties were being overridden in CSS and Bootstrap, so I had to use !important*/
 
 /* .btn:focus,
@@ -221,11 +211,11 @@ div.panel-footer a {
     text-decoration: none;
 }
 
-
 /*media queries*/
 
 @media only screen and (min-width: 768px) {
-    .col-1 {
+
+    /* .col-1 {
         width: 8.33%;
     }
     .col-2 {
@@ -260,9 +250,8 @@ div.panel-footer a {
     }
     .col-12 {
         width: 100%;
-    }
+    } */
 }
-
 
 /*Set media queries for medium and large devices here*/
 
@@ -278,19 +267,14 @@ footer {
     /* flex-direction: row; */
     /* justify-content: auto; */
     align-items: center;
-    
-/* flex-wrap: wrap; */
+    /* flex-wrap: wrap; */
 }
-
-
 
 #section2 {
-    flex-direction:row-reverse;
+    flex-direction: row-reverse;
 }
 
-.au, .om {
-    margin:25px;
+.au,
+.om {
+    margin: 25px;
 }
-
-
-
