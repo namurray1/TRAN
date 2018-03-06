@@ -124,12 +124,12 @@ div.col-sm-6 {
     width: 50%;
 }
 
-img {
+/* img {
     width: 100%;
     height: 100%;
     margin: 0;
     display: block;
-}
+} */
 
 
 /*look into this as it may be impacting the background images in the application*/
@@ -184,11 +184,11 @@ h5 {
     padding-left: 50px;
 }*/
 
-.page-head {
+/* .page-head {
     background-image: url("/images/carousel/puppy2.jpg");
     background-repeat: no-repeat;
-    /*background-size: cover;*/
-}
+    
+} */
 
 
 /*Buttons in the panel*/
@@ -275,10 +275,21 @@ footer {
 
 .flex-container {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    /* flex-direction: row; */
+    /* justify-content: auto; */
     align-items: center;
+    
+/* flex-wrap: wrap; */
+}
 
+
+
+#our {
+    flex-direction:row-reverse;
+}
+
+.au, .om {
+    margin:25px;
 }
 
 
