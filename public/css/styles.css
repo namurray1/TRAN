@@ -11,10 +11,12 @@ Make sure to add smooth scrolling to the project. Think about adding a page head
 
 /*consider adding max-width: 100% and margin:0 auto if this works*/
 
+html,
 body {
-    width: auto;
-    margin: auto;
-    background-color: #afc2cb !important;
+    height: 100%;
+    /* width: auto;
+    margin: auto; */
+    background-color: #fff3e0 !important;
 }
 
 * {
@@ -41,20 +43,37 @@ h4 {
 .carousel-inner>.item>img,
 .carousel-inner>.item>a>img {
     display: block;
-    height: 100%;
+    height: auto;
     max-width: 100%;
     line-height: 1;
     width: 100%;
+    /* object-fit: contain;
+    overflow: hidden; */
+    width: 100%;
+    height: auto;
+}
+
+/* this broke the other images */
+
+img>.carousel {
+    object-fit: contain;
+    height: 1500px;
+    width: 1000px;
 }
 
 .panel-body>p {
     color: black;
 }
 
-.img-responsive {
+/* .img-responsive {
     padding: 0px;
     height: 100%;
-}
+} */
+
+/* img {
+    max-width: 100%;
+    height: auto;
+} */
 
 /*no scrolling within the navbar when in mobile or tablet view below*/
 
@@ -92,30 +111,66 @@ article {
 
 #section1 {
     padding-top: 0px;
-    height: 500px;
+    height: 600px;
     color: #fff;
-    background-color: #eceff1;
+    background-color: #fff3e0;
 }
 
 #section2 {
     padding-top: 0px;
-    height: 500px;
+    height: 600px;
     color: #fff;
-    background-color: #ffffff;
+    background-color: #fff3e0;
 }
 
 #section3 {
     padding-top: 0px;
-    height: 500px;
+    height: auto;
     color: #fff;
-    background-color: #afc2cb
+    background-color: #fff3e0
 }
 
 #section4 {
     padding-top: 0px;
     height: 800px;
     color: #fff;
-    background-color: #e1f5fe;
+    background-color: #fff3e0 !important;
+}
+
+/* flexbox containers */
+
+.flex-container {
+    display: flex;
+    /* flex-direction: row; */
+    /* justify-content: auto; */
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+}
+
+/* #section1 {
+    
+    
+} */
+
+#section2 {
+    flex-direction: row-reverse;
+    
+    /* flex-wrap: wrap; */
+}
+
+#section3 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 40px 0 40px 0;
+}
+
+.au,
+.om {
+    margin: 25px;
 }
 
 /*First three sections with image and paragraphy*/
@@ -218,7 +273,6 @@ div.panel-footer a {
 /*media queries*/
 
 @media only screen and (min-width: 768px) {
-
     /* .col-1 {
         width: 8.33%;
     }
@@ -265,30 +319,6 @@ div.panel-footer a {
 } */
 
 /* as of 03/05/2018 this is the flex-container section that you are changing to */
-
-.flex-container {
-    display: flex;
-    /* flex-direction: row; */
-    /* justify-content: auto; */
-    align-items: center;
-    /* flex-wrap: wrap; */
-}
-
-#section2 {
-    flex-direction: row-reverse;
-}
-
-.flex-container, #section3 {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    justify-content: space-between;
-}
-
-.au,
-.om {
-    margin: 25px;
-}
 
 /* #footer {
     text-align: center;
