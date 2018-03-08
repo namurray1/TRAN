@@ -35,10 +35,19 @@ h3 {
 }
 
 h4 {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    font-size: 20px
+    color: rgb(0, 0, 0);
+    /* text-align: center; */
+    font-size: 25px
 }
+
+
+/* consider making this the heading for the pet profiles section */
+/* h5 {
+    color: black;
+    font-size: 25px;
+} */
+
+
 
 .carousel-inner>.item>img,
 .carousel-inner>.item>a>img {
@@ -109,7 +118,7 @@ article {
 
 /*CSS for handling how the sections scroll. Change the numbers after speaking to team*/
 
-#section1 {
+/* #section1 {
     padding-top: 0px;
     height: 500px;
     color: #fff;
@@ -135,7 +144,7 @@ article {
     height: 600px;
     color: #fff;
     background-color: #fff3e0 !important;
-}
+} */
 
 /* flexbox containers */
 
