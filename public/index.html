@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./css/styles.css">
@@ -16,70 +16,47 @@
 
 <body id="main-body" data-spy="scroll" data-target=".navbar">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top opaque-navbar">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">RAVN</a>
-
-            </div>
-            <div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="#section1">About Us</a>
-                        </li>
-
-                        <li>
-                            <a href="#section2">Our Mission</a>
-                        </li>
-                        <li>
-                            <a href="#section3">Pet Profiles</a>
-                        </li>
-                        <li>
-                            <a href="#section4">Contact Us</a>
-                        </li>
-
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Donation
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="donate.html">Direct Donation</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.gofundme.com/tranfunds">Go Fund Me Link</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="animaladd">
-                            <a href="addAnimal.html">
-                                <span class="glyphicon usersignup"></span> Add Animal</a>
-                        </li>
-                        <li class="notSignedIn">
-                            <a href="signup.html">
-                                <span class="glyphicon usersignup"></span> Signup</a>
-                        </li>
-                        <li class="notSignedIn">
-                            <a href="signin.html">
-                                <span class="glyphicon userlogin"></span> Login</a>
-                        </li>
-                        <li class="signedIn">
-                            <a href="index.html">
-                                <span class="glyphicon userlogout"></span> Logout</a>
-                        </li>
-                    </ul>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">RAVN</a>
+        <!--put an image here an an <img>-->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+       <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="navbar-nav">
+                <a class="nav-item nav-link" href="#section1">About Us</a>
+                <a class="nav-item nav-link" href="#section2">Our Mission</a>
+                <a class="nav-item nav-link" href="#section3">Pet Profiles</a>
+                <a class="nav-item nav-link" href="#section4">Contact Us</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Donation
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="donate.html">Direct Donation</a>
+                        <a class="dropdown-item" href="https://www.gofundme.com/tranfunds">Go Fund Me Link</a>
+                </li>
                 </div>
-            </div>
-        </div>
-    </nav>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="animaladd">
+                    <a href="addAnimal.html">
+                        <span class="glyphicon usersignup"></span> Add Animal</a>
+                </li>
+                <li class="notSignedIn">
+                    <a href="signup.html">
+                        <span class="glyphicon usersignup"></span> Signup</a>
+                </li>
+                <li class="notSignedIn">
+                    <a href="signin.html">
+                        <span class="glyphicon userlogin"></span> Login</a>
+                </li>
+                <li class="signedIn">
+                    <a href="index.html">
+                        <span class="glyphicon userlogout"></span> Logout</a>
+                </li>
+            </ul>
+        </nav>
+    
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -90,19 +67,19 @@
         <!-- Wrapper for carousel images -->
         <div class="carousel-inner">
             <div class="item active">
-                <img src='https://placehold.it/1905x850?text=Place%20Holder%20Dummy%20Image' alt=''/>
+                <img src='https://placehold.it/1905x850?text=Place%20Holder%20Dummy%20Image' alt='' />
                 <div class="carousel-caption">
                     <h3>Rescue Animal Volunteer Network</h3>
                 </div>
             </div>
             <div class="item">
-                <img src='https://placehold.it/1905x850?text=Place%20Holder%20Dummy%20Image' alt=''/>
+                <img src='https://placehold.it/1905x850?text=Place%20Holder%20Dummy%20Image' alt='' />
                 <div class="carousel-caption">
                     <h3>Rescue Animal Volunteer Network</h3>
                 </div>
             </div>
             <div class="item">
-                <img src='https://placehold.it/1905x850?text=Place%20Holder%20Dummy%20Image' alt=''/>
+                <img src='https://placehold.it/1905x850?text=Place%20Holder%20Dummy%20Image' alt='' />
                 <div class="carousel-caption">
                     <h3>Rescue Animal Volunteer Network</h3>
                 </div>
@@ -126,7 +103,7 @@
 
     <div class="flex-container" id="section1">
         <div>
-            <img src='https://placehold.it/800x600?text=Place%20Holder%20Dummy%20Image' alt=''/>
+            <img src='https://placehold.it/800x600?text=Place%20Holder%20Dummy%20Image' alt='' />
         </div>
         <div class="au">
             <h1>About Us</h1>
@@ -139,7 +116,7 @@
 
     <div class="flex-container" id="section2">
         <div>
-            <img src='https://placehold.it/800x600?text=Place%20Holder%20Dummy%20Image' alt=''/>
+            <img src='https://placehold.it/800x600?text=Place%20Holder%20Dummy%20Image' alt='' />
         </div>
         <div class="om">
             <h1>Our Mission</h1>
@@ -291,7 +268,7 @@
     <div id="section4" class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <img src='images/animal-thumbs/greencat.jpg' class='image-responsive' />
+                <img src='https://placehold.it/700x500?text=Place%20Holder%20Dummy%20Image' alt='' />
             </div>
             <div class="col-sm-6">
             </div>
@@ -395,8 +372,16 @@
 
 
         <script src="./js/app.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- new BS4 -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <!-- new BS4 -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 
 </body>
 
