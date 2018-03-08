@@ -111,14 +111,14 @@ article {
 
 #section1 {
     padding-top: 0px;
-    height: 600px;
+    height: 500px;
     color: #fff;
     background-color: #fff3e0;
 }
 
 #section2 {
     padding-top: 0px;
-    height: 600px;
+    height: 500px;
     color: #fff;
     background-color: #fff3e0;
 }
@@ -187,10 +187,10 @@ div.col-sm-6 {
 } */
 
 /*look into this as it may be impacting the background images in the application*/
-
-/*body {
+/* this is required in order for the scroll spy to work */
+body {
     position: relative;
-}*/
+}
 
 .donate-amount-container,
 .card-details-container,
