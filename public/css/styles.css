@@ -72,9 +72,9 @@ h3 {
     width: 1000px;
 } */
 
-.panel-body>p {
+/* .panel-body>p {
     color: rgb(255, 255, 255);
-}
+} */
 
 /* .img-responsive {
     padding: 0px;
@@ -151,13 +151,13 @@ article {
 
 /* flexbox containers */
 
-.flex-container {
-    display: flex;
+/* .flex-container {
+    display: flex; */
     /* flex-direction: row; */
     /* justify-content: auto; */
     /* align-items: center; */
     /* flex-wrap: wrap; */
-}
+/* } */
 
 /* adding padding to about us and mission section */
 
@@ -169,7 +169,7 @@ article {
     
 }
 
-#section3 {
+/* #section3 {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -177,18 +177,18 @@ article {
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 40px 0 40px 0;
-}
+} */
 
-.au,
+/* .au,
 .om {
     margin: 25px;
-}
+} */
 
 /*First three sections with image and paragraphy*/
 
-div.col-sm-6 {
+/* div.col-sm-6 {
     width: 50%;
-}
+} */
 
 /* img {
     width: 100%;
