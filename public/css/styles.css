@@ -237,6 +237,22 @@ h5 {
     font-size: 16px;
 }
 
+/* CSS for material icons */
+
+.material-icons.md-36 { font-size: 36px;}
+
+/* material icons for pet profiles section */
+
+#pet_profiles{
+    margin: 50px;
+}
+
+/* material icons for contact us section */
+
+#contact_us{
+    margin: 50px;
+}
+
 /*this is what was causing the buttons to blow up the page in the panels*/
 
 /*a {
